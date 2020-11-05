@@ -1,8 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FotoFactory.CoreEntities\FotoFactory.CoreEntities.csproj" />
+    <ProjectReference Include="..\FotoFactory.Core\FotoFactory.Core.csproj" />
+  </ItemGroup>
 
 </Project>
