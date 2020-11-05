@@ -5,6 +5,22 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoFactory.BackEnd", "FotoFactory.BackEnd\FotoFactory.BackEnd.csproj", "{EE172FCB-3E68-434E-AC17-53716B047D6C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestApi", "RestApi", "{BBE231C2-2493-400E-96B3-6F60D9C2E5BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F1B00810-9A20-481B-AD97-8E929F8A7F15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreEntities", "CoreEntities", "{A1DD1A54-8057-4117-AA1C-173F81DCE5E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraStructure", "InfraStructure", "{8505599A-943C-48F4-90F3-2D455A1CEE71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoFactory.Core", "FotoFactory.Core\FotoFactory.Core.csproj", "{A67744D3-A5C6-4DC4-B27A-D9EED60E9D47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoFactory.CoreEntities", "FotoFactory.CoreEntities\FotoFactory.CoreEntities.csproj", "{5F7FC546-0E63-4668-ABD2-A442B6022BD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraStructure.SQLLite.Data", "InfraStructure.SQLLite.Data\InfraStructure.SQLLite.Data.csproj", "{B565E6DB-15E0-4121-8BFE-90237E5BC701}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraStructure.SQL.Data", "InfraStructure.SQL.Data\InfraStructure.SQL.Data.csproj", "{F690B75C-00BB-4498-ADF4-BB08979ECF83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +31,32 @@ Global
 		{EE172FCB-3E68-434E-AC17-53716B047D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE172FCB-3E68-434E-AC17-53716B047D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE172FCB-3E68-434E-AC17-53716B047D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A67744D3-A5C6-4DC4-B27A-D9EED60E9D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67744D3-A5C6-4DC4-B27A-D9EED60E9D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67744D3-A5C6-4DC4-B27A-D9EED60E9D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67744D3-A5C6-4DC4-B27A-D9EED60E9D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F7FC546-0E63-4668-ABD2-A442B6022BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F7FC546-0E63-4668-ABD2-A442B6022BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F7FC546-0E63-4668-ABD2-A442B6022BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F7FC546-0E63-4668-ABD2-A442B6022BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B565E6DB-15E0-4121-8BFE-90237E5BC701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B565E6DB-15E0-4121-8BFE-90237E5BC701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B565E6DB-15E0-4121-8BFE-90237E5BC701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B565E6DB-15E0-4121-8BFE-90237E5BC701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE172FCB-3E68-434E-AC17-53716B047D6C} = {BBE231C2-2493-400E-96B3-6F60D9C2E5BA}
+		{A67744D3-A5C6-4DC4-B27A-D9EED60E9D47} = {F1B00810-9A20-481B-AD97-8E929F8A7F15}
+		{5F7FC546-0E63-4668-ABD2-A442B6022BD1} = {A1DD1A54-8057-4117-AA1C-173F81DCE5E4}
+		{B565E6DB-15E0-4121-8BFE-90237E5BC701} = {8505599A-943C-48F4-90F3-2D455A1CEE71}
+		{F690B75C-00BB-4498-ADF4-BB08979ECF83} = {8505599A-943C-48F4-90F3-2D455A1CEE71}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75DB52AA-34D5-41C1-ACF3-23B57E9B6994}
