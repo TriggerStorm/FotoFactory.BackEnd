@@ -6,7 +6,7 @@ using FotoFactory.CoreEntities;
 
 namespace InfraStructure.SQLLite.Data
 {
-    public class DBInitialiser
+    public class DBInitialiser : IDBInitialiser
     {
 
         private readonly IAuthenticationHelper _authenticationHelper;
