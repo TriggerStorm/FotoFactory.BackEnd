@@ -40,7 +40,6 @@ namespace FotoFactory.Core.Helper
             }
             return true;
         }
-        
 
         public string GenerateToken(User user)
         {
@@ -60,4 +59,6 @@ namespace FotoFactory.Core.Helper
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
+
 }
+

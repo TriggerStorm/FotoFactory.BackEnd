@@ -1,7 +1,9 @@
+
 ﻿using FotoFactory.CoreEntities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 
 
 namespace FotoFactory.Core.Helper
@@ -12,4 +14,6 @@ namespace FotoFactory.Core.Helper
         bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt);
         string GenerateToken(User user);
     }
+
 }
+
