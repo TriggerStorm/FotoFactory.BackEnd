@@ -45,16 +45,20 @@ namespace InfraStructure.SQLLite.Data
                         IsAdmin = true
                     },
 
-                    new User
+                new User
                     {
                         Username = "user",
                         PasswordHash = passwordHashUser,
                         PasswordSalt = passwordSaltUser,
                         IsAdmin = false
                     }
-                };
+            };
 
+
+            ctx.Users.AddRange(users);
+            ctx.SaveChanges();
 
         }
+
     }
 }
