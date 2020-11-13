@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using FotoFactory.Core.DomainService;
+using FotoFactory.Core.Helper;
 using FotoFactory.CoreEntities;
 
 
@@ -99,4 +100,3 @@ namespace FotoFactory.Core.AppService.Service
 }
 
 
-}

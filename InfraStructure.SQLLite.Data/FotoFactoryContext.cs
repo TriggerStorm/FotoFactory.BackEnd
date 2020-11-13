@@ -8,7 +8,7 @@ namespace InfraStructure.SQLLite.Data
     public class FotoFactoryContext : DbContext
     {
         public FotoFactoryContext(DbContextOptions<FotoFactoryContext> opt) : base(opt) { }
-        {
+        
       
    /*     protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
