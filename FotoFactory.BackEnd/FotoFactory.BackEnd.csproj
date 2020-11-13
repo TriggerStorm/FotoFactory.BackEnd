@@ -4,5 +4,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FotoFactory.CoreEntities\FotoFactory.CoreEntities.csproj" />
+    <ProjectReference Include="..\FotoFactory.Core\FotoFactory.Core.csproj" />
+    <ProjectReference Include="..\InfraStructure.SQL.Data\InfraStructure.SQL.Data.csproj" />
+    <ProjectReference Include="..\InfraStructure.SQLLite.Data\InfraStructure.SQLLite.Data.csproj" />
+  </ItemGroup>
+
 
 </Project>
