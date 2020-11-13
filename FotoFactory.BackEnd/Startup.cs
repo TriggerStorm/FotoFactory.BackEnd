@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using FotoFactory.Core.AppService;
 using FotoFactory.Core.AppService.Service;
@@ -19,6 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace FotoFactory.BackEnd
 {
@@ -64,7 +67,7 @@ namespace FotoFactory.BackEnd
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
 
-            
+            services.AddTransient<IDBInitialiser, DBInitialiser>();
 
 
 
@@ -83,7 +86,7 @@ namespace FotoFactory.BackEnd
              );
 
             //Register the Swagger generator using Swashbuckle.
-           /* services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -96,11 +99,17 @@ namespace FotoFactory.BackEnd
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
-            });*/
+            });
 
 
             services.AddControllers();
             //services.AddMvc().AddNewtonsoftJson();
+           // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            /*services.AddControllers().AddNewtonsoftJson(options =>
+            {    // Use the default property (Pascal) casing
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                //   options.SerializerSettings.MaxDepth = 100;  // 100 pet limit per owner
+            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,7 +118,15 @@ namespace FotoFactory.BackEnd
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<FotoFactoryContext>();
+                    var dbIntialiser = scope.ServiceProvider.GetService<IDBInitialiser>();
+                    dbIntialiser.SeedDB(ctx);
+                }
             }
+
+            app.UseCors();
 
             app.UseHttpsRedirection();
 
