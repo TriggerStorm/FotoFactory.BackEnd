@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace FotoFactory.CoreEntities
 {
     public class User
