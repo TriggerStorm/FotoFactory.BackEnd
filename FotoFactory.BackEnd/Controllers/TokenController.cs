@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FotoFactory.Core.DomainService;
 using FotoFactory.Core.Helper;
 using FotoFactory.CoreEntities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FotoFactory.BackEnd
+namespace FotoFactory.BackEnd.Controllers
 {
     public class TokenController : Controller
-    {/*
+    {
         private IAuthenticationHelper authenticationHelper;
-        //private IUserRepository repository;
+        private IUserRepository repository;
 
         public TokenController(IUserRepository repos, IAuthenticationHelper authHelper)
         {
@@ -39,6 +40,6 @@ namespace FotoFactory.BackEnd
                 token = authenticationHelper.GenerateToken(user)
             });
         }
-        */
+        
     }
 }
