@@ -28,7 +28,7 @@ namespace FotoFactory.BackEnd.Controllers
 
 
             // GET api/users
-            [HttpGet]  // seriously need to look at this. untested!!!
+            [HttpGet]  // seriously need to look at this method. untested!!!
             public ActionResult<IEnumerable<User>> Get() //[FromQuery] PagingFilter filter)
             {
                 var userz = _userService.GetAllUsers();
