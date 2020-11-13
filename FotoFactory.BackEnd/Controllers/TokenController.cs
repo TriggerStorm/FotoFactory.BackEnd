@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FotoFactory.BackEnd.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class TokenController : Controller
     {
         private IAuthenticationHelper authenticationHelper;
