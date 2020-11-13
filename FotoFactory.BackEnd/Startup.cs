@@ -60,9 +60,13 @@ namespace FotoFactory.BackEnd
             services.AddDbContext<FotoFactoryContext>(
             opt => opt.UseSqlite("Data Source= FotoFactoryApp.db"));
 
-            services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+           
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
+            
+
+
 
 
 
