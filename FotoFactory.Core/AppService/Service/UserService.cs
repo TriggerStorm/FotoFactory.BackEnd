@@ -13,13 +13,15 @@ namespace FotoFactory.Core.AppService.Service
    
     public class UserService : IUserService
     {
-        private readonly IAuthenticationHelper _authenticationHelper;
         readonly IUserRepository _userRepo;
+        private readonly IAuthenticationHelper _authenticationHelper;
+        readonly IUserValidator _userValidator;
 
-        public UserService(IUserRepository userRepository, IAuthenticationHelper authenticationHelper)
+        public UserService(IUserRepository userRepository, IAuthenticationHelper authenticationHelper, IUserValidator userValidator)
         {
-            _authenticationHelper = authenticationHelper;
             _userRepo = userRepository;
+            _authenticationHelper = authenticationHelper;
+            _userValidator = userValidator;
         }
 
 
@@ -40,14 +42,7 @@ namespace FotoFactory.Core.AppService.Service
 
         public User CreateUser(User createdUser)
         {
-            if (createdUser.Username == null || createdUser.Username == "")
-                throw new InvalidDataException("To create a user you need to provide a name");
-            if (createdUser.PasswordHash == null)
-                throw new InvalidDataException("To create a user you need a password hash");
-            if (createdUser.PasswordSalt == null)
-                throw new InvalidDataException("To create a user you need to a password salt");
-            if (createdUser.IsAdmin != false || createdUser.IsAdmin != true)
-                throw new InvalidDataException("To create a user you need to specify if they are an admin or user");
+          
             return _userRepo.CreateUser(createdUser);
         }
 
@@ -69,6 +64,7 @@ namespace FotoFactory.Core.AppService.Service
 
         public User UpdateUser(User userUpdate)
         {
+            _userValidator.DefaultValidation(userUpdate);
             return _userRepo.UpdateUser(userUpdate);
         }
 
@@ -81,7 +77,7 @@ namespace FotoFactory.Core.AppService.Service
 
 
 
-        public User ValidateUser(LoginInputModel loginInputModel)
+        public User ValidateUser(LoginInputModel loginInputModel)  // is this replaced with validator class??
         {
             User user = _userRepo.ReadAllUsers().FirstOrDefault(u => u.Username == loginInputModel.Username);
             if (user == null)

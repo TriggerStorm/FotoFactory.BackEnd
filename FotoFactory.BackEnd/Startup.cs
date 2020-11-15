@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using FotoFactory.Core.AppService;
 using FotoFactory.Core.AppService.Service;
+using FotoFactory.Core.AppService.Validators;
 using FotoFactory.Core.DomainService;
 using FotoFactory.Core.Helper;
 using InfraStructure.SQLLite.Data;
@@ -66,7 +67,7 @@ namespace FotoFactory.BackEnd
            
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
-
+            services.AddScoped<IUserValidator, UserValidator>();
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
 
