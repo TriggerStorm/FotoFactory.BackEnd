@@ -13,25 +13,35 @@ namespace InfraStructure.SQLLite.Data
         {
             // Do we need this?
             modelBuilder.Entity<Poster>()
-                .HasMany(t => t.Tags);
+                .HasMany(p => p.Tags);
 
             modelBuilder.Entity<Poster>()
-                .HasMany(s => s.Sizes);
+                .HasMany(p => p.Sizes);
 
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.WorkSpaces);
 
-            /*     modelBuilder.Entity<User>()
-                 .HasMany(u => u.WorkSpaces)
-                     .WithMany(wsp => wsp.WorkSpacePosters)
-                     .OnDelete(DeleteBehavior.SetNull); ;
-            */
-            modelBuilder.Entity<Poster>()
-                .HasMany(s => s.Sizes);
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Favourites);
+               
+            modelBuilder.Entity<WorkSpace>()
+               .HasMany(ws => ws.WorkSpacePosters);
+
+            modelBuilder.Entity<WorkSpacePoster>()
+               .HasOne(wsp => wsp.Poster);
+
+            modelBuilder.Entity<WorkSpacePoster>()
+               .HasOne(wsp => wsp.Frame);
+
+            modelBuilder.Entity<WorkSpacePoster>()
+               .HasOne(wsp => wsp.Size);
         }
 
 
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<Size> Sizes { get; set; }
         public DbSet<Poster> Posters { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Frame> Frames { get; set; }
+        public DbSet<Size> Sizes { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<WorkSpace> WorkSpaces { get; set; }
         public DbSet<WorkSpacePoster> WorkSpacePosters { get; set; }

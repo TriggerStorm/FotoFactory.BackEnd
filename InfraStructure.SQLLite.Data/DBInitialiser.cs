@@ -38,6 +38,7 @@ namespace InfraStructure.SQLLite.Data
 
 
 //  Create Users
+
             List<User> users = new List<User>
             {
                 new User
@@ -88,7 +89,7 @@ namespace InfraStructure.SQLLite.Data
 
 
 
- //  Create Sizes
+//  Create Sizes
 
             Size size01 = ctx.Sizes.Add(new Size
             {
@@ -207,6 +208,48 @@ namespace InfraStructure.SQLLite.Data
                 Tags = new List<Tag> { tag01, tag02, tag05 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
+
+
+
+
+//  Create Frames
+
+            Frame OAKNATURE = ctx.Frames.Add(new Frame
+            {
+                FrameType = "Natural Oak",
+                FrameSku = "OAKNATURE"
+            }).Entity;
+
+            Frame OAKDARK = ctx.Frames.Add(new Frame
+            {
+                FrameType = "Dark Oak",
+                FrameSku = "OAKDARK"
+            }).Entity;
+
+            Frame OAKBLACK = ctx.Frames.Add(new Frame
+            {
+                FrameType = "Black Oak",
+                FrameSku = "OAKBLACK"
+            }).Entity;
+
+            Frame OAKWHITE = ctx.Frames.Add(new Frame
+            {
+                FrameType = "White Oak",
+                FrameSku = "OAKWHITE"
+            }).Entity;
+
+            Frame ALUBLACK = ctx.Frames.Add(new Frame
+            {
+                FrameType = "Black Aluminium",
+                FrameSku = "ALUBLACK"
+            }).Entity;
+
+            Frame WHITEALU = ctx.Frames.Add(new Frame
+            {
+                FrameType = "White Aluminium",
+                FrameSku = "WHITEALU"
+            }).Entity;
+
 
 
 
