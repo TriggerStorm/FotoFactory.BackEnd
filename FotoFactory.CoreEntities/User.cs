@@ -13,7 +13,7 @@ namespace FotoFactory.CoreEntities
         public byte[] PasswordSalt { get; set; }
         public bool IsAdmin { get; set; }
         public List<WorkSpace> WorkSpaces { get; set; }
-        public List<Poster> Favorites { get; set; }
+        public List<Poster> Favourites { get; set; }
 
 
     }
