@@ -16,7 +16,7 @@ namespace InfraStructure.SQLLite.Data
             _authenticationHelper = authenticationHelper;
         }
 
-        WeakReference ARE MOTO
+        
 
         public void SeedDB(FotoFactoryContext ctx)  // Using context. Could use repository but ctx is a cleaner change tracker
         {
