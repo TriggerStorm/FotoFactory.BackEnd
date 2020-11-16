@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace FotoFactory.CoreEntities
 {
     public class Size
