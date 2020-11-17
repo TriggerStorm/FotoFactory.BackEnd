@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FotoFactory.Core.Helper;
 using FotoFactory.CoreEntities;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace InfraStructure.SQLLite.Data
 {
@@ -16,49 +17,21 @@ namespace InfraStructure.SQLLite.Data
             _authenticationHelper = authenticationHelper;
         }
 
-        
 
-        public void SeedDB(FotoFactoryContext ctx)  // Using context. Could use repository but ctx is a cleaner change tracker
+
+        public void
+            SeedDB(FotoFactoryContext ctx) // Using context. Could use repository but ctx is a cleaner change tracker
         {
             if (ctx.Users.Any())
             {
                 return;
             }
 
-            string password = "1234";
-            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashAdmin,
-                out byte[] passwordSaltAdmin);
-
-            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashUser,
-                out byte[] passwordSaltUser);
-
-
-
-//  Create Users
-
-            List<User> users = new List<User>
-            {
-                new User
-                {
-                    Username = "admin",
-                    PasswordHash = passwordHashAdmin,
-                    PasswordSalt = passwordSaltAdmin,
-                    IsAdmin = true
-                },
-
-                new User
-                {
-                    Username = "user",
-                    PasswordHash = passwordHashUser,
-                    PasswordSalt = passwordSaltUser,
-                    IsAdmin = false
-                }
-            };
 
 
 
 //  Create Tags
-           
+
             Tag tag01 = ctx.Tags.Add(new Tag
             {
                 Description = "Grøn"
@@ -66,22 +39,22 @@ namespace InfraStructure.SQLLite.Data
 
             Tag tag02 = ctx.Tags.Add(new Tag
             {
-            Description = "Skov"
+                Description = "Skov"
             }).Entity;
 
             Tag tag03 = ctx.Tags.Add(new Tag
-                {
-                    Description = "Træer"
+            {
+                Description = "Træer"
             }).Entity;
 
             Tag tag04 = ctx.Tags.Add(new Tag
-                {
-                    Description = "Søer"
+            {
+                Description = "Søer"
             }).Entity;
 
             Tag tag05 = ctx.Tags.Add(new Tag
-                {
-                    Description = "Silkeborg"
+            {
+                Description = "Silkeborg"
             }).Entity;
 
 
@@ -112,7 +85,7 @@ namespace InfraStructure.SQLLite.Data
             Size size04 = ctx.Sizes.Add(new Size
             {
                 Dimensions = "A2 (42 x 59.4cm)",
-                PosterPrice = 500.00,  // unsure of price. Not yet used
+                PosterPrice = 500.00, // unsure of price. Not yet used
                 FramePrice = 400.00
             }).Entity;
 
@@ -139,8 +112,8 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Rold Skov",
                 PosterSku = "FF160DK",
                 Path = ".../Assets/FF160DK.jpg",
-                Tags = new List<Tag>{ tag01, tag02, tag03 },
-                Sizes = new List<Size>{ size01, size02, size03, size05, size06 }
+                Tags = new List<Tag> {tag01, tag02, tag03},
+                Sizes = new List<Size> {size01, size02, size03, size05, size06}
             }).Entity;
 
             Poster poster159DK = ctx.Posters.Add(new Poster
@@ -148,8 +121,8 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Skovsø",
                 PosterSku = "FF159DK",
                 Path = ".../Assets/FF159DK.jpg",
-                Tags = new List<Tag>{ tag02, tag03, tag04 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                Tags = new List<Tag> {tag02, tag03, tag04},
+                Sizes = new List<Size> {size01, size03, size05, size06}
             }).Entity;
 
             Poster poster158DK = ctx.Posters.Add(new Poster
@@ -157,8 +130,8 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Nordskoven",
                 PosterSku = "FF158DK",
                 Path = ".../Assets/FF158DK.jpg",
-                Tags = new List<Tag>{ tag01, tag02, tag03 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                Tags = new List<Tag> {tag01, tag02, tag03},
+                Sizes = new List<Size> {size01, size03, size05, size06}
             }).Entity;
 
             Poster poster157DK = ctx.Posters.Add(new Poster
@@ -166,8 +139,8 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Fredskov",
                 PosterSku = "FF157DK",
                 Path = ".../Assets/FF157DK.jpg",
-                Tags = new List<Tag> { tag01, tag02, tag03 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                Tags = new List<Tag> {tag01, tag02, tag03},
+                Sizes = new List<Size> {size01, size03, size05, size06}
             }).Entity;
 
             Poster poster156DK = ctx.Posters.Add(new Poster
@@ -175,8 +148,8 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Slåensø",
                 PosterSku = "FF156DK",
                 Path = ".../Assets/FF156DK.jpg",
-                Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                Tags = new List<Tag> {tag01, tag02, tag04, tag05},
+                Sizes = new List<Size> {size01, size03, size05, size06}
             }).Entity;
 
             Poster poster155DK = ctx.Posters.Add(new Poster
@@ -184,8 +157,8 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Morgendis",
                 PosterSku = "FF155DK",
                 Path = ".../Assets/FF155DK.jpg",
-                Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                Tags = new List<Tag> {tag01, tag02, tag04, tag05},
+                Sizes = new List<Size> {size01, size03, size05, size06}
             }).Entity;
 
             Poster poster154DK = ctx.Posters.Add(new Poster
@@ -193,8 +166,8 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Nordskov",
                 PosterSku = "FF154DK",
                 Path = ".../Assets/FF154DK.jpg",
-                Tags = new List<Tag> { tag01, tag02, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                Tags = new List<Tag> {tag01, tag02, tag05},
+                Sizes = new List<Size> {size01, size03, size05, size06}
             }).Entity;
 
             Poster poster153DK = ctx.Posters.Add(new Poster
@@ -202,14 +175,19 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Vesterskov",
                 PosterSku = "FF153DK",
                 Path = ".../Assets/FF153DK.jpg",
-                Tags = new List<Tag> { tag01, tag02, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                Tags = new List<Tag> {tag01, tag02, tag05},
+                Sizes = new List<Size> {size01, size03, size05, size06}
             }).Entity;
 
 
 
-
 //  Create Frames
+
+            Frame NOFRAME = ctx.Frames.Add(new Frame
+            {
+                FrameType = "NOFRAME",
+                FrameSku = "NOFRAME"
+            }).Entity;
 
             Frame OAKNATURE = ctx.Frames.Add(new Frame
             {
@@ -248,11 +226,145 @@ namespace InfraStructure.SQLLite.Data
             }).Entity;
 
 
+// Create WorkSpacePoster
+
+            WorkSpacePoster workSpacePoster1 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+
+                Poster = poster160DK,
+                Frame = OAKNATURE, // add frame id here ? or just description
+                XPos = 0,
+                YPos = 0,
+                Size = size01,
+
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster2 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster159DK,
+                Frame = OAKBLACK,
+                XPos = 700,
+                YPos = 800,
+                Size = size05,
+
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster3 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster155DK,
+                Frame = WHITEALU,
+                XPos = 650,
+                YPos = 550,
+                Size = size03,
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster4 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster155DK,
+                Frame = ALUBLACK,
+                XPos = 250,
+                YPos = 300,
+                Size = size06,
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster5 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster159DK,
+                Frame = NOFRAME,
+                XPos = 150,
+                YPos = 100,
+                Size = size04,
+
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster6 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster159DK,
+                Frame = OAKDARK,
+                XPos = 400,
+                YPos = 500,
+                Size = size03,
+
+            }).Entity;
+
+
+
+// Create WorkSpace
+
+            WorkSpace workSpace1 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "LivingRoom",
+                WorkSpacePosters = new List<WorkSpacePoster>
+                    {workSpacePoster1, workSpacePoster4, workSpacePoster2, workSpacePoster3},
+            }).Entity;
+
+            WorkSpace workSpace2 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "Bedroom",
+                WorkSpacePosters = new List<WorkSpacePoster> {workSpacePoster4, workSpacePoster5, workSpacePoster6},
+            }).Entity;
+
+            WorkSpace workSpace3 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "MasterBedroom",
+                WorkSpacePosters = new List<WorkSpacePoster> {workSpacePoster2, workSpacePoster3, workSpacePoster4},
+            }).Entity;
+
+            WorkSpace workSpace4 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "Kitchen",
+                WorkSpacePosters = new List<WorkSpacePoster> { },
+            }).Entity;
+
+            WorkSpace workSpace5 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "Staircase",
+                WorkSpacePosters = new List<WorkSpacePoster> {workSpacePoster4, workSpacePoster1, workSpacePoster3},
+            }).Entity;
+
+
+// create Users
+
+            string password = "1234";
+            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashAdmin,
+                out byte[] passwordSaltAdmin);
+
+            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashUser,
+                out byte[] passwordSaltUser);
+
+            List<User> users = new List<User>
+            {
+                new User
+                {
+                    Username = "admin",
+                    PasswordHash = passwordHashAdmin,
+                    PasswordSalt = passwordSaltAdmin,
+                    IsAdmin = true,
+                    WorkSpaces = new List<WorkSpace> {workSpace1, workSpace2, workSpace5}
+                },
+
+
+                new User
+                {
+                    Username = "user",
+                    PasswordHash = passwordHashUser,
+                    PasswordSalt = passwordSaltUser,
+                    IsAdmin = false,
+                    WorkSpaces = new List<WorkSpace>{workSpace3, workSpace4 , workSpace4}
+                },
+            };
+
+
 
 
             ctx.Users.AddRange(users);
+
             ctx.SaveChanges();
         }
-
     }
 }
+
+
+        
+
+    
