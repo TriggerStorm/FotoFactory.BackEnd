@@ -14,7 +14,7 @@ namespace InfraStructure.SQLLite.Data
             // Do we need this?
             modelBuilder.Entity<Poster>()
                 .HasMany(p => p.Tags);
-
+            
             modelBuilder.Entity<Poster>()
                 .HasMany(p => p.Sizes);
 
@@ -35,6 +35,7 @@ namespace InfraStructure.SQLLite.Data
 
             modelBuilder.Entity<WorkSpacePoster>()
                .HasOne(wsp => wsp.Size);
+
         }
 
 

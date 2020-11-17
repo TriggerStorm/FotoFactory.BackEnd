@@ -79,6 +79,9 @@ namespace FotoFactory.BackEnd
             services.AddScoped<IUserValidator, UserValidator>();
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
+            services.AddScoped<IPosterRepository, PosterRepository>();
+            services.AddScoped<IPosterService, PosterService>();
+
             services.AddSingleton<IAuthenticationHelper>(new
                AuthenticationHelper(secretBytes));
 
