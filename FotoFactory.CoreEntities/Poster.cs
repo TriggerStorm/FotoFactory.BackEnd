@@ -14,6 +14,7 @@ namespace FotoFactory.CoreEntities
 
         public string Path { get; set; }
 
+
         public List<Tag> Tags { get; set; }
 
         public List<Size> Sizes { get; set; }

@@ -10,4 +10,6 @@ namespace FotoFactory.CoreEntities
         public double FramePrice { get; set; }
 
     }
+
 }
+

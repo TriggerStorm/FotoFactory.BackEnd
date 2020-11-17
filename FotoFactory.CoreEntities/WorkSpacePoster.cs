@@ -12,4 +12,6 @@ namespace FotoFactory.CoreEntities
         public Size Size { get; set; }
 
     }
+
 }
+

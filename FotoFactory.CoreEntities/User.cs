@@ -15,6 +15,5 @@ namespace FotoFactory.CoreEntities
         public List<WorkSpace> WorkSpaces { get; set; }
         public List<Poster> Favourites { get; set; }
 
-
     }
 }

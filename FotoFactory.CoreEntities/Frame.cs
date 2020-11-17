@@ -12,4 +12,6 @@ namespace FotoFactory.CoreEntities
 
         public string FrameSku { get; set; }
     }
+
 }
+

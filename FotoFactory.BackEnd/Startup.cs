@@ -28,19 +28,34 @@ namespace FotoFactory.BackEnd
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
-            //Environment = env;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
-
-        //public IWebHostEnvironment Environment { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (Environment.IsDevelopment())
+            {
+                services.AddDbContext<FotoFactoryContext>(
+                    opt =>
+                    {
+                        opt.UseSqlite("Data Source= FotoFactoryApp.db");    
+            });
+            }
+            else
+            {
+                services.AddDbContext<FotoFactoryContext>
+                    (opt =>
+                    {
+                        opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
+                    });
+            }
 
             Byte[] secretBytes = new byte[40];
             Random rand = new Random();
@@ -58,25 +73,16 @@ namespace FotoFactory.BackEnd
                     ClockSkew = TimeSpan.FromMinutes(5)
                 };
             });
-
-
-            // if dev do this
-            services.AddDbContext<FotoFactoryContext>(
-            opt => opt.UseSqlite("Data Source= FotoFactoryApp.db"));
-
            
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserValidator, UserValidator>();
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
-
-
-
-
             services.AddSingleton<IAuthenticationHelper>(new
                AuthenticationHelper(secretBytes));
 
+            #region CORS
             // Configure the default CORS policy.
             services.AddCors(options =>
                 options.AddDefaultPolicy(
@@ -85,7 +91,8 @@ namespace FotoFactory.BackEnd
                       builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                   })
              );
-
+            #endregion
+            #region Swagger
             //Register the Swagger generator using Swashbuckle.
             services.AddSwaggerGen(c =>
             {
@@ -101,7 +108,7 @@ namespace FotoFactory.BackEnd
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-
+            #endregion
 
             services.AddControllers();
             //services.AddMvc().AddNewtonsoftJson();
@@ -119,12 +126,34 @@ namespace FotoFactory.BackEnd
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                using (var scope = app.ApplicationServices.CreateScope())
-                {
-                    var ctx = scope.ServiceProvider.GetService<FotoFactoryContext>();
-                    var dbIntialiser = scope.ServiceProvider.GetService<IDBInitialiser>();
-                    dbIntialiser.SeedDB(ctx);
-                }
+                using var scope = app.ApplicationServices.CreateScope();
+                var ctx = scope.ServiceProvider.GetRequiredService<FotoFactoryContext>();
+                var dbIntialiser = scope.ServiceProvider.GetRequiredService<IDBInitialiser>();
+
+                ctx.Database.EnsureDeleted();
+                ctx.Database.EnsureCreated();
+
+                dbIntialiser.SeedDB(ctx);
+            }
+            else if (env.IsProduction())
+            {
+                using var scope = app.ApplicationServices.CreateScope();
+                var ctx = scope.ServiceProvider.GetRequiredService<FotoFactoryContext>();
+                var dbIntialiser = scope.ServiceProvider.GetRequiredService<IDBInitialiser>();
+
+                ctx.Database.EnsureCreated();
+
+                ctx.Database.ExecuteSqlRaw("DROP TABLE Users");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE Posters");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE Sizes");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE Frames");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpaces");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpacePosters");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE Tags");
+
+                ctx.Database.EnsureCreated();
+
+                dbIntialiser.SeedDB(ctx);
             }
 
             app.UseCors();
