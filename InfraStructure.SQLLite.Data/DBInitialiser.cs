@@ -57,8 +57,37 @@ namespace InfraStructure.SQLLite.Data
 
 
 
+// Create Collections
+
+            Collection collection01 = ctx.Collections.Add(new Collection
+            {
+                Name = "Denmark"
+            }).Entity;
+
+            Collection collection02 = ctx.Collections.Add(new Collection
+            {
+                Name = "Faroe Islands"
+            }).Entity;
+
+            Collection collection03 = ctx.Collections.Add(new Collection
+            {
+                Name = "Copenhagen"
+            }).Entity;
+
+            Collection collection04 = ctx.Collections.Add(new Collection
+            {
+                Name = "Black and White"
+            }).Entity;
+
+            Collection collection05 = ctx.Collections.Add(new Collection
+            {
+                Name = "Scotland"
+            }).Entity;
+
+
+
 //  Create Tags
-           
+
             Tag tag01 = ctx.Tags.Add(new Tag
             {
                 Description = "Grøn"
@@ -84,9 +113,57 @@ namespace InfraStructure.SQLLite.Data
                     Description = "Silkeborg"
             }).Entity;
 
+            Tag tag06 = ctx.Tags.Add(new Tag
+            {
+                Description = "Farøerne"
+            }).Entity;
+
+            Tag tag07 = ctx.Tags.Add(new Tag
+            {
+                Description = "Havet"
+            }).Entity;
+
+            Tag tag08 = ctx.Tags.Add(new Tag
+            {
+                Description = "Kyster"
+            }).Entity;
+
+            Tag tag09 = ctx.Tags.Add(new Tag
+            {
+                Description = "Strand"
+            }).Entity;
+
+            Tag tag10 = ctx.Tags.Add(new Tag
+            {
+                Description = "Både"
+            }).Entity;
+
+            Tag tag11 = ctx.Tags.Add(new Tag
+            {
+                Description = "Sort/Hvid"
+            }).Entity;
+
+            Tag tag12 = ctx.Tags.Add(new Tag
+            {
+                Description = "Klitter"
+            }).Entity;
+
+            Tag tag13 = ctx.Tags.Add(new Tag
+            {
+                Description = "Bjerg"
+            }).Entity;
+
+            Tag tag14 = ctx.Tags.Add(new Tag
+            {
+                Description = "Skotland"
+            }).Entity;
 
 
-//  Create Sizes
+
+
+
+
+            //  Create Sizes
 
             Size size01 = ctx.Sizes.Add(new Size
             {
@@ -139,6 +216,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Rold Skov",
                 PosterSku = "FF160DK",
                 Path = ".../Assets/FF160DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag>{ tag01, tag02, tag03 },
                 Sizes = new List<Size>{ size01, size02, size03, size05, size06 }
             }).Entity;
@@ -148,6 +226,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Skovsø",
                 PosterSku = "FF159DK",
                 Path = ".../Assets/FF159DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag>{ tag02, tag03, tag04 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
@@ -157,6 +236,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Nordskoven",
                 PosterSku = "FF158DK",
                 Path = ".../Assets/FF158DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag>{ tag01, tag02, tag03 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
@@ -166,6 +246,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Fredskov",
                 PosterSku = "FF157DK",
                 Path = ".../Assets/FF157DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag> { tag01, tag02, tag03 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
@@ -175,6 +256,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Slåensø",
                 PosterSku = "FF156DK",
                 Path = ".../Assets/FF156DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
@@ -184,6 +266,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Morgendis",
                 PosterSku = "FF155DK",
                 Path = ".../Assets/FF155DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
@@ -193,6 +276,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Nordskov",
                 PosterSku = "FF154DK",
                 Path = ".../Assets/FF154DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag> { tag01, tag02, tag05 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
@@ -202,10 +286,90 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Vesterskov",
                 PosterSku = "FF153DK",
                 Path = ".../Assets/FF153DK.jpg",
+                Collection = 1,
                 Tags = new List<Tag> { tag01, tag02, tag05 },
                 Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
 
+            Poster poster106FO = ctx.Posters.Add(new Poster
+            {
+                PosterName = "Kyst",
+                PosterSku = "FF106FO",
+                Path = ".../Assets/FF106FO.jpg",
+                Collection = 2,
+                Tags = new List<Tag> { tag06, tag07, tag08 },
+                Sizes = new List<Size> { size03, size05, size06 }
+            }).Entity;
+
+            Poster poster107FO = ctx.Posters.Add(new Poster
+            {
+                PosterName = "Kyst",
+                PosterSku = "FF106FO",
+                Path = ".../Assets/FF107FO.jpg",
+                Collection = 2,
+                Tags = new List<Tag> { tag06, tag07, tag08, tag09 },
+                Sizes = new List<Size> { size03, size05, size06 }
+            }).Entity;
+
+            Poster poster101CPH = ctx.Posters.Add(new Poster
+            {
+                PosterName = "Cyclen",
+                PosterSku = "FF101CPH",
+                Path = ".../Assets/FF101CPH.jpg",
+                Collection = 3,
+                Tags = new List<Tag> { tag03 },
+                Sizes = new List<Size> { size01, size03, size05, size06 }
+            }).Entity;
+
+            Poster poster104CPH = ctx.Posters.Add(new Poster
+            {
+                PosterName = "Sosiden",
+                PosterSku = "FF104CPH",
+                Path = ".../Assets/FF104CPH.jpg",
+                Collection = 3,
+                Tags = new List<Tag> { tag03 },
+                Sizes = new List<Size> { size01, size03, size05, size06 }
+            }).Entity;
+
+            Poster poster106BW = ctx.Posters.Add(new Poster
+            {
+                PosterName = "Længsel",
+                PosterSku = "FF106BW",
+                Path = ".../Assets/FF106BW.jpg",
+                Collection = 4,
+                Tags = new List<Tag> { tag07, tag10, tag11 },
+                Sizes = new List<Size> { size03, size05, size06 }
+            }).Entity;
+
+            Poster poster104BW = ctx.Posters.Add(new Poster
+            {
+                PosterName = "Linie",
+                PosterSku = "FF104BW",
+                Path = ".../Assets/FF104BW.jpg",
+                Collection = 4,
+                Tags = new List<Tag> { tag11, tag12 },
+                Sizes = new List<Size> { size03, size05, size06 }
+            }).Entity;
+
+            Poster poster104SCO = ctx.Posters.Add(new Poster
+            {
+                PosterName = "The Storr",
+                PosterSku = "FF104SCO",
+                Path = ".../Assets/FF104SCO.jpg",
+                Collection = 4,
+                Tags = new List<Tag> { tag13, tag14 },
+                Sizes = new List<Size> { size03, size05, size06 }
+            }).Entity;
+
+            Poster poster108SCO = ctx.Posters.Add(new Poster
+            {
+                PosterName = "Black Cuillin",
+                PosterSku = "FF108SCO",
+                Path = ".../Assets/FF108SCO.jpg",
+                Collection = 4,
+                Tags = new List<Tag> { tag13, tag14, tag11 },
+                Sizes = new List<Size> { size03, size05, size06 }
+            }).Entity;
 
 
 

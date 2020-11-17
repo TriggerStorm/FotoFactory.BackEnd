@@ -40,6 +40,7 @@ namespace InfraStructure.SQLLite.Data
 
         public DbSet<Poster> Posters { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Collection> Collections { get; set; }
         public DbSet<Frame> Frames { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<User> Users { get; set; }
