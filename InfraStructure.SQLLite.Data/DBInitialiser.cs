@@ -20,9 +20,6 @@ namespace InfraStructure.SQLLite.Data
 
         public void SeedDB(FotoFactoryContext ctx)  // Using context. Could use repository but ctx is a cleaner change tracker
         {
-            ctx.Database.EnsureDeleted();
-            ctx.Database.EnsureCreated();
-
             if (ctx.Users.Any())
             {
                 return;
@@ -58,7 +55,6 @@ namespace InfraStructure.SQLLite.Data
 
             ctx.Users.AddRange(users);
             ctx.SaveChanges();
-
         }
 
     }
