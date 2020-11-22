@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using FotoFactory.CoreEntities;
 
 namespace FotoFactory.Core.DomainService
-//namespace FotoFactory.Core.AppService
 {
-    public interface IPosterRepository
+    public interface ICollectionRepository
     {
-        Poster ReadPosterById(int id);
+        IEnumerable<Poster> ReadAllCollectionPosters(int collectionId);
     }
 }

@@ -11,13 +11,13 @@ namespace FotoFactory.BackEnd.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class PosterController : Controller
+    public class CollectionController : Controller
     {
-        private readonly IPosterService _posterService;
+        private readonly ICollectionService _collectionService;
 
-        public PosterController(IPosterService posterService)
+        public CollectionController(ICollectionService collectionService)
         {
-            _posterService = posterService;
+            _collectionService = collectionService;
         }
 
 
@@ -25,19 +25,18 @@ namespace FotoFactory.BackEnd.Controllers
         // GET api/posters/1
         //[Authorize(Roles = "Administrator")]
         [HttpGet("{id}")]
-        public ActionResult<Poster> Get(int id)
+        public ActionResult<IEnumerable<Poster>> Get(int id)
         {
             if (id < 1)
             {
                 return BadRequest("Request Failed - Id must be greater than zero");
             }
-                Poster poster = _posterService.FindPosterById(id);
-            if (poster == null)
+            IEnumerable<Poster> collectionPosters = _collectionService.FindPostersByCollectionId(id);
+            if (collectionPosters == null)  //|| collectionPosters == [])
             {
-                return StatusCode(404, "No poster with id " + id + " was found");
+                return StatusCode(404, "No posters in collection with id " + id + " were found");
             }
-            return StatusCode(200, poster);
+            return StatusCode(200, collectionPosters);
         }
-
     }
 }

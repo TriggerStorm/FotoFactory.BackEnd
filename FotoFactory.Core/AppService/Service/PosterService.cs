@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using FotoFactory.CoreEntities;
+using FotoFactory.Core.DomainService;
+
 
 namespace FotoFactory.Core.AppService.Service
 {
@@ -16,15 +18,10 @@ namespace FotoFactory.Core.AppService.Service
         }
 
 
-        public IEnumerable<Poster> FindPostersByCollectionId(int collectionId)
+        public Poster FindPosterById(int id)
         {
-            IEnumerable<Poster> collectionPosters;
-            var posterList = _posterRepo.ReadAllPosters();
-            collectionPosters = posterList.Where(p => p.Collection == collectionId);
-            return collectionPosters.ToList();
+            return _posterRepo.ReadPosterById(id);
         }
-
-      
 
     }
 }

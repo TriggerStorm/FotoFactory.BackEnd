@@ -23,6 +23,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace FotoFactory.BackEnd
 {
@@ -77,10 +78,14 @@ namespace FotoFactory.BackEnd
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserValidator, UserValidator>();
-            services.AddTransient<IDBInitialiser, DBInitialiser>();
 
             services.AddScoped<IPosterRepository, PosterRepository>();
             services.AddScoped<IPosterService, PosterService>();
+
+            services.AddScoped<ICollectionRepository, CollectionRepository>();
+            services.AddScoped<ICollectionService, CollectionService>();
+
+            services.AddTransient<IDBInitialiser, DBInitialiser>();
 
             services.AddSingleton<IAuthenticationHelper>(new
                AuthenticationHelper(secretBytes));
@@ -114,13 +119,13 @@ namespace FotoFactory.BackEnd
             #endregion
 
             services.AddControllers();
-            //services.AddMvc().AddNewtonsoftJson();
-           // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            /*services.AddControllers().AddNewtonsoftJson(options =>
+            services.AddMvc().AddNewtonsoftJson();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllers().AddNewtonsoftJson(options =>
             {    // Use the default property (Pascal) casing
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                //   options.SerializerSettings.MaxDepth = 100;  // 100 pet limit per owner
-            });*/
+                   options.SerializerSettings.MaxDepth = 5;  // 100 pet limit per owner
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -135,7 +140,8 @@ namespace FotoFactory.BackEnd
 
                 ctx.Database.EnsureDeleted();
                 ctx.Database.EnsureCreated();
-
+               // ctx.Database.ExecuteSqlRaw("DROP TABLE PosterTags");
+               // ctx.Database.EnsureCreated();//
                 dbIntialiser.SeedDB(ctx);
             }
             else if (env.IsProduction())

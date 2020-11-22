@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using FotoFactory.Core.AppService;
+using System.Linq;
+using FotoFactory.Core.DomainService;
 using FotoFactory.CoreEntities;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,17 +11,17 @@ namespace InfraStructure.SQLLite.Data.Repositories
     {
         readonly FotoFactoryContext _ctx;
 
-
         public PosterRepository(FotoFactoryContext ctx)
         {
             _ctx = ctx;
         }
 
 
-
-        public IEnumerable<Poster> ReadAllPosters()
+        public Poster ReadPosterById(int id)
         {
-            return _ctx.Posters./*AsNoTracking().*/Include(p => p.Tags).Include(p => p.Sizes);
+                       return _ctx.Posters.Include(p => p.PosterTags).Include(p => p.PosterSizes).FirstOrDefault(p => p.PosterId == id);
+            //  return _ctx.Posters.Include(p => p.Tags).Include(p => p.Sizes);
+            //return null;
         }
 
 

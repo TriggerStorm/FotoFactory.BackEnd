@@ -4,9 +4,9 @@ using FotoFactory.CoreEntities;
 
 namespace FotoFactory.Core.AppService.Service
 {
-    public interface IPosterService
+    public interface ICollectionService
     {
-        Poster FindPosterById(int id);
+        IEnumerable<Poster> FindPostersByCollectionId(int collectionId);
     }
 
 }

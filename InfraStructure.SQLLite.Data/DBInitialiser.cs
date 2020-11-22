@@ -25,36 +25,6 @@ namespace InfraStructure.SQLLite.Data
                 return;
             }
 
-            string password = "1234";
-            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashAdmin,
-                out byte[] passwordSaltAdmin);
-
-            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashUser,
-                out byte[] passwordSaltUser);
-
-
-
-//  Create Users
-
-            List<User> users = new List<User>
-            {
-                new User
-                {
-                    Username = "admin",
-                    PasswordHash = passwordHashAdmin,
-                    PasswordSalt = passwordSaltAdmin,
-                    IsAdmin = true
-                },
-
-                new User
-                {
-                    Username = "user",
-                    PasswordHash = passwordHashUser,
-                    PasswordSalt = passwordSaltUser,
-                    IsAdmin = false
-                }
-            };
-
 
 
 // Create Collections
@@ -65,7 +35,7 @@ namespace InfraStructure.SQLLite.Data
             }).Entity;
 
             Collection collection02 = ctx.Collections.Add(new Collection()
-            {
+            { 
                 Name = "Faroe Islands"
             }).Entity;
 
@@ -159,7 +129,7 @@ namespace InfraStructure.SQLLite.Data
             }).Entity;
 
 
-
+            ctx.SaveChanges();
 
 
 
@@ -207,29 +177,128 @@ namespace InfraStructure.SQLLite.Data
                 FramePrice = 600.00
             }).Entity;
 
+            ctx.SaveChanges();
+
 
 
 //  Create Posters
 
-            Poster poster160DK = ctx.Posters.Add(new Poster()
+            Poster poster160DK = ctx.Posters.Add(new Poster()  // TEST
             {
                 PosterName = "Rold Skov",
                 PosterSku = "FF160DK",
                 Path = ".../Assets/FF160DK.jpg",
                 Collection = 1,
-                Tags = new List<Tag>{ tag01, tag02, tag03 },
-                Sizes = new List<Size>{ size01, size02, size03, size05, size06 }
+               // Tags = new List<Tag> { tag01, tag02, tag03 },
+              //  Sizes = new List<Size> { size01, size02, size03, size05, size06 }
             }).Entity;
 
+            poster160DK.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster160DK,
+                    Tag = tag01
+                },
+                 new PosterTag
+                {
+                    Poster = poster160DK,
+                    Tag = tag02
+                },
+                   new PosterTag
+                {
+                    Poster = poster160DK,
+                    Tag = tag03
+                }
+            };
+
+            poster160DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster160DK,
+                    Size = size01
+                },
+                 new PosterSize
+                {
+                    Poster = poster160DK,
+                    Size = size02
+                },
+                   new PosterSize
+                {
+                    Poster = poster160DK,
+                    Size = size03
+                },
+                   new PosterSize
+                {
+                    Poster = poster160DK,
+                    Size = size05
+                },
+                   new PosterSize
+                {
+                    Poster = poster160DK,
+                    Size = size06
+                }
+            };
+
+          //  ctx.Posters.Add(poster160DK);
+
+     
             Poster poster159DK = ctx.Posters.Add(new Poster()
             {
                 PosterName = "Skovsø",
                 PosterSku = "FF159DK",
                 Path = ".../Assets/FF159DK.jpg",
                 Collection = 1,
-                Tags = new List<Tag>{ tag02, tag03, tag04 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+               //  Tags = new List<Tag>{ tag02, tag03, tag04 },
+               //  Sizes = new List<Size> { size01, size03, size05, size06 }
+             }).Entity;
+
+            poster159DK.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster159DK,
+                    Tag = tag02
+                },
+                 new PosterTag
+                {
+                    Poster = poster159DK,
+                    Tag = tag03
+                },
+                   new PosterTag
+                {
+                    Poster = poster159DK,
+                    Tag = tag04
+                }
+            };
+
+            poster159DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster159DK,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster159DK,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster159DK,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster159DK,
+                    Size = size06
+                }
+            };
+           // ctx.Posters.Add(poster159DK);
+           // ctx.SaveChanges();
+
 
             Poster poster158DK = ctx.Posters.Add(new Poster()
             {
@@ -237,109 +306,573 @@ namespace InfraStructure.SQLLite.Data
                 PosterSku = "FF158DK",
                 Path = ".../Assets/FF158DK.jpg",
                 Collection = 1,
-                Tags = new List<Tag>{ tag01, tag02, tag03 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
+                //  Tags = new List<Tag>{ tag01, tag02, tag03 },
+                //  Sizes = new List<Size> { size01, size03, size05, size06 }
             }).Entity;
+
+            poster158DK.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster158DK,
+                    Tag = tag01
+                },
+                 new PosterTag
+                {
+                    Poster = poster158DK,
+                    Tag = tag02
+                },
+                   new PosterTag
+                {
+                    Poster = poster158DK,
+                    Tag = tag03
+                }
+            };
+
+            poster158DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster158DK,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster158DK,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster158DK,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster158DK,
+                    Size = size06
+                }
+            };
+
 
             Poster poster157DK = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Fredskov",
+                    PosterSku = "FF157DK",
+                    Path = ".../Assets/FF157DK.jpg",
+                    Collection = 1,
+                  //  Tags = new List<Tag> { tag01, tag02, tag03 },
+                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                }).Entity;
+
+            poster157DK.PosterTags = new List<PosterTag>
             {
-                PosterName = "Fredskov",
-                PosterSku = "FF157DK",
-                Path = ".../Assets/FF157DK.jpg",
-                Collection = 1,
-                Tags = new List<Tag> { tag01, tag02, tag03 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster157DK,
+                    Tag = tag01
+                },
+                 new PosterTag
+                {
+                    Poster = poster157DK,
+                    Tag = tag02
+                },
+                   new PosterTag
+                {
+                    Poster = poster157DK,
+                    Tag = tag03
+                }
+            };
+
+            poster157DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster157DK,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster157DK,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster157DK,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster157DK,
+                    Size = size06
+                }
+            };
+
 
             Poster poster156DK = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Slåensø",
+                    PosterSku = "FF156DK",
+                    Path = ".../Assets/FF156DK.jpg",
+                    Collection = 1,
+                  //  Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
+                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                }).Entity;
+
+            poster156DK.PosterTags = new List<PosterTag>
             {
-                PosterName = "Slåensø",
-                PosterSku = "FF156DK",
-                Path = ".../Assets/FF156DK.jpg",
-                Collection = 1,
-                Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster156DK,
+                    Tag = tag01
+                },
+                 new PosterTag
+                {
+                    Poster = poster156DK,
+                    Tag = tag02
+                },
+                   new PosterTag
+                {
+                    Poster = poster156DK,
+                    Tag = tag04
+                },
+                   new PosterTag
+                {
+                    Poster = poster156DK,
+                    Tag = tag05
+                }
+            };
+
+            poster156DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster156DK,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster156DK,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster156DK,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster156DK,
+                    Size = size06
+                }
+            };
+
 
             Poster poster155DK = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Morgendis",
+                    PosterSku = "FF155DK",
+                    Path = ".../Assets/FF155DK.jpg",
+                    Collection = 1,
+                  //  Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
+                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                }).Entity;
+
+            poster155DK.PosterTags = new List<PosterTag>
             {
-                PosterName = "Morgendis",
-                PosterSku = "FF155DK",
-                Path = ".../Assets/FF155DK.jpg",
-                Collection = 1,
-                Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster155DK,
+                    Tag = tag01
+                },
+                 new PosterTag
+                {
+                    Poster = poster155DK,
+                    Tag = tag02
+                },
+                   new PosterTag
+                {
+                    Poster = poster155DK,
+                    Tag = tag04
+                },
+                   new PosterTag
+                {
+                    Poster = poster155DK,
+                    Tag = tag05
+                }
+            };
+
+            poster155DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster155DK,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster155DK,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster155DK,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster155DK,
+                    Size = size06
+                }
+            };
+
 
             Poster poster154DK = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Nordskov",
+                    PosterSku = "FF154DK",
+                    Path = ".../Assets/FF154DK.jpg",
+                    Collection = 1,
+                  //  Tags = new List<Tag> { tag01, tag02, tag05 },
+                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                }).Entity;
+
+            poster154DK.PosterTags = new List<PosterTag>
             {
-                PosterName = "Nordskov",
-                PosterSku = "FF154DK",
-                Path = ".../Assets/FF154DK.jpg",
-                Collection = 1,
-                Tags = new List<Tag> { tag01, tag02, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster154DK,
+                    Tag = tag01
+                },
+                 new PosterTag
+                {
+                    Poster = poster154DK,
+                    Tag = tag02
+                },
+                   new PosterTag
+                {
+                    Poster = poster154DK,
+                    Tag = tag05
+                }
+            };
+
+            poster154DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster154DK,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster154DK,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster154DK,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster154DK,
+                    Size = size06
+                }
+            };
+
 
             Poster poster153DK = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Vesterskov",
+                    PosterSku = "FF153DK",
+                    Path = ".../Assets/FF153DK.jpg",
+                    Collection = 1,
+                  //  Tags = new List<Tag> { tag01, tag02, tag05 },
+                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                }).Entity;
+
+            poster153DK.PosterTags = new List<PosterTag>
             {
-                PosterName = "Vesterskov",
-                PosterSku = "FF153DK",
-                Path = ".../Assets/FF153DK.jpg",
-                Collection = 1,
-                Tags = new List<Tag> { tag01, tag02, tag05 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster153DK,
+                    Tag = tag01
+                },
+                 new PosterTag
+                {
+                    Poster = poster153DK,
+                    Tag = tag02
+                },
+                   new PosterTag
+                {
+                    Poster = poster153DK,
+                    Tag = tag05
+                }
+            };
+
+            poster153DK.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster153DK,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster153DK,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster153DK,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster153DK,
+                    Size = size06
+                }
+            };
+
 
             Poster poster106FO = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Kyst",
+                    PosterSku = "FF106FO",
+                    Path = ".../Assets/FF106FO.jpg",
+                    Collection = 2,
+                  //  Tags = new List<Tag> { tag06, tag07, tag08 },
+                  //  Sizes = new List<Size> { size03, size05, size06 }
+                }).Entity;
+
+            poster106FO.PosterTags = new List<PosterTag>
             {
-                PosterName = "Kyst",
-                PosterSku = "FF106FO",
-                Path = ".../Assets/FF106FO.jpg",
-                Collection = 2,
-                Tags = new List<Tag> { tag06, tag07, tag08 },
-                Sizes = new List<Size> { size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster106FO,
+                    Tag = tag06
+                },
+                 new PosterTag
+                {
+                    Poster = poster106FO,
+                    Tag = tag07
+                },
+                   new PosterTag
+                {
+                    Poster = poster106FO,
+                    Tag = tag08
+                }
+            };
+
+            poster106FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster106FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster106FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster106FO,
+                    Size = size06
+                }
+            };
+
 
             Poster poster107FO = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "NordAtlanten",
+                    PosterSku = "FF107FO",
+                    Path = ".../Assets/FF107FO.jpg",
+                    Collection = 2,
+                  //  Tags = new List<Tag> { tag06, tag07, tag08, tag09 },
+                  //  Sizes = new List<Size> { size03, size05, size06 }
+                }).Entity;
+
+            poster107FO.PosterTags = new List<PosterTag>
             {
-                PosterName = "Kyst",
-                PosterSku = "FF106FO",
-                Path = ".../Assets/FF107FO.jpg",
-                Collection = 2,
-                Tags = new List<Tag> { tag06, tag07, tag08, tag09 },
-                Sizes = new List<Size> { size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster107FO,
+                    Tag = tag06
+                },
+                 new PosterTag
+                {
+                    Poster = poster107FO,
+                    Tag = tag07
+                },
+                  new PosterTag
+                {
+                    Poster = poster107FO,
+                    Tag = tag08
+                },
+                   new PosterTag
+                {
+                    Poster = poster107FO,
+                    Tag = tag09
+                }
+            };
+
+            poster107FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster107FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster107FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster107FO,
+                    Size = size06
+                }
+            };
+
 
             Poster poster101CPH = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Cyclen",
+                    PosterSku = "FF101CPH",
+                    Path = ".../Assets/FF101CPH.jpg",
+                    Collection = 3,
+                  //  Tags = new List<Tag> { tag03 },
+                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                }).Entity;
+
+            poster101CPH.PosterTags = new List<PosterTag>
             {
-                PosterName = "Cyclen",
-                PosterSku = "FF101CPH",
-                Path = ".../Assets/FF101CPH.jpg",
-                Collection = 3,
-                Tags = new List<Tag> { tag03 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+                   new PosterTag
+                {
+                    Poster = poster101CPH,
+                    Tag = tag03
+                }
+            };
+
+            poster101CPH.PosterSizes = new List<PosterSize>
+            {
+                  new PosterSize
+                {
+                    Poster = poster101CPH,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster101CPH,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster101CPH,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster101CPH,
+                    Size = size06
+                }
+            };
+
 
             Poster poster104CPH = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Sosiden",
+                    PosterSku = "FF104CPH",
+                    Path = ".../Assets/FF104CPH.jpg",
+                    Collection = 3,
+                  //  Tags = new List<Tag> { tag03 },
+                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                }).Entity;
+
+            poster104CPH.PosterTags = new List<PosterTag>
             {
-                PosterName = "Sosiden",
-                PosterSku = "FF104CPH",
-                Path = ".../Assets/FF104CPH.jpg",
-                Collection = 3,
-                Tags = new List<Tag> { tag03 },
-                Sizes = new List<Size> { size01, size03, size05, size06 }
-            }).Entity;
+                   new PosterTag
+                {
+                    Poster = poster104CPH,
+                    Tag = tag03
+                }
+            };
+
+            poster104CPH.PosterSizes = new List<PosterSize>
+            {
+                  new PosterSize
+                {
+                    Poster = poster104CPH,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster104CPH,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster104CPH,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster104CPH,
+                    Size = size06
+                }
+            };
+
 
             Poster poster106BW = ctx.Posters.Add(new Poster()
+                {
+                    PosterName = "Længsel",
+                    PosterSku = "FF106BW",
+                    Path = ".../Assets/FF106BW.jpg",
+                    Collection = 4,
+                  //  Tags = new List<Tag> { tag07, tag10, tag11 },
+                  //  Sizes = new List<Size> { size03, size05, size06 }
+                }).Entity;
+
+            poster106BW.PosterTags = new List<PosterTag>
             {
-                PosterName = "Længsel",
-                PosterSku = "FF106BW",
-                Path = ".../Assets/FF106BW.jpg",
-                Collection = 4,
-                Tags = new List<Tag> { tag07, tag10, tag11 },
-                Sizes = new List<Size> { size03, size05, size06 }
-            }).Entity;
+                new PosterTag
+                {
+                    Poster = poster106BW,
+                    Tag = tag07
+                },
+                 new PosterTag
+                {
+                    Poster = poster106BW,
+                    Tag = tag10
+                },
+                   new PosterTag
+                {
+                    Poster = poster106BW,
+                    Tag = tag11
+                }
+            };
+
+            poster106BW.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster106BW,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster106BW,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster106BW,
+                    Size = size06
+                }
+            };
+
 
             Poster poster104BW = ctx.Posters.Add(new Poster()
             {
@@ -347,9 +880,43 @@ namespace InfraStructure.SQLLite.Data
                 PosterSku = "FF104BW",
                 Path = ".../Assets/FF104BW.jpg",
                 Collection = 4,
-                Tags = new List<Tag> { tag11, tag12 },
-                Sizes = new List<Size> { size03, size05, size06 }
+                //  Tags = new List<Tag> { tag11, tag12 },
+                //  Sizes = new List<Size> { size03, size05, size06 }
             }).Entity;
+
+            poster104BW.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster104BW,
+                    Tag = tag11
+                },
+                   new PosterTag
+                {
+                    Poster = poster104BW,
+                    Tag = tag12
+                }
+            };
+
+            poster104BW.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster104BW,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster104BW,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster104BW,
+                    Size = size06
+                }
+            };
+
 
             Poster poster104SCO = ctx.Posters.Add(new Poster()
             {
@@ -357,9 +924,43 @@ namespace InfraStructure.SQLLite.Data
                 PosterSku = "FF104SCO",
                 Path = ".../Assets/FF104SCO.jpg",
                 Collection = 5,
-                Tags = new List<Tag> { tag13, tag14 },
-                Sizes = new List<Size> { size03, size05, size06 }
+                //  Tags = new List<Tag> { tag13, tag14 },
+                //  Sizes = new List<Size> { size03, size05, size06 }
             }).Entity;
+
+            poster104SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster104SCO,
+                    Tag = tag13
+                },
+                   new PosterTag
+                {
+                    Poster = poster104SCO,
+                    Tag = tag14
+                }
+            };
+
+            poster104SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster104SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster104SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster104SCO,
+                    Size = size06
+                }
+            };
+
 
             Poster poster108SCO = ctx.Posters.Add(new Poster()
             {
@@ -367,13 +968,57 @@ namespace InfraStructure.SQLLite.Data
                 PosterSku = "FF108SCO",
                 Path = ".../Assets/FF108SCO.jpg",
                 Collection = 5,
-                Tags = new List<Tag> { tag13, tag14, tag11 },
-                Sizes = new List<Size> { size03, size05, size06 }
+              //  Tags = new List<Tag> { tag13, tag14, tag11 },
+              //  Sizes = new List<Size> { size03, size05, size06 }
             }).Entity;
+
+            poster108SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster108SCO,
+                    Tag = tag13
+                },
+                 new PosterTag
+                {
+                    Poster = poster108SCO,
+                    Tag = tag14
+                },
+                   new PosterTag
+                {
+                    Poster = poster108SCO,
+                    Tag = tag11
+                }
+            };
+
+            poster108SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster108SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster108SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster108SCO,
+                    Size = size06
+                }
+            };
 
 
 
 //  Create Frames
+
+            Frame NOFRAME = ctx.Frames.Add(new Frame
+            {
+                FrameType = "NOFRAME",
+                FrameSku = "NOFRAME"
+            }).Entity;
 
             Frame OAKNATURE = ctx.Frames.Add(new Frame()
             {
@@ -413,6 +1058,135 @@ namespace InfraStructure.SQLLite.Data
 
 
 
+
+            // Create WorkSpacePoster
+
+            WorkSpacePoster workSpacePoster1 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+
+                Poster = poster160DK,
+                Frame = OAKNATURE, // add frame id here ? or just description
+                XPos = 0,
+                YPos = 0,
+                Size = size01,
+
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster2 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster159DK,
+                Frame = OAKBLACK,
+                XPos = 700,
+                YPos = 800,
+                Size = size05,
+
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster3 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster155DK,
+                Frame = WHITEALU,
+                XPos = 650,
+                YPos = 550,
+                Size = size03,
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster4 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster155DK,
+                Frame = ALUBLACK,
+                XPos = 250,
+                YPos = 300,
+                Size = size06,
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster5 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster159DK,
+                Frame = NOFRAME,
+                XPos = 150,
+                YPos = 100,
+                Size = size04,
+
+            }).Entity;
+
+            WorkSpacePoster workSpacePoster6 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            {
+                Poster = poster159DK,
+                Frame = OAKDARK,
+                XPos = 400,
+                YPos = 500,
+                Size = size03,
+
+            }).Entity;
+
+            
+
+            // Create WorkSpace
+
+            WorkSpace workSpace1 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "LivingRoom",
+                WorkSpacePosters = new List<WorkSpacePoster>
+                    {workSpacePoster1, workSpacePoster4, workSpacePoster2, workSpacePoster3},
+            }).Entity;
+
+            WorkSpace workSpace2 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "Bedroom",
+                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster4, workSpacePoster5, workSpacePoster6 },
+            }).Entity;
+
+            WorkSpace workSpace3 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "MasterBedroom",
+                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster2, workSpacePoster3, workSpacePoster4 },
+            }).Entity;
+
+            WorkSpace workSpace4 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "Kitchen",
+                WorkSpacePosters = new List<WorkSpacePoster> { },
+            }).Entity;
+
+            WorkSpace workSpace5 = ctx.WorkSpaces.Add(new WorkSpace
+            {
+                Name = "Staircase",
+                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster4, workSpacePoster1, workSpacePoster3 },
+            }).Entity;
+
+            
+
+            // create Users
+
+            string password = "1234";
+            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashAdmin,
+                out byte[] passwordSaltAdmin);
+
+            _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashUser,
+                out byte[] passwordSaltUser);
+
+            List<User> users = new List<User>
+            {
+                new User
+                {
+                    Username = "admin",
+                    PasswordHash = passwordHashAdmin,
+                    PasswordSalt = passwordSaltAdmin,
+                    IsAdmin = true,
+                    WorkSpaces = new List<WorkSpace> {workSpace1, workSpace2, workSpace5}
+                },
+
+
+                new User
+                {
+                    Username = "user",
+                    PasswordHash = passwordHashUser,
+                    PasswordSalt = passwordSaltUser,
+                    IsAdmin = false,
+                    WorkSpaces = new List<WorkSpace>{workSpace3, workSpace4 , workSpace4}
+                },
+            };
 
             ctx.Users.AddRange(users);
             ctx.SaveChanges();
