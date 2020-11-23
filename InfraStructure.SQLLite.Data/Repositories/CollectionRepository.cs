@@ -29,14 +29,24 @@ namespace InfraStructure.SQLLite.Data.Repositories
                 IEnumerable<PosterTag> ptlist = p.PosterTags;
                 foreach (PosterTag pt in ptlist)
                 {
-                    Tag tag =_ctx.Tags.Where(pts => pts.TagId == pt.TagId).FirstOrDefault();
+                    Tag tag = _ctx.Tags.Where(pts => pts.TagId == pt.TagId).FirstOrDefault();
                     pt.Tag.TagId = tag.TagId;
                     pt.Tag.Description = tag.Description;
                     pt.Tag.PosterTags = null;
                 }
+
+                IEnumerable<PosterSize> pslist = p.PosterSizes;
+                foreach (PosterSize ps in pslist)
+                {
+                    Size size = _ctx.Sizes.Where(pss => pss.SizeId == ps.SizeId).FirstOrDefault();
+                    ps.Size.SizeId = size.SizeId;
+                    ps.Size.Dimensions = size.Dimensions;
+                    ps.Size.PosterPrice = size.PosterPrice;
+                    ps.Size.FramePrice = size.FramePrice;
+                    ps.Size.PosterSizes = null;
+                }
             }
             return pl;
         }
-
     }
 }

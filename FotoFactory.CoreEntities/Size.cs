@@ -9,9 +9,7 @@ namespace FotoFactory.CoreEntities
         public string Dimensions { get; set; }
         public double PosterPrice { get; set; }
         public double FramePrice { get; set; }
-        //  public List<Poster> PostersWithThisSize { get; set; }
-        public IList<PosterSize> PosterSizes { get; set; }
+        public IEnumerable<PosterSize> PosterSizes { get; set; }
     }
-
 }
 
