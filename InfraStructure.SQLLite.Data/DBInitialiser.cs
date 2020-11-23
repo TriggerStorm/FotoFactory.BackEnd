@@ -20,11 +20,11 @@ namespace InfraStructure.SQLLite.Data
 
         public void SeedDB(FotoFactoryContext ctx)  // Using context. Could use repository but ctx is a cleaner change tracker
         {
-            if (ctx.Users.Any())
+           if (ctx.Users.Any())
             {
                 return;
             }
-
+        
 
 
 // Create Collections
@@ -183,14 +183,12 @@ namespace InfraStructure.SQLLite.Data
 
 //  Create Posters
 
-            Poster poster160DK = ctx.Posters.Add(new Poster()  // TEST
+            Poster poster160DK = ctx.Posters.Add(new Poster()
             {
                 PosterName = "Rold Skov",
                 PosterSku = "FF160DK",
                 Path = ".../Assets/FF160DK.jpg",
-                Collection = 1,
-               // Tags = new List<Tag> { tag01, tag02, tag03 },
-              //  Sizes = new List<Size> { size01, size02, size03, size05, size06 }
+                CollectionId = 1,
             }).Entity;
 
             poster160DK.PosterTags = new List<PosterTag>
@@ -241,18 +239,16 @@ namespace InfraStructure.SQLLite.Data
                 }
             };
 
-          //  ctx.Posters.Add(poster160DK);
+            ctx.SaveChanges();
 
-     
+
             Poster poster159DK = ctx.Posters.Add(new Poster()
             {
                 PosterName = "Skovsø",
                 PosterSku = "FF159DK",
                 Path = ".../Assets/FF159DK.jpg",
-                Collection = 1,
-               //  Tags = new List<Tag>{ tag02, tag03, tag04 },
-               //  Sizes = new List<Size> { size01, size03, size05, size06 }
-             }).Entity;
+                CollectionId = 1,
+            }).Entity;
 
             poster159DK.PosterTags = new List<PosterTag>
             {
@@ -296,8 +292,6 @@ namespace InfraStructure.SQLLite.Data
                     Size = size06
                 }
             };
-           // ctx.Posters.Add(poster159DK);
-           // ctx.SaveChanges();
 
 
             Poster poster158DK = ctx.Posters.Add(new Poster()
@@ -305,9 +299,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Nordskoven",
                 PosterSku = "FF158DK",
                 Path = ".../Assets/FF158DK.jpg",
-                Collection = 1,
-                //  Tags = new List<Tag>{ tag01, tag02, tag03 },
-                //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                CollectionId = 1,
             }).Entity;
 
             poster158DK.PosterTags = new List<PosterTag>
@@ -359,9 +351,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Fredskov",
                     PosterSku = "FF157DK",
                     Path = ".../Assets/FF157DK.jpg",
-                    Collection = 1,
-                  //  Tags = new List<Tag> { tag01, tag02, tag03 },
-                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                    CollectionId = 1,
                 }).Entity;
 
             poster157DK.PosterTags = new List<PosterTag>
@@ -413,9 +403,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Slåensø",
                     PosterSku = "FF156DK",
                     Path = ".../Assets/FF156DK.jpg",
-                    Collection = 1,
-                  //  Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
-                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                    CollectionId = 1,
                 }).Entity;
 
             poster156DK.PosterTags = new List<PosterTag>
@@ -472,9 +460,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Morgendis",
                     PosterSku = "FF155DK",
                     Path = ".../Assets/FF155DK.jpg",
-                    Collection = 1,
-                  //  Tags = new List<Tag> { tag01, tag02, tag04, tag05 },
-                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                    CollectionId = 1,
                 }).Entity;
 
             poster155DK.PosterTags = new List<PosterTag>
@@ -531,9 +517,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Nordskov",
                     PosterSku = "FF154DK",
                     Path = ".../Assets/FF154DK.jpg",
-                    Collection = 1,
-                  //  Tags = new List<Tag> { tag01, tag02, tag05 },
-                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                    CollectionId = 1,
                 }).Entity;
 
             poster154DK.PosterTags = new List<PosterTag>
@@ -585,9 +569,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Vesterskov",
                     PosterSku = "FF153DK",
                     Path = ".../Assets/FF153DK.jpg",
-                    Collection = 1,
-                  //  Tags = new List<Tag> { tag01, tag02, tag05 },
-                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                    CollectionId = 1,
                 }).Entity;
 
             poster153DK.PosterTags = new List<PosterTag>
@@ -639,9 +621,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Kyst",
                     PosterSku = "FF106FO",
                     Path = ".../Assets/FF106FO.jpg",
-                    Collection = 2,
-                  //  Tags = new List<Tag> { tag06, tag07, tag08 },
-                  //  Sizes = new List<Size> { size03, size05, size06 }
+                    CollectionId = 2,
                 }).Entity;
 
             poster106FO.PosterTags = new List<PosterTag>
@@ -688,9 +668,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "NordAtlanten",
                     PosterSku = "FF107FO",
                     Path = ".../Assets/FF107FO.jpg",
-                    Collection = 2,
-                  //  Tags = new List<Tag> { tag06, tag07, tag08, tag09 },
-                  //  Sizes = new List<Size> { size03, size05, size06 }
+                    CollectionId = 2,
                 }).Entity;
 
             poster107FO.PosterTags = new List<PosterTag>
@@ -742,9 +720,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Cyclen",
                     PosterSku = "FF101CPH",
                     Path = ".../Assets/FF101CPH.jpg",
-                    Collection = 3,
-                  //  Tags = new List<Tag> { tag03 },
-                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                    CollectionId = 3,
                 }).Entity;
 
             poster101CPH.PosterTags = new List<PosterTag>
@@ -786,9 +762,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Sosiden",
                     PosterSku = "FF104CPH",
                     Path = ".../Assets/FF104CPH.jpg",
-                    Collection = 3,
-                  //  Tags = new List<Tag> { tag03 },
-                  //  Sizes = new List<Size> { size01, size03, size05, size06 }
+                    CollectionId = 3,
                 }).Entity;
 
             poster104CPH.PosterTags = new List<PosterTag>
@@ -830,9 +804,7 @@ namespace InfraStructure.SQLLite.Data
                     PosterName = "Længsel",
                     PosterSku = "FF106BW",
                     Path = ".../Assets/FF106BW.jpg",
-                    Collection = 4,
-                  //  Tags = new List<Tag> { tag07, tag10, tag11 },
-                  //  Sizes = new List<Size> { size03, size05, size06 }
+                    CollectionId = 4,
                 }).Entity;
 
             poster106BW.PosterTags = new List<PosterTag>
@@ -879,9 +851,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Linie",
                 PosterSku = "FF104BW",
                 Path = ".../Assets/FF104BW.jpg",
-                Collection = 4,
-                //  Tags = new List<Tag> { tag11, tag12 },
-                //  Sizes = new List<Size> { size03, size05, size06 }
+                CollectionId = 4,
             }).Entity;
 
             poster104BW.PosterTags = new List<PosterTag>
@@ -923,9 +893,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "The Storr",
                 PosterSku = "FF104SCO",
                 Path = ".../Assets/FF104SCO.jpg",
-                Collection = 5,
-                //  Tags = new List<Tag> { tag13, tag14 },
-                //  Sizes = new List<Size> { size03, size05, size06 }
+                CollectionId = 5,
             }).Entity;
 
             poster104SCO.PosterTags = new List<PosterTag>
@@ -967,9 +935,7 @@ namespace InfraStructure.SQLLite.Data
                 PosterName = "Black Cuillin",
                 PosterSku = "FF108SCO",
                 Path = ".../Assets/FF108SCO.jpg",
-                Collection = 5,
-              //  Tags = new List<Tag> { tag13, tag14, tag11 },
-              //  Sizes = new List<Size> { size03, size05, size06 }
+                CollectionId = 5,
             }).Entity;
 
             poster108SCO.PosterTags = new List<PosterTag>

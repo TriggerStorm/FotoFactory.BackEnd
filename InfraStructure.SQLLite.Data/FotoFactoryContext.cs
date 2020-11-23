@@ -34,13 +34,15 @@ namespace InfraStructure.SQLLite.Data
            modelBuilder.Entity<PosterTag>()
               .HasOne(pt => pt.Poster)
               .WithMany(p => p.PosterTags)
-              .HasForeignKey(pt => pt.PosterId);
+              .HasForeignKey(pt => pt.PosterId)
+              .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<PosterTag>()
              .HasOne(pt => pt.Tag)
              .WithMany(t => t.PosterTags)
-             .HasForeignKey(pt => pt.TagId);
-         
+             .HasForeignKey(pt => pt.TagId)
+            .OnDelete(DeleteBehavior.NoAction);
+
 
 //  Create PosterSize relations
             modelBuilder.Entity<PosterSize>()
@@ -49,12 +51,14 @@ namespace InfraStructure.SQLLite.Data
             modelBuilder.Entity<PosterSize>()
                .HasOne(ps => ps.Poster)
                .WithMany(p => p.PosterSizes)
-               .HasForeignKey(ps => ps.PosterId);
+               .HasForeignKey(ps => ps.PosterId)
+              .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<PosterSize>()
              .HasOne(ps => ps.Size)
              .WithMany(s => s.PosterSizes)
-             .HasForeignKey(ps => ps.SizeId);  
+             .HasForeignKey(ps => ps.SizeId)
+             .OnDelete(DeleteBehavior.NoAction);
         }
 
     }

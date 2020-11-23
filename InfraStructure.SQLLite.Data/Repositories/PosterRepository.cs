@@ -19,11 +19,8 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
         public Poster ReadPosterById(int id)
         {
-                       return _ctx.Posters.Include(p => p.PosterTags).Include(p => p.PosterSizes).FirstOrDefault(p => p.PosterId == id);
-            //  return _ctx.Posters.Include(p => p.Tags).Include(p => p.Sizes);
-            //return null;
+            return _ctx.Posters.Include(p => p.PosterTags).Include(p => p.PosterSizes).FirstOrDefault(p => p.PosterId == id);
         }
-
 
     }
 }

@@ -140,8 +140,6 @@ namespace FotoFactory.BackEnd
 
                 ctx.Database.EnsureDeleted();
                 ctx.Database.EnsureCreated();
-               // ctx.Database.ExecuteSqlRaw("DROP TABLE PosterTags");
-               // ctx.Database.EnsureCreated();//
                 dbIntialiser.SeedDB(ctx);
             }
             else if (env.IsProduction())

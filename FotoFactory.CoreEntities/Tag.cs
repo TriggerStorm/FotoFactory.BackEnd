@@ -7,8 +7,6 @@ namespace FotoFactory.CoreEntities
     {
         public int TagId { get; set; }
         public string Description { get; set; }
-        // public List<Poster> TaggedPosters { get; set; }
-        public IList<PosterTag> PosterTags { get; set; }
+        public IEnumerable<PosterTag> PosterTags { get; set; }
     }
-
 }
