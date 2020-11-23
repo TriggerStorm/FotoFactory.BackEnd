@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FotoFactory.CoreEntities
 {
@@ -8,7 +9,8 @@ namespace FotoFactory.CoreEntities
         public string Dimensions { get; set; }
         public double PosterPrice { get; set; }
         public double FramePrice { get; set; }
-
+        //  public List<Poster> PostersWithThisSize { get; set; }
+        public IList<PosterSize> PosterSizes { get; set; }
     }
 
 }

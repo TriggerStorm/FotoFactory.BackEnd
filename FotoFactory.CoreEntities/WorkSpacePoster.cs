@@ -10,7 +10,6 @@ namespace FotoFactory.CoreEntities
         public int XPos { get; set; }
         public int YPos { get; set; }
         public Size Size { get; set; }
-
     }
 
 }
