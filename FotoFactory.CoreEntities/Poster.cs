@@ -11,6 +11,8 @@ namespace FotoFactory.CoreEntities
         public string Path { get; set; }
         public int CollectionId { get; set; }
         public  IEnumerable<PosterTag> PosterTags { get; set; }
-        public List<PosterSize> PosterSizes { get; set; }
+        public IEnumerable<PosterSize> PosterSizes { get; set; }
+        public IEnumerable<Favourite> Favourites { get; set; }
+
     }
 }

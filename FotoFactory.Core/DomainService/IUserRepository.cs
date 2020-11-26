@@ -5,7 +5,6 @@ using FotoFactory.CoreEntities;
 
 namespace FotoFactory.Core.DomainService
 {
-   
     public interface IUserRepository
     {
         // Create User

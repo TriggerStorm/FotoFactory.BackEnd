@@ -20,6 +20,7 @@ namespace InfraStructure.SQLLite.Data
         public DbSet<PosterTag> PosterTags { get; set; }
         public DbSet<PosterSize> PosterSizes { get; set; }
 
+        public DbSet<Favourite> Favourites { get; set; }
         public DbSet<WorkSpace> WorkSpaces { get; set; }
         public DbSet<WorkSpacePoster> WorkSpacePosters { get; set; }
 
@@ -27,24 +28,24 @@ namespace InfraStructure.SQLLite.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-//  Create PosterTag relations
-           modelBuilder.Entity<PosterTag>()
+            //  Create PosterTag relations
+            modelBuilder.Entity<PosterTag>()
                 .HasKey(pt => new { pt.PosterId, pt.TagId });
-         
-           modelBuilder.Entity<PosterTag>()
-              .HasOne(pt => pt.Poster)
-              .WithMany(p => p.PosterTags)
-              .HasForeignKey(pt => pt.PosterId)
-              .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<PosterTag>()
-             .HasOne(pt => pt.Tag)
-             .WithMany(t => t.PosterTags)
-             .HasForeignKey(pt => pt.TagId)
-            .OnDelete(DeleteBehavior.NoAction);
+               .HasOne(pt => pt.Poster)
+               .WithMany(p => p.PosterTags)
+               .HasForeignKey(pt => pt.PosterId)
+               .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<PosterTag>()
+               .HasOne(pt => pt.Tag)
+               .WithMany(t => t.PosterTags)
+               .HasForeignKey(pt => pt.TagId)
+               .OnDelete(DeleteBehavior.NoAction);
 
 
-//  Create PosterSize relations
+            //  Create PosterSize relations
             modelBuilder.Entity<PosterSize>()
                 .HasKey(ps => new { ps.PosterId, ps.SizeId });
 
@@ -52,13 +53,24 @@ namespace InfraStructure.SQLLite.Data
                .HasOne(ps => ps.Poster)
                .WithMany(p => p.PosterSizes)
                .HasForeignKey(ps => ps.PosterId)
-              .OnDelete(DeleteBehavior.NoAction);
+               .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<PosterSize>()
-             .HasOne(ps => ps.Size)
-             .WithMany(s => s.PosterSizes)
-             .HasForeignKey(ps => ps.SizeId)
-             .OnDelete(DeleteBehavior.NoAction);
+               .HasOne(ps => ps.Size)
+               .WithMany(s => s.PosterSizes)
+               .HasForeignKey(ps => ps.SizeId)
+               .OnDelete(DeleteBehavior.NoAction);
+
+
+            //  Create Favourite relations
+            modelBuilder.Entity<Favourite>()
+              .HasKey(f => new { f.UserId, f.PosterId });
+
+            modelBuilder.Entity<Favourite>()
+                .HasOne(f => f.User)
+                .WithMany(u => u.Favourites)
+                .HasForeignKey(f => f.UserId);
+
         }
 
     }

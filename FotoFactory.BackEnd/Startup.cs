@@ -85,6 +85,9 @@ namespace FotoFactory.BackEnd
             services.AddScoped<ICollectionRepository, CollectionRepository>();
             services.AddScoped<ICollectionService, CollectionService>();
 
+            services.AddScoped<IFavouriteRepository, FavouriteRepository>();
+            services.AddScoped<IFavouriteService, FavouriteService>();
+
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
             services.AddSingleton<IAuthenticationHelper>(new

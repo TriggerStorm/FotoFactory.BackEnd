@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using FotoFactory.Core.AppService.Service;
+using FotoFactory.Core.AppService;
 using FotoFactory.CoreEntities;
 using Microsoft.AspNetCore.Mvc;
 

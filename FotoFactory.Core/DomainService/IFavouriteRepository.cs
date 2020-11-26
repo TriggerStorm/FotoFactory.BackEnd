@@ -4,8 +4,8 @@ using FotoFactory.CoreEntities;
 
 namespace FotoFactory.Core.DomainService
 {
-    public interface IPosterRepository
+    public interface IFavouriteRepository
     {
-        Poster ReadPosterById(int id);
+        IEnumerable<Poster> ReadLoggedInUsersFavouritedPosters();  // Logged in User id??
     }
 }

@@ -239,7 +239,7 @@ namespace InfraStructure.SQLLite.Data
                 }
             };
 
-            ctx.SaveChanges();
+         //   ctx.SaveChanges();
 
 
             Poster poster159DK = ctx.Posters.Add(new Poster()
@@ -1121,9 +1121,11 @@ namespace InfraStructure.SQLLite.Data
                 WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster4, workSpacePoster1, workSpacePoster3 },
             }).Entity;
 
-            
+            ctx.SaveChanges();
 
-            // create Users
+
+
+// create Users
 
             string password = "1234";
             _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashAdmin,
@@ -1132,31 +1134,72 @@ namespace InfraStructure.SQLLite.Data
             _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashUser,
                 out byte[] passwordSaltUser);
 
-            List<User> users = new List<User>
+
+            User admin = ctx.Users.Add(new User()
             {
-                new User
+                Username = "admin",
+                PasswordHash = passwordHashAdmin,
+                PasswordSalt = passwordSaltAdmin,
+                IsAdmin = true,
+                WorkSpaces = new List<WorkSpace> { workSpace1, workSpace2, workSpace5 }
+            }).Entity;
+
+            admin.Favourites = new List<Favourite>
+            {
+                new Favourite
                 {
-                    Username = "admin",
-                    PasswordHash = passwordHashAdmin,
-                    PasswordSalt = passwordSaltAdmin,
-                    IsAdmin = true,
-                    WorkSpaces = new List<WorkSpace> {workSpace1, workSpace2, workSpace5}
+                User = admin,
+                Poster = poster156DK
                 },
 
-
-                new User
+                new Favourite
                 {
-                    Username = "user",
-                    PasswordHash = passwordHashUser,
-                    PasswordSalt = passwordSaltUser,
-                    IsAdmin = false,
-                    WorkSpaces = new List<WorkSpace>{workSpace3, workSpace4 , workSpace4}
+                User = admin,
+                Poster = poster157DK
                 },
+
+                new Favourite
+                {
+                User = admin,
+                Poster = poster158DK
+                }
             };
 
-            ctx.Users.AddRange(users);
+            User user = ctx.Users.Add(new User()
+            {
+                Username = "user",
+                PasswordHash = passwordHashUser,
+                PasswordSalt = passwordSaltUser,
+                IsAdmin = false,
+                WorkSpaces = new List<WorkSpace>{workSpace3, workSpace4 , workSpace4}
+            }).Entity;
+
+            user.Favourites = new List<Favourite>
+            {
+                new Favourite
+                {
+                User = user,
+                Poster = poster153DK
+                },
+
+                new Favourite
+                {
+                User = user,
+                Poster = poster154DK
+                },
+              
+                new Favourite
+                {
+                User = user,
+                Poster = poster156DK
+                }
+            };
+
+
             ctx.SaveChanges();
-        }
+
+        } // closese SeedDB
+
 
     }
 }

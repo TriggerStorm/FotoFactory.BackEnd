@@ -4,9 +4,8 @@ using FotoFactory.CoreEntities;
 
 namespace FotoFactory.Core.AppService
 {
-    public interface ICollectionService
+    public interface IFavouriteService
     {
-        IEnumerable<Poster> FindPostersByCollectionId(int collectionId);
+        IEnumerable<Poster> FindLoggedInUsersFavouritedPosters();
     }
-
 }

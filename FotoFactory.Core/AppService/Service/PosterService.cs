@@ -4,7 +4,6 @@ using System.Linq;
 using FotoFactory.CoreEntities;
 using FotoFactory.Core.DomainService;
 
-
 namespace FotoFactory.Core.AppService.Service
 {
     public class PosterService: IPosterService
