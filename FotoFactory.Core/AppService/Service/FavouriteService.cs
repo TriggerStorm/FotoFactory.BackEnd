@@ -27,5 +27,10 @@ namespace FotoFactory.Core.AppService.Service
             return _favouriteRepo.ReadLoggedInUsersFavouritedPosters();
         }
 
+
+        public Favourite RemoveALoggedInUsersFavouritedPoster(int posterID)
+        {
+            return _favouriteRepo.DeleteALoggedInUsersFavouritedPoster(posterID);
+        }
     }
 }

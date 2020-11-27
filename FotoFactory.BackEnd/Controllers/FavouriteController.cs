@@ -23,6 +23,7 @@ namespace FotoFactory.BackEnd.Controllers
             _favouriteService = favouriteService;
         }
 
+
         // GET: api/favourite/
         [HttpGet]
         public ActionResult<List<Poster>> Get()
@@ -32,23 +33,30 @@ namespace FotoFactory.BackEnd.Controllers
         }
 
 
-        // POST api/favourite
+        // POST api/favourite/(id)
         //[Authorize(Roles = "Administrator")]
         [HttpPost("{id}")]
-        // NOT essential. Only needed if we change this methods name from "Post", and then it tells the system this is the POST method. Needed if sending parameters
         public ActionResult<Favourite> Post(int id)
         {
-            /*   string error = CheckPetInput(petToPost);
-               if (!(error == ""))
-               {
-                   return StatusCode(500, error);
-               }
-               Pet petToCreate = _petService.CreatePet(petToPost);
-               return StatusCode(201, petToCreate); 
-               */
             try
             {
                 return Ok(_favouriteService.NewLoggedInUsersFavouritedPoster(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        // DELETE api/favourite/{id}
+        //[Authorize(Roles = "Administrator")]
+        [HttpDelete("{id}")]
+        public ActionResult<Favourite> Delete(int id)
+        {
+            try
+            {
+                return Ok(_favouriteService.RemoveALoggedInUsersFavouritedPoster(id));
             }
             catch (Exception e)
             {

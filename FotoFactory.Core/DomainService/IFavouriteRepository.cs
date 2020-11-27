@@ -9,5 +9,7 @@ namespace FotoFactory.Core.DomainService
         Favourite CreateNewLoggedInUsersFavouritedPoster(int posterID);
 
         IEnumerable<Poster> ReadLoggedInUsersFavouritedPosters();  // Logged in User id??
+
+        Favourite DeleteALoggedInUsersFavouritedPoster(int posterID);
     }
 }
