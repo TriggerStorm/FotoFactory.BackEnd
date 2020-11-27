@@ -6,6 +6,8 @@ namespace FotoFactory.Core.DomainService
 {
     public interface IFavouriteRepository
     {
+        Favourite CreateNewLoggedInUsersFavouritedPoster(int posterID);
+
         IEnumerable<Poster> ReadLoggedInUsersFavouritedPosters();  // Logged in User id??
     }
 }

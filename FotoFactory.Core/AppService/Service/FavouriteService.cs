@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FotoFactory.Core.DomainService;
 using FotoFactory.CoreEntities;
 
-namespace FotoFactory.Core.AppService
+namespace FotoFactory.Core.AppService.Service
 {
     public class FavouriteService: IFavouriteService
     {
@@ -13,6 +13,12 @@ namespace FotoFactory.Core.AppService
         public FavouriteService(IFavouriteRepository favouriteRepository)
         {
             _favouriteRepo = favouriteRepository;
+        }
+
+
+        public Favourite NewLoggedInUsersFavouritedPoster(int posterID)
+        {
+            return _favouriteRepo.CreateNewLoggedInUsersFavouritedPoster(posterID);
         }
 
 

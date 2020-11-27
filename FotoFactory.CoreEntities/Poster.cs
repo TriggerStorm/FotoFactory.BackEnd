@@ -12,7 +12,7 @@ namespace FotoFactory.CoreEntities
         public int CollectionId { get; set; }
         public  IEnumerable<PosterTag> PosterTags { get; set; }
         public IEnumerable<PosterSize> PosterSizes { get; set; }
-        public IEnumerable<Favourite> Favourites { get; set; }
+        public ICollection<Favourite> Favourites { get; set; }
 
     }
 }

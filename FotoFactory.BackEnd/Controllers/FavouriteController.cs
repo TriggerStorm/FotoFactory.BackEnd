@@ -30,5 +30,30 @@ namespace FotoFactory.BackEnd.Controllers
             List<Poster> favouritedPosters = (List<Poster>)_favouriteService.FindLoggedInUsersFavouritedPosters();
             return StatusCode(200, favouritedPosters);
         }
+
+
+        // POST api/favourite
+        //[Authorize(Roles = "Administrator")]
+        [HttpPost("{id}")]
+        // NOT essential. Only needed if we change this methods name from "Post", and then it tells the system this is the POST method. Needed if sending parameters
+        public ActionResult<Favourite> Post(int id)
+        {
+            /*   string error = CheckPetInput(petToPost);
+               if (!(error == ""))
+               {
+                   return StatusCode(500, error);
+               }
+               Pet petToCreate = _petService.CreatePet(petToPost);
+               return StatusCode(201, petToCreate); 
+               */
+            try
+            {
+                return Ok(_favouriteService.NewLoggedInUsersFavouritedPoster(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
