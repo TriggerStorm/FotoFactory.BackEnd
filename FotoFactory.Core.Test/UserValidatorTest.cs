@@ -1,8 +1,8 @@
 using System;
 using FluentAssertions;
 using Xunit;
-using FotoFactory.Core.AppService.Validators;
 using FotoFactory.Core.AppService;
+using FotoFactory.Core.AppService.Validators;
 using FotoFactory.CoreEntities;
 
 namespace FotoFactory.Core.Test
@@ -17,7 +17,7 @@ namespace FotoFactory.Core.Test
 
 
         [Fact]
-        public void DefaultValidatoin_WithUserThatsNull_ShouldThrowExeption()
+        public void DefaultValidation_WithUserThatsNull_ShouldThrowExeption()
         {
             IUserValidator userValidator = new UserValidator();
             Action action = () => userValidator.DefaultValidation(null as User);
