@@ -70,7 +70,7 @@ namespace InfraStructure.SQLLite.Data
                 .HasOne(f => f.User)
                 .WithMany(u => u.Favourites)
                 .HasForeignKey(f => f.UserId);
-
+            // OnDelete??
         }
 
     }

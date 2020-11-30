@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FotoFactory.Core.DomainService;
 using FotoFactory.CoreEntities;
 
-namespace FotoFactory.Core.AppService
+namespace FotoFactory.Core.AppService.Service
 {
     public class FavouriteService: IFavouriteService
     {
@@ -16,10 +16,21 @@ namespace FotoFactory.Core.AppService
         }
 
 
+        public Favourite NewLoggedInUsersFavouritedPoster(int posterID)
+        {
+            return _favouriteRepo.CreateNewLoggedInUsersFavouritedPoster(posterID);
+        }
+
+
         public IEnumerable<Poster> FindLoggedInUsersFavouritedPosters()
         {
             return _favouriteRepo.ReadLoggedInUsersFavouritedPosters();
         }
 
+
+        public Favourite RemoveALoggedInUsersFavouritedPoster(int posterID)
+        {
+            return _favouriteRepo.DeleteALoggedInUsersFavouritedPoster(posterID);
+        }
     }
 }

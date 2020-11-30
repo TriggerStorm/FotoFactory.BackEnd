@@ -6,6 +6,11 @@ namespace FotoFactory.Core.AppService
 {
     public interface IFavouriteService
     {
+        Favourite NewLoggedInUsersFavouritedPoster(int posterID);
+
         IEnumerable<Poster> FindLoggedInUsersFavouritedPosters();
+
+        Favourite RemoveALoggedInUsersFavouritedPoster(int posterID);
+
     }
 }
