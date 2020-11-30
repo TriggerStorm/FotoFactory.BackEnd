@@ -129,9 +129,6 @@ namespace InfraStructure.SQLLite.Data
             }).Entity;
 
 
-            ctx.SaveChanges();
-
-
 
             //  Create Sizes
 
@@ -1061,7 +1058,7 @@ namespace InfraStructure.SQLLite.Data
 
             // Create WorkSpacePoster
 
-            WorkSpacePoster workSpacePoster1 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            WorkSpacePoster workSpacePoster1 = ctx.WorkSpacePoster.Add(new WorkSpacePoster
             {
 
                 Poster = poster160DK,
@@ -1072,7 +1069,7 @@ namespace InfraStructure.SQLLite.Data
 
             }).Entity;
 
-            WorkSpacePoster workSpacePoster2 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            WorkSpacePoster workSpacePoster2 = ctx.WorkSpacePoster.Add(new WorkSpacePoster
             {
                 Poster = poster159DK,
                 Frame = OAKBLACK,
@@ -1082,7 +1079,7 @@ namespace InfraStructure.SQLLite.Data
 
             }).Entity;
 
-            WorkSpacePoster workSpacePoster3 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            WorkSpacePoster workSpacePoster3 = ctx.WorkSpacePoster.Add(new WorkSpacePoster
             {
                 Poster = poster155DK,
                 Frame = WHITEALU,
@@ -1091,7 +1088,7 @@ namespace InfraStructure.SQLLite.Data
                 Size = size03,
             }).Entity;
 
-            WorkSpacePoster workSpacePoster4 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            WorkSpacePoster workSpacePoster4 = ctx.WorkSpacePoster.Add(new WorkSpacePoster
             {
                 Poster = poster155DK,
                 Frame = ALUBLACK,
@@ -1100,7 +1097,7 @@ namespace InfraStructure.SQLLite.Data
                 Size = size06,
             }).Entity;
 
-            WorkSpacePoster workSpacePoster5 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            WorkSpacePoster workSpacePoster5 = ctx.WorkSpacePoster.Add(new WorkSpacePoster
             {
                 Poster = poster159DK,
                 Frame = NOFRAME,
@@ -1110,7 +1107,7 @@ namespace InfraStructure.SQLLite.Data
 
             }).Entity;
 
-            WorkSpacePoster workSpacePoster6 = ctx.WorkSpacePosters.Add(new WorkSpacePoster
+            WorkSpacePoster workSpacePoster6 = ctx.WorkSpacePoster.Add(new WorkSpacePoster
             {
                 Poster = poster159DK,
                 Frame = OAKDARK,
@@ -1120,42 +1117,6 @@ namespace InfraStructure.SQLLite.Data
 
             }).Entity;
 
-            
-
-            // Create WorkSpace
-
-            WorkSpace workSpace1 = ctx.WorkSpaces.Add(new WorkSpace
-            {
-                Name = "LivingRoom",
-                WorkSpacePosters = new List<WorkSpacePoster>
-                    {workSpacePoster1, workSpacePoster4, workSpacePoster2, workSpacePoster3},
-            }).Entity;
-
-            WorkSpace workSpace2 = ctx.WorkSpaces.Add(new WorkSpace
-            {
-                Name = "Bedroom",
-                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster4, workSpacePoster5, workSpacePoster6 },
-            }).Entity;
-
-            WorkSpace workSpace3 = ctx.WorkSpaces.Add(new WorkSpace
-            {
-                Name = "MasterBedroom",
-                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster2, workSpacePoster3, workSpacePoster4 },
-            }).Entity;
-
-            WorkSpace workSpace4 = ctx.WorkSpaces.Add(new WorkSpace
-            {
-                Name = "Kitchen",
-                WorkSpacePosters = new List<WorkSpacePoster> { },
-            }).Entity;
-
-            WorkSpace workSpace5 = ctx.WorkSpaces.Add(new WorkSpace
-            {
-                Name = "Staircase",
-                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster4, workSpacePoster1, workSpacePoster3 },
-            }).Entity;
-
-            
 
             // create Users
 
@@ -1166,29 +1127,69 @@ namespace InfraStructure.SQLLite.Data
             _authenticationHelper.CreatePasswordHash(password, out byte[] passwordHashUser,
                 out byte[] passwordSaltUser);
 
-            List<User> users = new List<User>
+            User user1 = new User()
             {
-                new User
-                {
-                    Username = "admin",
-                    PasswordHash = passwordHashAdmin,
-                    PasswordSalt = passwordSaltAdmin,
-                    IsAdmin = true,
-                    WorkSpaces = new List<WorkSpace> {workSpace1, workSpace2, workSpace5}
-                },
-
-
-                new User
-                {
-                    Username = "user",
-                    PasswordHash = passwordHashUser,
-                    PasswordSalt = passwordSaltUser,
-                    IsAdmin = false,
-                    WorkSpaces = new List<WorkSpace>{workSpace3, workSpace4 , workSpace4}
-                },
+                Username = "admin",
+                PasswordHash = passwordHashAdmin,
+                PasswordSalt = passwordSaltAdmin,
+                IsAdmin = true,
+                WorkSpaces = new List<WorkSpace> { }
             };
 
-            ctx.Users.AddRange(users);
+            User user2 = new User()
+            {
+                Username = "user",
+                PasswordHash = passwordHashUser,
+                PasswordSalt = passwordSaltUser,
+                IsAdmin = false,
+                WorkSpaces = new List<WorkSpace> { }
+            };
+            ctx.Users.Add(user1);
+            ctx.Users.Add(user2);
+            // Create WorkSpace
+
+            WorkSpace workSpace1 = ctx.WorkSpace.Add(new WorkSpace
+            {
+                Name = "LivingRoom",
+                WorkSpacePosters = new List<WorkSpacePoster>
+                    {workSpacePoster1, workSpacePoster4, workSpacePoster2, workSpacePoster3},
+                User = user1
+            }).Entity;
+
+            WorkSpace workSpace2 = ctx.WorkSpace.Add(new WorkSpace
+            {
+                Name = "Bedroom",
+                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster4, workSpacePoster5, workSpacePoster6 },
+                User = user1
+            }).Entity;
+
+            WorkSpace workSpace3 = ctx.WorkSpace.Add(new WorkSpace
+            {
+                Name = "MasterBedroom",
+                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster2, workSpacePoster3, workSpacePoster4 },
+                User = user2
+            }).Entity;
+
+            WorkSpace workSpace4 = ctx.WorkSpace.Add(new WorkSpace
+            {
+                Name = "Kitchen",
+                WorkSpacePosters = new List<WorkSpacePoster> { },
+                User = user2
+            }).Entity;
+
+            WorkSpace workSpace5 = ctx.WorkSpace.Add(new WorkSpace
+            {
+                Name = "Staircase",
+                WorkSpacePosters = new List<WorkSpacePoster> { workSpacePoster4, workSpacePoster1, workSpacePoster3 },
+                User =user1
+            }).Entity;
+
+            user1.WorkSpaces.Add(workSpace1);
+            user1.WorkSpaces.Add(workSpace2);
+            user1.WorkSpaces.Add(workSpace5);
+            user2.WorkSpaces.Add(workSpace3);
+            user2.WorkSpaces.Add(workSpace4);
+
             ctx.SaveChanges();
         }
 

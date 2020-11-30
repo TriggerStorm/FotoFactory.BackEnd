@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoFactory.BackEnd", "FotoFactory.BackEnd\FotoFactory.BackEnd.csproj", "{EE172FCB-3E68-434E-AC17-53716B047D6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FotoFactory.BackEnd", "FotoFactory.BackEnd\FotoFactory.BackEnd.csproj", "{EE172FCB-3E68-434E-AC17-53716B047D6C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestApi", "RestApi", "{BBE231C2-2493-400E-96B3-6F60D9C2E5BA}"
 EndProject
@@ -19,11 +19,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FotoFactory.CoreEntities", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraStructure.SQLLite.Data", "InfraStructure.SQLLite.Data\InfraStructure.SQLLite.Data.csproj", "{B565E6DB-15E0-4121-8BFE-90237E5BC701}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraStructure.SQL.Data", "InfraStructure.SQL.Data\InfraStructure.SQL.Data.csproj", "{F690B75C-00BB-4498-ADF4-BB08979ECF83}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{FE11F58A-5B26-4C67-A01E-B7E5CBBB5F84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoFactory.Core.Test", "FotoFactory.Core.Test\FotoFactory.Core.Test.csproj", "{56C9D426-E467-475B-9FC9-6F2F9E3B1B47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FotoFactory.Core.Test", "FotoFactory.Core.Test\FotoFactory.Core.Test.csproj", "{56C9D426-E467-475B-9FC9-6F2F9E3B1B47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E800562-5213-45E4-9EA7-C4D210262F62}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +50,6 @@ Global
 		{B565E6DB-15E0-4121-8BFE-90237E5BC701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B565E6DB-15E0-4121-8BFE-90237E5BC701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B565E6DB-15E0-4121-8BFE-90237E5BC701}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F690B75C-00BB-4498-ADF4-BB08979ECF83}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56C9D426-E467-475B-9FC9-6F2F9E3B1B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56C9D426-E467-475B-9FC9-6F2F9E3B1B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56C9D426-E467-475B-9FC9-6F2F9E3B1B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,7 +63,6 @@ Global
 		{A67744D3-A5C6-4DC4-B27A-D9EED60E9D47} = {F1B00810-9A20-481B-AD97-8E929F8A7F15}
 		{5F7FC546-0E63-4668-ABD2-A442B6022BD1} = {A1DD1A54-8057-4117-AA1C-173F81DCE5E4}
 		{B565E6DB-15E0-4121-8BFE-90237E5BC701} = {8505599A-943C-48F4-90F3-2D455A1CEE71}
-		{F690B75C-00BB-4498-ADF4-BB08979ECF83} = {8505599A-943C-48F4-90F3-2D455A1CEE71}
 		{56C9D426-E467-475B-9FC9-6F2F9E3B1B47} = {FE11F58A-5B26-4C67-A01E-B7E5CBBB5F84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

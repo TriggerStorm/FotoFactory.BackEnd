@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FotoFactory.CoreEntities\FotoFactory.CoreEntities.csproj" />
     <ProjectReference Include="..\FotoFactory.Core\FotoFactory.Core.csproj" />
-    <ProjectReference Include="..\InfraStructure.SQL.Data\InfraStructure.SQL.Data.csproj" />
     <ProjectReference Include="..\InfraStructure.SQLLite.Data\InfraStructure.SQLLite.Data.csproj" />
   </ItemGroup>
 
@@ -21,6 +24,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />

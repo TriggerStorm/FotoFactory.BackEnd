@@ -20,8 +20,8 @@ namespace InfraStructure.SQLLite.Data
         public DbSet<PosterTag> PosterTags { get; set; }
         public DbSet<PosterSize> PosterSizes { get; set; }
 
-        public DbSet<WorkSpace> WorkSpaces { get; set; }
-        public DbSet<WorkSpacePoster> WorkSpacePosters { get; set; }
+        public DbSet<WorkSpace> WorkSpace { get; set; }
+        public DbSet<WorkSpacePoster> WorkSpacePoster { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -54,7 +54,18 @@ namespace InfraStructure.SQLLite.Data
             modelBuilder.Entity<PosterSize>()
              .HasOne(ps => ps.Size)
              .WithMany(s => s.PosterSizes)
-             .HasForeignKey(ps => ps.SizeId);  
+             .HasForeignKey(ps => ps.SizeId);
+
+            //  Create WorkSpace relatons
+
+            modelBuilder.Entity<WorkSpace>()
+                .HasMany(ws => ws.WorkSpacePosters);
+                //workspaceposterid is the foreign key.
+
+            modelBuilder.Entity<WorkSpace>()
+                .HasOne(user => user.User) // should be user
+                .WithMany(u => u.WorkSpaces); //need workspace entity here;
+
         }
 
     }
