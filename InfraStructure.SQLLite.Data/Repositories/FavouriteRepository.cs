@@ -7,15 +7,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InfraStructure.SQLLite.Data.Repositories
 {
-    public class FavouriteRepository: IFavouriteRepository
+    public class FavouriteRepository : IFavouriteRepository
     {
         readonly FotoFactoryContext _ctx;
-        readonly int loggedInUserId = 1;  // MOCK DATA until singleton is implemented
+        readonly int loggedInUserId = 1;  // MOCK DATA until singleton is implemented or user id passed from fornt end
 
         public FavouriteRepository(FotoFactoryContext ctx)
         {
             _ctx = ctx;
         }
+
+       public Favourite CreateNewLoggedInUsersFavouritedPoster(int posterID)
+        {
+            
+            Poster p = _ctx.Posters.Include(p => p.PosterTags).Include(p => p.PosterSizes).FirstOrDefault(p => p.PosterId == posterID);
+            User u = _ctx.Users.FirstOrDefault(u => u.UserId == loggedInUserId);
+            Favourite f = new Favourite();
+            {
+                f.PosterId = posterID;
+                f.Poster = p;
+                f.UserId = loggedInUserId;
+                f.User = u;
+            }
+         //   u.Favourites.Add(f);
+         //   p.Favourites.Add(f);
+            _ctx.Favourites.Add(f);
+            _ctx.SaveChanges();
+            return f;
+        }
+
+
 
         public IEnumerable<Poster> ReadLoggedInUsersFavouritedPosters()
         {
@@ -48,5 +69,33 @@ namespace InfraStructure.SQLLite.Data.Repositories
             }
             return ufp;
         }
+
+
+        public Favourite DeleteALoggedInUsersFavouritedPoster(int posterID)
+        {
+           // Favourite f = _ctx.Favourites.Where((f => f.UserId == loggedInUserId)&& (f => f.PosterId == id));
+     /*       Favourite f = _ctx.Favourites.FirstOrDefault(f => f.UserId == loggedInUserId). (f => f.PosterId == id));
+
+            var petRemoved = _ctx.Remove(new P { petId = id }).Entity;
+            _ctx.SaveChanges();
+     */
+        //    return null;
+
+
+            Poster p = _ctx.Posters.Include(p => p.PosterTags).Include(p => p.PosterSizes).FirstOrDefault(p => p.PosterId == posterID);
+            User u = _ctx.Users.FirstOrDefault(u => u.UserId == loggedInUserId);
+            Favourite f = new Favourite();
+            {
+                f.PosterId = posterID;
+                f.Poster = p;
+                f.UserId = loggedInUserId;
+                f.User = u;
+            }
+            //   u.Favourites.Add(f);
+            //   p.Favourites.Add(f);
+            _ctx.Favourites.Remove(f);
+            _ctx.SaveChanges();
+            return f;
+        } 
     }
 }
