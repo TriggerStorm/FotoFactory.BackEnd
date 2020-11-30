@@ -1213,8 +1213,6 @@ namespace InfraStructure.SQLLite.Data
             user2.WorkSpaces.Add(workSpace3);
             user2.WorkSpaces.Add(workSpace4);
 
-                WorkSpacePosters = new List<WorkSpacePoster> {workSpacePoster4, workSpacePoster1, workSpacePoster3},
-            }).Entity;
             ctx.SaveChanges();
         }
     }
