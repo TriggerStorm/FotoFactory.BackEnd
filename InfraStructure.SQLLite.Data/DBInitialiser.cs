@@ -187,7 +187,7 @@ namespace InfraStructure.SQLLite.Data
             {
                 PosterName = "Rold Skov",
                 PosterSku = "FF160DK",
-                Path = ".../Assets/FF160DK.jpg",
+                Path = "/assets/denmark-posters/FF160DK.png",
                 CollectionId = 1,
             }).Entity;
 
@@ -246,7 +246,7 @@ namespace InfraStructure.SQLLite.Data
             {
                 PosterName = "Skovsø",
                 PosterSku = "FF159DK",
-                Path = ".../Assets/FF159DK.jpg",
+                Path = "/assets/denmark-posters/FF159DK.png",
                 CollectionId = 1,
             }).Entity;
 
@@ -298,7 +298,7 @@ namespace InfraStructure.SQLLite.Data
             {
                 PosterName = "Nordskoven",
                 PosterSku = "FF158DK",
-                Path = ".../Assets/FF158DK.jpg",
+                Path = "/assets/denmark-posters/FF158DK.png",
                 CollectionId = 1,
             }).Entity;
 
@@ -350,7 +350,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Fredskov",
                     PosterSku = "FF157DK",
-                    Path = ".../Assets/FF157DK.jpg",
+                    Path = "/assets/denmark-posters/FF157DK.png",
                     CollectionId = 1,
                 }).Entity;
 
@@ -402,7 +402,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Slåensø",
                     PosterSku = "FF156DK",
-                    Path = ".../Assets/FF156DK.jpg",
+                    Path = "/assets/denmark-posters/FF156DK.png",
                     CollectionId = 1,
                 }).Entity;
 
@@ -459,7 +459,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Morgendis",
                     PosterSku = "FF155DK",
-                    Path = ".../Assets/FF155DK.jpg",
+                    Path = "/assets/denmark-posters/FF155DK.png",
                     CollectionId = 1,
                 }).Entity;
 
@@ -516,7 +516,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Nordskov",
                     PosterSku = "FF154DK",
-                    Path = ".../Assets/FF154DK.jpg",
+                    Path = "/assets/denmark-posters/FF154DK.png",
                     CollectionId = 1,
                 }).Entity;
 
@@ -568,7 +568,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Vesterskov",
                     PosterSku = "FF153DK",
-                    Path = ".../Assets/FF153DK.jpg",
+                    Path = "/assets/denmark-posters/FF153DK.png",
                     CollectionId = 1,
                 }).Entity;
 
@@ -620,7 +620,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Kyst",
                     PosterSku = "FF106FO",
-                    Path = ".../Assets/FF106FO.jpg",
+                    Path = "/assets/denmark-posters/FF106FO.png",
                     CollectionId = 2,
                 }).Entity;
 
@@ -667,7 +667,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "NordAtlanten",
                     PosterSku = "FF107FO",
-                    Path = ".../Assets/FF107FO.jpg",
+                    Path = "/assets/denmark-posters/FF107FO.png",
                     CollectionId = 2,
                 }).Entity;
 
@@ -719,7 +719,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Cyclen",
                     PosterSku = "FF101CPH",
-                    Path = ".../Assets/FF101CPH.jpg",
+                    Path = "/assets/denmark-posters/FF101CPH.png",
                     CollectionId = 3,
                 }).Entity;
 
@@ -761,7 +761,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Sosiden",
                     PosterSku = "FF104CPH",
-                    Path = ".../Assets/FF104CPH.jpg",
+                    Path = "/assets/denmark-posters/FF104CPH.png",
                     CollectionId = 3,
                 }).Entity;
 
@@ -803,7 +803,7 @@ namespace InfraStructure.SQLLite.Data
                 {
                     PosterName = "Længsel",
                     PosterSku = "FF106BW",
-                    Path = ".../Assets/FF106BW.jpg",
+                    Path = "/assets/denmark-posters/FF106BW.png",
                     CollectionId = 4,
                 }).Entity;
 
@@ -850,7 +850,7 @@ namespace InfraStructure.SQLLite.Data
             {
                 PosterName = "Linie",
                 PosterSku = "FF104BW",
-                Path = ".../Assets/FF104BW.jpg",
+                Path = "/assets/denmark-posters/FF104BW.png",
                 CollectionId = 4,
             }).Entity;
 
@@ -892,7 +892,7 @@ namespace InfraStructure.SQLLite.Data
             {
                 PosterName = "The Storr",
                 PosterSku = "FF104SCO",
-                Path = ".../Assets/FF104SCO.jpg",
+                Path = "/assets/denmark-posters/FF104SCO.png",
                 CollectionId = 5,
             }).Entity;
 
@@ -934,7 +934,7 @@ namespace InfraStructure.SQLLite.Data
             {
                 PosterName = "Black Cuillin",
                 PosterSku = "FF108SCO",
-                Path = ".../Assets/FF108SCO.jpg",
+                Path = "/assets/denmark-posters/FF108SCO.png",
                 CollectionId = 5,
             }).Entity;
 
