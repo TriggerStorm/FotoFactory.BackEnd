@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using FluentAssertions;
 using Xunit;
 using FotoFactory.Core.AppService;
@@ -17,16 +18,25 @@ namespace FotoFactory.Core.Test
 
 
         [Fact]
-        public void DefaultValidation_WithFavouriteUserIdLessThen1_ShouldThrowException()
+        public void DefaultValidation_WithFavouriteThatsNull_ShouldThrowException()
         {
             IFavouriteValidator posterValidator = new FavouriteValidator();
-            Action action = () => posterValidator.DefaultValidation(new Favourite() { UserId = 0 } as Favourite);
-            action.Should().Throw<NullReferenceException>().WithMessage("Favourite UserId cannot be less than 1");
+            Action action = () => posterValidator.DefaultValidation(null as Favourite);
+            action.Should().Throw<NullReferenceException>().WithMessage("Favourite cannot be null");
         }
 
 
         [Fact]
-        public void DefaultValidation_WithFavouriteUserIsNull_ShouldThrowException()
+        public void DefaultValidation_WithFavouriteUserIdLessThan1_ShouldThrowException()
+        {
+            IFavouriteValidator posterValidator = new FavouriteValidator();
+            Action action = () => posterValidator.DefaultValidation(new Favourite() { UserId = 0 } as Favourite);
+            action.Should().Throw<InvalidDataException>().WithMessage("Favourite UserId cannot be less than 1");
+        }
+
+
+        [Fact]
+        public void DefaultValidation_WithFavouriteUserThatsNull_ShouldThrowException()
         {
             IFavouriteValidator posterValidator = new FavouriteValidator();
             Action action = () => posterValidator.DefaultValidation(new Favourite() { UserId = 1, User = null } as Favourite);
@@ -35,7 +45,7 @@ namespace FotoFactory.Core.Test
 
 
         [Fact]
-        public void DefaultValidation_WithFavouritePosterIdLessThen1_ShouldThrowException()
+        public void DefaultValidation_WithFavouritePosterIdThatsLessThan1_ShouldThrowException()
         {
             IFavouriteValidator posterValidator = new FavouriteValidator();
             Action action = () => posterValidator.DefaultValidation(new Favourite() { UserId = 1,
@@ -45,7 +55,7 @@ namespace FotoFactory.Core.Test
                     Username = "test"
                 },
                 PosterId = 0 } as Favourite);
-            action.Should().Throw<NullReferenceException>().WithMessage("Favourite PosterId cannot be less than 1");
+            action.Should().Throw<InvalidDataException>().WithMessage("Favourite PosterId cannot be less than 1");
         }
 
 

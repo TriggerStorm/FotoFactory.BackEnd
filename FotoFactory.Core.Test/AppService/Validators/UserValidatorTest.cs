@@ -27,7 +27,7 @@ namespace FotoFactory.Core.Test
 
 
         [Fact]
-        public void DefaultValidation_WithUserIdLessThen1_ShouldThrowException()
+        public void DefaultValidation_WithUserIdThatsLessThan1_ShouldThrowException()
         {
             IUserValidator userValidator = new UserValidator();
             Action action = () => userValidator.DefaultValidation(new User() { UserId = 0 } as User);
@@ -62,12 +62,21 @@ namespace FotoFactory.Core.Test
         }
 
 
-     /*   [Fact]
+        [Fact]
         public void DefaultValidation_WithPasswordSaltThatsNull_ShouldThrowException()
         {
             IUserValidator userValidator = new UserValidator();
-            Action action = () => userValidator.DefaultValidation(new User() { UserId = 1, Username = "test", PasswordHash = { a, b, c }, PasswordSalt = null } as User);
+            Action action = () => userValidator.DefaultValidation(new User() { UserId = 1, Username = "test", PasswordHash = new byte[3], PasswordSalt = null } as User);
             action.Should().Throw<NullReferenceException>().WithMessage("PasswordSalt cannot be null");
-        }*/
+        }
+
+
+      /*  [Fact]
+        public void DefaultValidation_WithIsAdminThatsNotTrueOrFalse_ShouldThrowException()
+        {
+            IUserValidator userValidator = new UserValidator();
+            Action action = () => userValidator.DefaultValidation(new User() { UserId = 1, Username = "test", PasswordHash = new byte[3], PasswordSalt  = new byte[3], IsAdmin = "smurf" } as User);
+            action.Should().Throw<InvalidDataException>().WithMessage("IsAdmin must be true or false");
+        } */
     }
 }

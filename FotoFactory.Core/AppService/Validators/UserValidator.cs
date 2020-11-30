@@ -31,7 +31,7 @@ namespace FotoFactory.Core.AppService.Validators
             }
             if (user.IsAdmin != false || user.IsAdmin != true)
             {
-                throw new InvalidDataException("To create a user you need to specify if they are an admin or user");
+                throw new InvalidDataException("IsAdmin must be true or false");
             }
 
         }

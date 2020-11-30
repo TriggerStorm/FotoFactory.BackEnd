@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using FotoFactory.CoreEntities;
 
 namespace FotoFactory.Core.AppService.Validators
@@ -13,7 +14,7 @@ namespace FotoFactory.Core.AppService.Validators
             }
             if (favourite.UserId < 1)
             {
-                throw new NullReferenceException("Favourite UserId cannot be less than 1");
+                throw new InvalidDataException("Favourite UserId cannot be less than 1");
             }
             if (favourite.User == null)
             {
@@ -21,7 +22,7 @@ namespace FotoFactory.Core.AppService.Validators
             }
             if (favourite.PosterId < 1)
             {
-                throw new NullReferenceException("Favourite PosterId cannot be less than 1");
+                throw new InvalidDataException("Favourite PosterId cannot be less than 1");
             }
             if (favourite.Poster == null)
             {

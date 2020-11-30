@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using FluentAssertions;
 using Xunit;
 using FotoFactory.Core.AppService;
@@ -26,11 +27,11 @@ namespace FotoFactory.Core.Test
 
 
         [Fact]
-        public void DefaultValidation_WithPosterIdLessThen1_ShouldThrowException()
+        public void DefaultValidation_WithPosterIdThatsLessThan1_ShouldThrowException()
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 0 } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("PosterId cannot be less than 1");
+            action.Should().Throw<InvalidDataException>().WithMessage("PosterId cannot be less than 1");
         }
 
 
@@ -39,7 +40,7 @@ namespace FotoFactory.Core.Test
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = null } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("PosterName cannot be null or empty");
+            action.Should().Throw<InvalidDataException>().WithMessage("PosterName cannot be null or empty");
         }
 
 
@@ -48,7 +49,7 @@ namespace FotoFactory.Core.Test
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = "" } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("PosterName cannot be null or empty");
+            action.Should().Throw<InvalidDataException>().WithMessage("PosterName cannot be null or empty");
         }
 
 
@@ -57,7 +58,7 @@ namespace FotoFactory.Core.Test
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = "test", PosterSku = null } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("PosterSku code cannot be null or empty");
+            action.Should().Throw<InvalidDataException>().WithMessage("PosterSku code cannot be null or empty");
         }
 
 
@@ -66,7 +67,7 @@ namespace FotoFactory.Core.Test
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = "test", PosterSku = "" } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("PosterSku code cannot be null or empty");
+            action.Should().Throw<InvalidDataException>().WithMessage("PosterSku code cannot be null or empty");
         }
 
 
@@ -75,7 +76,7 @@ namespace FotoFactory.Core.Test
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = "test", PosterSku = "test", Path = null } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("Poster Path cannot be null or empty");
+            action.Should().Throw<InvalidDataException>().WithMessage("Poster Path cannot be null or empty");
         }
 
 
@@ -84,16 +85,25 @@ namespace FotoFactory.Core.Test
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = "test", PosterSku = "test", Path = "" } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("Poster Path cannot be null or empty");
+            action.Should().Throw<InvalidDataException>().WithMessage("Poster Path cannot be null or empty");
         }
 
 
         [Fact]
-        public void DefaultValidation_WithCollectionIdLessThen1_ShouldThrowException()
+        public void DefaultValidation_WithCollectionIdThatsLessThan1_ShouldThrowException()
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = "test", PosterSku = "test", Path = "test", CollectionId = 0 } as Poster);
-            action.Should().Throw<NullReferenceException>().WithMessage("Poster CollectionId cannot be less than 1");
+            action.Should().Throw<InvalidDataException>().WithMessage("Poster CollectionId cannot be less than 1");
+        }
+
+
+        [Fact]
+        public void DefaultValidation_WithPosterSizesThatsNull_ShouldThrowExeption()
+        {
+            IPosterValidator posterValidator = new PosterValidator();
+            Action action = () => posterValidator.DefaultValidation(new Poster() { PosterId = 1, PosterName = "test", PosterSku = "test", Path = "test", CollectionId = 1, PosterSizes = null } as Poster);
+            action.Should().Throw<NullReferenceException>().WithMessage("PosterSizes must not be null");
         }
     }
 }
