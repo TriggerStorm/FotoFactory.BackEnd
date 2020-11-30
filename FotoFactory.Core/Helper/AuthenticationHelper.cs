@@ -58,6 +58,25 @@ namespace FotoFactory.Core.Helper
                 new JwtPayload(null, null, claims.ToArray(), DateTime.Now, DateTime.Now.AddMinutes(60)));
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        public ClaimsPrincipal getExpiredClaims(string token) //disecting an expired jwt token to get the claims for reusing.
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(_secretBytes),
+                ValidateLifetime = false //here we are saying that we don't care about the token's expiration date
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var claimsPrincipal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken); //Validates the token to fit parameters. Prevents tampering with token.
+            var jwtSecurityToken = securityToken as JwtSecurityToken; //generate a new token and excrypt it again using the data from claims
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase)) //Check if token exists and if its ecnrypted in right way
+                throw new SecurityTokenException("Invalid token");
+
+            return claimsPrincipal;
+        }
     }
 
 }

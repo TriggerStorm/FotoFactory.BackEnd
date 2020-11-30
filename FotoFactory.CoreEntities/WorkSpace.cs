@@ -5,10 +5,13 @@ namespace FotoFactory.CoreEntities
 {
     public class WorkSpace
     {
-        public int WorkSpaceId { get; set; }
+        public int WorkSpaceId { get; set; } 
         public string Name { get; set; }
-        public int WorkSpacePosterId { get; set; }
+        public string BackGroundColour { get; set; }
         public List<WorkSpacePoster> WorkSpacePosters { get; set; }
+        public User User { get; set; }
+
+
     }
 }
 

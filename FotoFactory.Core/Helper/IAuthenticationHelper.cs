@@ -2,7 +2,8 @@
 ﻿using FotoFactory.CoreEntities;
 using System;
 using System.Collections.Generic;
-using System.Text;
+ using System.Security.Claims;
+ using System.Text;
 
 
 
@@ -13,6 +14,7 @@ namespace FotoFactory.Core.Helper
         void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt);
         bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt);
         string GenerateToken(User user);
+        ClaimsPrincipal getExpiredClaims(string token);
     }
 
 }

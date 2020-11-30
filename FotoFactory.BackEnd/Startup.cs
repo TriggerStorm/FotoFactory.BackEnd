@@ -41,11 +41,14 @@ namespace FotoFactory.BackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var loggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
             if (Environment.IsDevelopment())
             {
                 services.AddDbContext<FotoFactoryContext>(
                     opt =>
                     {
+                        opt.UseLoggerFactory(loggerFactory); //logs all sql queries.
+
                         opt.UseSqlite("Data Source= FotoFactoryApp.db");    
             });
             }
@@ -54,6 +57,8 @@ namespace FotoFactory.BackEnd
                 services.AddDbContext<FotoFactoryContext>
                     (opt =>
                     {
+                        opt.UseLoggerFactory(loggerFactory); //logs all sql queries.
+
                         opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
                     });
             }
@@ -84,6 +89,10 @@ namespace FotoFactory.BackEnd
 
             services.AddScoped<ICollectionRepository, CollectionRepository>();
             services.AddScoped<ICollectionService, CollectionService>();
+
+            services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
+            services.AddScoped<IWorkSpaceService, WorkSpaceService>();
+            services.AddScoped<IWorkSpaceValidator, WorkSpaceValidator>();
 
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
@@ -156,8 +165,8 @@ namespace FotoFactory.BackEnd
                 ctx.Database.ExecuteSqlRaw("DROP TABLE Posters");
                 ctx.Database.ExecuteSqlRaw("DROP TABLE Sizes");
                 ctx.Database.ExecuteSqlRaw("DROP TABLE Frames");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpaces");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpacePosters");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpace");
+                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpacePoster");
                 ctx.Database.ExecuteSqlRaw("DROP TABLE Tags");
 
                 ctx.Database.EnsureCreated();
