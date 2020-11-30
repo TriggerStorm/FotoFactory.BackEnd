@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-
 
 namespace FotoFactory.CoreEntities
 {
@@ -13,8 +11,7 @@ namespace FotoFactory.CoreEntities
         public byte[] PasswordSalt { get; set; }
         public bool IsAdmin { get; set; }
         public List<WorkSpace> WorkSpaces { get; set; }
-        public List<Poster> Favourites { get; set; }
-
+        public IEnumerable<Favourite> Favourites { get; set; }
 
     }
 }
