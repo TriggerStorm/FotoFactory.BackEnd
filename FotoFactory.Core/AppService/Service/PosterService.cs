@@ -11,7 +11,7 @@ namespace FotoFactory.Core.AppService.Service
         readonly IPosterRepository _posterRepo;
 
     
-        public PosterService(IPosterRepository posterRepository)
+        public PosterService(IPosterValidator posterValidator, IPosterRepository posterRepository)
         {
             _posterRepo = posterRepository;
         }

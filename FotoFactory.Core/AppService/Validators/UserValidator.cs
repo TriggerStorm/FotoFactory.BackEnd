@@ -15,19 +15,19 @@ namespace FotoFactory.Core.AppService.Validators
             }
             if (user.UserId < 1)
             {
-                throw new NullReferenceException("User id cannot be less than 1");
+                throw new InvalidDataException("UserId cannot be less than 1");
             }
             if (string.IsNullOrEmpty(user.Username))
             {
-                throw new InvalidDataException("User name cannot be empty");
+                throw new InvalidDataException("Username cannot be null or empty");
             }
             if (user.PasswordHash == null)
             {
-                throw new InvalidDataException("To create a user you need a password hash");
+                throw new NullReferenceException("PasswordHash cannot be null");
             }
             if (user.PasswordSalt == null)
             {
-                throw new InvalidDataException("To create a user you need to a password salt");
+                throw new NullReferenceException("PasswordSalt cannot be null");
             }
             if (user.IsAdmin != false || user.IsAdmin != true)
             {

@@ -13,19 +13,19 @@ namespace FotoFactory.Core.AppService.Validators
             }
             if (favourite.UserId < 1)
             {
-                throw new NullReferenceException("Favouriting user id cannot be less than 1");
+                throw new NullReferenceException("Favourite UserId cannot be less than 1");
             }
             if (favourite.User == null)
             {
-                throw new NullReferenceException("Favouriting user cannot be null");
+                throw new NullReferenceException("Favourite User cannot be null");
             }
             if (favourite.PosterId < 1)
             {
-                throw new NullReferenceException("Favourited poster id cannot be less than 1");
+                throw new NullReferenceException("Favourite PosterId cannot be less than 1");
             }
             if (favourite.Poster == null)
             {
-                throw new NullReferenceException("Favourited poster cannot be null");
+                throw new NullReferenceException("Favourite Poster cannot be null");
             }
         }
     }
