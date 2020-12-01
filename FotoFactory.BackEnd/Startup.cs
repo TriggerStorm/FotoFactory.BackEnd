@@ -81,12 +81,15 @@ namespace FotoFactory.BackEnd
 
             services.AddScoped<IPosterRepository, PosterRepository>();
             services.AddScoped<IPosterService, PosterService>();
+            services.AddScoped<IPosterValidator, PosterValidator>();
 
             services.AddScoped<ICollectionRepository, CollectionRepository>();
             services.AddScoped<ICollectionService, CollectionService>();
+            services.AddScoped<ICollectionValidator, CollectionValidator>();
 
             services.AddScoped<IFavouriteRepository, FavouriteRepository>();
             services.AddScoped<IFavouriteService, FavouriteService>();
+            services.AddScoped<IFavouriteValidator, FavouriteValidator>();
 
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 

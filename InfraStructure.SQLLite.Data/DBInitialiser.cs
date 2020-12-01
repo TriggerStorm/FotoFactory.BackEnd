@@ -239,8 +239,6 @@ namespace InfraStructure.SQLLite.Data
                 }
             };
 
-         //   ctx.SaveChanges();
-
 
             Poster poster159DK = ctx.Posters.Add(new Poster()
             {

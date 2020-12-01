@@ -29,8 +29,6 @@ namespace InfraStructure.SQLLite.Data.Repositories
                 f.UserId = loggedInUserId;
                 f.User = u;
             }
-         //   u.Favourites.Add(f);
-         //   p.Favourites.Add(f);
             _ctx.Favourites.Add(f);
             _ctx.SaveChanges();
             return f;
@@ -54,7 +52,6 @@ namespace InfraStructure.SQLLite.Data.Repositories
                     pt.Tag.Description = tag.Description;
                     pt.Tag.PosterTags = null;
                 }
-
                 IEnumerable<PosterSize> pslist = p.PosterSizes;
                 foreach (PosterSize ps in pslist)
                 {
@@ -73,15 +70,6 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
         public Favourite DeleteALoggedInUsersFavouritedPoster(int posterID)
         {
-           // Favourite f = _ctx.Favourites.Where((f => f.UserId == loggedInUserId)&& (f => f.PosterId == id));
-     /*       Favourite f = _ctx.Favourites.FirstOrDefault(f => f.UserId == loggedInUserId). (f => f.PosterId == id));
-
-            var petRemoved = _ctx.Remove(new P { petId = id }).Entity;
-            _ctx.SaveChanges();
-     */
-        //    return null;
-
-
             Poster p = _ctx.Posters.Include(p => p.PosterTags).Include(p => p.PosterSizes).FirstOrDefault(p => p.PosterId == posterID);
             User u = _ctx.Users.FirstOrDefault(u => u.UserId == loggedInUserId);
             Favourite f = new Favourite();
@@ -91,8 +79,6 @@ namespace InfraStructure.SQLLite.Data.Repositories
                 f.UserId = loggedInUserId;
                 f.User = u;
             }
-            //   u.Favourites.Add(f);
-            //   p.Favourites.Add(f);
             _ctx.Favourites.Remove(f);
             _ctx.SaveChanges();
             return f;
