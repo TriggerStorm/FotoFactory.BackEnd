@@ -57,16 +57,16 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
         public IEnumerable<WorkSpace> ReadAllWorkSpace(int userID)
         {
-            return _ctx.WorkSpace.Where(u => u.User.UserId == userID).Include(wsp => wsp.WorkSpacePosters).Include(wsp => wsp.User);
+            return _ctx.WorkSpaces.Where(u => u.User.UserId == userID).Include(wsp => wsp.WorkSpacePosters).Include(wsp => wsp.User);
         }
 
         public WorkSpace ReadWorkSpaceByID(int id)// this is the workspace Id
         {
-            return _ctx.WorkSpace.AsNoTracking().Include(ws => ws.WorkSpacePosters).Include(wsp => wsp.User).FirstOrDefault(WorkSpace => WorkSpace.WorkSpaceId == id);
+            return _ctx.WorkSpaces.AsNoTracking().Include(ws => ws.WorkSpacePosters).Include(wsp => wsp.User).FirstOrDefault(WorkSpace => WorkSpace.WorkSpaceId == id);
         }
         public WorkSpacePoster ReadWorkSpacePosterByID(int id)
         {
-            return _ctx.WorkSpacePoster.AsNoTracking().FirstOrDefault(WorkSpace => WorkSpace.WorkSpacePosterId == id);
+            return _ctx.WorkSpacePosters.AsNoTracking().FirstOrDefault(WorkSpace => WorkSpace.WorkSpacePosterId == id);
         }
         public WorkSpace RemoveWorkSpacePoster(int workSpaceId, int workSpacePosterID)
         {
