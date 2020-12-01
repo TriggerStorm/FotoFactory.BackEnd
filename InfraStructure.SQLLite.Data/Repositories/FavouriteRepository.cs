@@ -10,7 +10,7 @@ namespace InfraStructure.SQLLite.Data.Repositories
     public class FavouriteRepository : IFavouriteRepository
     {
         readonly FotoFactoryContext _ctx;
-        readonly int loggedInUserId = 1;  // MOCK DATA until singleton is implemented or user id passed from fornt end
+        readonly int loggedInUserId = 2;  // MOCK DATA until singleton is implemented or user id passed from fornt end
 
         public FavouriteRepository(FotoFactoryContext ctx)
         {

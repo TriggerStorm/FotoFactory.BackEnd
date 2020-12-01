@@ -1150,6 +1150,46 @@ namespace InfraStructure.SQLLite.Data
                 
             }).Entity;
 
+            user.Favourites = new List<Favourite>
+            {
+                new Favourite
+                {
+                User = user,
+                Poster = poster153DK
+                },
+
+                new Favourite
+                {
+                User = user,
+                Poster = poster154DK
+                },
+
+                new Favourite
+                {
+                User = user,
+                Poster = poster156DK
+                },
+
+                new Favourite
+                {
+                User = user,
+                Poster = poster104CPH
+                },
+
+                new Favourite
+                {
+                User = user,
+                Poster = poster106BW
+                },
+
+                new Favourite
+                {
+                User = user,
+                Poster = poster106FO
+                }
+            };
+
+
 
             // Create WorkSpace
 
@@ -1192,27 +1232,6 @@ namespace InfraStructure.SQLLite.Data
 
             ctx.SaveChanges();
 
-
-            user.Favourites = new List<Favourite>
-            {
-                new Favourite
-                {
-                User = user,
-                Poster = poster153DK
-                },
-
-                new Favourite
-                {
-                User = user,
-                Poster = poster154DK
-                },
-              
-                new Favourite
-                {
-                User = user,
-                Poster = poster156DK
-                }
-            };
 
             user.WorkSpaces.Add(workSpace1);
             user.WorkSpaces.Add(workSpace2);
