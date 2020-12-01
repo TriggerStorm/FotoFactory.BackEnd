@@ -20,9 +20,11 @@ namespace InfraStructure.SQLLite.Data
         public DbSet<PosterTag> PosterTags { get; set; }
         public DbSet<PosterSize> PosterSizes { get; set; }
 
+
         public DbSet<Favourite> Favourites { get; set; }
         public DbSet<WorkSpace> WorkSpaces { get; set; }
         public DbSet<WorkSpacePoster> WorkSpacePosters { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -56,6 +58,7 @@ namespace InfraStructure.SQLLite.Data
                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<PosterSize>()
+
                .HasOne(ps => ps.Size)
                .WithMany(s => s.PosterSizes)
                .HasForeignKey(ps => ps.SizeId)
@@ -71,6 +74,19 @@ namespace InfraStructure.SQLLite.Data
                 .WithMany(u => u.Favourites)
                 .HasForeignKey(f => f.UserId);
             // OnDelete??
+
+
+            //  Create WorkSpace relatons
+
+            modelBuilder.Entity<WorkSpace>()
+                .HasMany(ws => ws.WorkSpacePosters);
+                //workspaceposterid is the foreign key.
+
+            modelBuilder.Entity<WorkSpace>()
+                .HasOne(user => user.User) // should be user
+                .WithMany(u => u.WorkSpaces); //need workspace entity here;
+
+
         }
 
     }
