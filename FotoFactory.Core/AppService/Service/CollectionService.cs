@@ -8,11 +8,13 @@ namespace FotoFactory.Core.AppService.Service
 {
     public class CollectionService: ICollectionService
     {
+        readonly ICollectionValidator _collectionValidator;
         readonly ICollectionRepository _collectionRepo;
 
-        public CollectionService(ICollectionRepository collectionRepository)
+        public CollectionService(ICollectionValidator collectionValidator, ICollectionRepository collectionRepository)
         {
-            _collectionRepo = collectionRepository;
+            _collectionValidator = collectionValidator ?? throw new NullReferenceException("Validator cannot be null");
+            _collectionRepo = collectionRepository ?? throw new NullReferenceException("Repository cannot be null");
         }
 
 
