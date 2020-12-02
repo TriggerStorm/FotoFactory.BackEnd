@@ -83,8 +83,8 @@ namespace InfraStructure.SQLLite.Data
                 //workspaceposterid is the foreign key.
 
             modelBuilder.Entity<WorkSpace>()
-                .HasOne(user => user.User) // should be user
-                .WithMany(u => u.WorkSpaces); //need workspace entity here;
+                .HasOne(user => user.User) 
+                .WithMany(u => u.WorkSpaces); 
 
 
         }

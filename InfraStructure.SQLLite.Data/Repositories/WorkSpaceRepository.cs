@@ -57,16 +57,50 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
         public IEnumerable<WorkSpace> ReadAllWorkSpace(int userID)
         {
-            return _ctx.WorkSpaces.Where(u => u.User.UserId == userID).Include(wsp => wsp.WorkSpacePosters).Include(wsp => wsp.User);
+             var workspaceList = _ctx.WorkSpaces.Where(u => u.User.UserId == userID).Include(wsp => wsp.WorkSpacePosters).Include(wsp => wsp.User);
+             
+             foreach (WorkSpace incompleteWorkSpace in workspaceList)
+             {
+                 var newWorkspace = new List<WorkSpacePoster> { };
+
+                 foreach (WorkSpacePoster incompletePoster in incompleteWorkSpace.WorkSpacePosters)
+                 {
+                     var completePoster = ReadWorkSpacePosterByID(incompletePoster.WorkSpacePosterId);
+                     newWorkspace.Add(completePoster);
+                 }
+
+                 incompleteWorkSpace.WorkSpacePosters.Clear();
+
+                 incompleteWorkSpace.WorkSpacePosters = newWorkspace;
+             }
+
+             return workspaceList;
         }
 
         public WorkSpace ReadWorkSpaceByID(int id)// this is the workspace Id
         {
-            return _ctx.WorkSpaces.AsNoTracking().Include(ws => ws.WorkSpacePosters).Include(wsp => wsp.User).FirstOrDefault(WorkSpace => WorkSpace.WorkSpaceId == id);
+            var workspace = _ctx.WorkSpaces.AsNoTracking().Include(ws => ws.WorkSpacePosters).Include(wsp => wsp.User).FirstOrDefault(WorkSpace => WorkSpace.WorkSpaceId == id);
+           
+            var newWorkspace = new List<WorkSpacePoster>{};// this is a empty temp wsp list
+            
+            foreach (WorkSpacePoster incompletePoster in workspace.WorkSpacePosters)//for every wsp in the ws list ...
+            {
+                var completePoster = ReadWorkSpacePosterByID(incompletePoster.WorkSpacePosterId);// get id from wsp and get completed wsp from db
+                newWorkspace.Add(completePoster); // add completed poster to temp list
+            }
+
+            workspace.WorkSpacePosters.Clear();// clearing the original wsp list so data is not duplicated.
+
+            workspace.WorkSpacePosters = newWorkspace;// adding the new list to ws.
+
+            return workspace;
+
         }
         public WorkSpacePoster ReadWorkSpacePosterByID(int id)
         {
-            return _ctx.WorkSpacePosters.AsNoTracking().FirstOrDefault(WorkSpace => WorkSpace.WorkSpacePosterId == id);
+  
+            return _ctx.WorkSpacePosters.AsNoTracking().Include(ws => ws.Frame).Include(ws => ws.Size).Include(ws => ws.Poster).FirstOrDefault(WorkSpace => WorkSpace.WorkSpacePosterId == id);
+
         }
         public WorkSpace RemoveWorkSpacePoster(int workSpaceId, int workSpacePosterID)
         {
