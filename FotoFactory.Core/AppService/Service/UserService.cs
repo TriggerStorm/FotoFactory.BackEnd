@@ -13,15 +13,15 @@ namespace FotoFactory.Core.AppService.Service
    
     public class UserService : IUserService
     {
+        readonly IUserValidator _userValidator;
         readonly IUserRepository _userRepo;
         private readonly IAuthenticationHelper _authenticationHelper;
-        readonly IUserValidator _userValidator;
 
-        public UserService(IUserRepository userRepository, IAuthenticationHelper authenticationHelper, IUserValidator userValidator)
+        public UserService(IUserValidator userValidator, IUserRepository userRepository, IAuthenticationHelper authenticationHelper)
         {
-            _userRepo = userRepository;
-            _authenticationHelper = authenticationHelper;
-            _userValidator = userValidator;
+            _userValidator = userValidator ?? throw new NullReferenceException("Validator cannot be null");
+            _userRepo = userRepository ?? throw new NullReferenceException("Repository cannot be null");
+            _authenticationHelper = authenticationHelper ?? throw new NullReferenceException("AuthenticationHelper cannot be null");
         }
 
 
