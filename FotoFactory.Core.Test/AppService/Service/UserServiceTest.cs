@@ -32,7 +32,7 @@ namespace FotoFactory.Core.Test.AppService.Service
 
 
         [Fact]
-        public void NewUser_WithNullRepository_ShouldThrowException()
+        public void NewUserService_WithNullAuthenticationHelper_ShouldThrowException()
         {
             var validatorMock = new Mock<IUserValidator>();
             var repositoryMock = new Mock<IUserRepository>();
