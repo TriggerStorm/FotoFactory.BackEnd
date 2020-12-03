@@ -123,7 +123,7 @@ namespace InfraStructure.SQLLite.Data
 
             Tag tag12 = ctx.Tags.Add(new Tag()
             {
-                Description = "Dune"
+                Description = "Dunes"
             }).Entity;
 
             Tag tag13 = ctx.Tags.Add(new Tag()
@@ -171,6 +171,10 @@ namespace InfraStructure.SQLLite.Data
                 Description = "Cabin"
             }).Entity;
 
+            Tag tag22 = ctx.Tags.Add(new Tag()
+            {
+                Description = "Urban"
+            }).Entity;
 
 
 
@@ -3235,90 +3239,25 @@ namespace InfraStructure.SQLLite.Data
             };
 
 
-
-
-
-
-
-
-
-
-            Poster poster106FO = ctx.Posters.Add(new Poster()
-                {
-                    PosterName = "Kyst",
-                    PosterSku = "FF106FO",
-                    Path = "/assets/denmark-posters/FF106FO.png",
-                    CollectionId = 2,
-                }).Entity;
-
-            poster106FO.PosterTags = new List<PosterTag>
-            {
-                new PosterTag
-                {
-                    Poster = poster106FO,
-                    Tag = tag06
-                },
-                 new PosterTag
-                {
-                    Poster = poster106FO,
-                    Tag = tag07
-                },
-                   new PosterTag
-                {
-                    Poster = poster106FO,
-                    Tag = tag08
-                }
-            };
-
-            poster106FO.PosterSizes = new List<PosterSize>
-            {
-                new PosterSize
-                {
-                    Poster = poster106FO,
-                    Size = size03
-                },
-                new PosterSize
-                {
-                    Poster = poster106FO,
-                    Size = size05
-                },
-                new PosterSize
-                {
-                    Poster = poster106FO,
-                    Size = size06
-                }
-            };
-
-
             Poster poster107FO = ctx.Posters.Add(new Poster()
-                {
-                    PosterName = "NordAtlanten",
-                    PosterSku = "FF107FO",
-                    Path = "/assets/denmark-posters/FF107FO.png",
-                    CollectionId = 2,
-                }).Entity;
+            {
+                PosterName = "THE NORTH ATLANTIC",
+                PosterSku = "FF107FO",
+                Path = "/assets/faroe-islands-posters/FF107FO.png",
+                CollectionId = 2,
+            }).Entity;
 
             poster107FO.PosterTags = new List<PosterTag>
             {
                 new PosterTag
                 {
                     Poster = poster107FO,
-                    Tag = tag06
-                },
-                 new PosterTag
-                {
-                    Poster = poster107FO,
-                    Tag = tag07
-                },
-                  new PosterTag
-                {
-                    Poster = poster107FO,
                     Tag = tag08
                 },
-                   new PosterTag
+                new PosterTag
                 {
                     Poster = poster107FO,
-                    Tag = tag09
+                    Tag = tag16
                 }
             };
 
@@ -3342,26 +3281,320 @@ namespace InfraStructure.SQLLite.Data
             };
 
 
+            Poster poster106FO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "COASTLINE",
+                PosterSku = "FF106FO",
+                Path = "/assets/faroe-islands-posters/FF106FO.png",
+                CollectionId = 2,
+            }).Entity;
+
+            poster106FO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster106FO,
+                    Tag = tag08
+                },
+                new PosterTag
+                {
+                    Poster = poster106FO,
+                    Tag = tag16
+                }
+            };
+
+            poster106FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster106FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster106FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster106FO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster105FO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "HOUSES",
+                PosterSku = "FF105FO",
+                Path = "/assets/faroe-islands-posters/FF105FO.png",
+                CollectionId = 2,
+            }).Entity;
+
+            poster105FO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster105FO,
+                    Tag = tag21
+                }
+            };
+
+            poster105FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster105FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster105FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster105FO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster104FO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "HUT",
+                PosterSku = "FF104FO",
+                Path = "/assets/faroe-islands-posters/FF104FO.png",
+                CollectionId = 2,
+            }).Entity;
+
+            poster104FO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster104FO,
+                    Tag = tag21
+                },
+                new PosterTag
+                {
+                    Poster = poster104FO,
+                    Tag = tag04
+                }
+            };
+
+            poster104FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster104FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster104FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster104FO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster103FO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "ISLAND",
+                PosterSku = "FF103FO",
+                Path = "/assets/faroe-islands-posters/FF103FO.png",
+                CollectionId = 2,
+            }).Entity;
+
+            poster103FO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster103FO,
+                    Tag = tag16
+                }
+            };
+
+            poster103FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster103FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster103FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster103FO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster102FO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "MIST",
+                PosterSku = "FF102FO",
+                Path = "/assets/faroe-islands-posters/FF102FO.png",
+                CollectionId = 2,
+            }).Entity;
+
+            poster102FO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster102FO,
+                    Tag = tag20
+                },
+                new PosterTag
+                {
+                    Poster = poster102FO,
+                    Tag = tag13
+                }
+            };
+
+            poster102FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster102FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster102FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster102FO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster101FO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "STORM",
+                PosterSku = "FF101FO",
+                Path = "/assets/faroe-islands-posters/FF101FO.png",
+                CollectionId = 2,
+            }).Entity;
+
+            poster101FO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster101FO,
+                    Tag = tag08
+                },
+                new PosterTag
+                {
+                    Poster = poster101FO,
+                    Tag = tag13
+                },
+                new PosterTag
+                {
+                    Poster = poster101FO,
+                    Tag = tag16
+                }
+            };
+
+            poster101FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster101FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster101FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster101FO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster108FO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "MOUNTAIN",
+                PosterSku = "FF108FO",
+                Path = "/assets/faroe-islands-posters/FF108FO.png",
+                CollectionId = 2,
+            }).Entity;
+
+            poster108FO.PosterTags = new List<PosterTag>
+            {
+                   new PosterTag
+                {
+                    Poster = poster108FO,
+                    Tag = tag20
+                }
+            };
+
+            poster108FO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster108FO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster108FO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster108FO,
+                    Size = size06
+                }
+            };
+
+
             Poster poster101CPH = ctx.Posters.Add(new Poster()
                 {
-                    PosterName = "Cyclen",
+                    PosterName = "BIKE",
                     PosterSku = "FF101CPH",
-                    Path = "/assets/denmark-posters/FF101CPH.png",
+                    Path = "/assets/copenhagen-posters/FF101CPH.png",
                     CollectionId = 3,
                 }).Entity;
 
             poster101CPH.PosterTags = new List<PosterTag>
             {
-                   new PosterTag
+                new PosterTag
+                {
+                    Poster = poster101CPH,
+                    Tag = tag16
+                },
+                new PosterTag
                 {
                     Poster = poster101CPH,
                     Tag = tag03
+                },
+                new PosterTag
+                {
+                    Poster = poster101CPH,
+                    Tag = tag22
                 }
             };
 
             poster101CPH.PosterSizes = new List<PosterSize>
             {
-                  new PosterSize
+                new PosterSize
                 {
                     Poster = poster101CPH,
                     Size = size01
@@ -3386,18 +3619,28 @@ namespace InfraStructure.SQLLite.Data
 
             Poster poster104CPH = ctx.Posters.Add(new Poster()
                 {
-                    PosterName = "Sosiden",
+                    PosterName = "LAKESIDE",
                     PosterSku = "FF104CPH",
-                    Path = "/assets/denmark-posters/FF104CPH.png",
+                    Path = "/assets/copenhagen-posters/FF104CPH.png",
                     CollectionId = 3,
                 }).Entity;
 
             poster104CPH.PosterTags = new List<PosterTag>
             {
-                   new PosterTag
+                 new PosterTag
+                {
+                    Poster = poster104CPH,
+                    Tag = tag04
+                },
+                 new PosterTag
                 {
                     Poster = poster104CPH,
                     Tag = tag03
+                },
+                new PosterTag
+                {
+                    Poster = poster104CPH,
+                    Tag = tag22
                 }
             };
 
@@ -3426,11 +3669,162 @@ namespace InfraStructure.SQLLite.Data
             };
 
 
+            Poster poster103CPH = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "BACKYARD",
+                PosterSku = "FF103CPH",
+                Path = "/assets/copenhagen-posters/FF103CPH.png",
+                CollectionId = 3,
+            }).Entity;
+
+            poster103CPH.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster103CPH,
+                    Tag = tag03
+                },
+                new PosterTag
+                {
+                    Poster = poster103CPH,
+                    Tag = tag22
+                }
+            };
+
+            poster103CPH.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster103CPH,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster103CPH,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster103CPH,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster103CPH,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster105CPH = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "HARBOUR",
+                PosterSku = "FF105CPH",
+                Path = "/assets/copenhagen-posters/FF105CPH.png",
+                CollectionId = 3,
+            }).Entity;
+
+            poster105CPH.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster105CPH,
+                    Tag = tag10
+                },
+                new PosterTag
+                {
+                    Poster = poster105CPH,
+                    Tag = tag16
+                },
+                new PosterTag
+                {
+                    Poster = poster105CPH,
+                    Tag = tag22
+                }
+            };
+
+            poster105CPH.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster105CPH,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster105CPH,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster105CPH,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster105CPH,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster102CPH = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "BOAT",
+                PosterSku = "FF102CPH",
+                Path = "/assets/copenhagen-posters/FF102CPH.png",
+                CollectionId = 3,
+            }).Entity;
+
+            poster102CPH.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster102CPH,
+                    Tag = tag16
+                },
+                new PosterTag
+                {
+                    Poster = poster102CPH,
+                    Tag = tag03
+                },
+                new PosterTag
+                {
+                    Poster = poster102CPH,
+                    Tag = tag22
+                }
+            };
+
+            poster102CPH.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster102CPH,
+                    Size = size01
+                },
+                new PosterSize
+                {
+                    Poster = poster102CPH,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster102CPH,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster102CPH,
+                    Size = size06
+                }
+            };
+
+
             Poster poster106BW = ctx.Posters.Add(new Poster()
                 {
-                    PosterName = "Længsel",
+                    PosterName = "LONGING",
                     PosterSku = "FF106BW",
-                    Path = "/assets/denmark-posters/FF106BW.png",
+                    Path = "/assets/black-and-white-posters/FF106BW.png",
                     CollectionId = 4,
                 }).Entity;
 
@@ -3439,17 +3833,17 @@ namespace InfraStructure.SQLLite.Data
                 new PosterTag
                 {
                     Poster = poster106BW,
-                    Tag = tag07
+                    Tag = tag10
                 },
                  new PosterTag
                 {
                     Poster = poster106BW,
-                    Tag = tag10
+                    Tag = tag08
                 },
-                   new PosterTag
+                new PosterTag
                 {
                     Poster = poster106BW,
-                    Tag = tag11
+                    Tag = tag16
                 }
             };
 
@@ -3473,11 +3867,58 @@ namespace InfraStructure.SQLLite.Data
             };
 
 
+            Poster poster105BW = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "SILENCE",
+                PosterSku = "FF105BW",
+                Path = "/assets/black-and-white-posters/FF105BW.png",
+                CollectionId = 4,
+            }).Entity;
+
+            poster105BW.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster105BW,
+                    Tag = tag08
+                },
+                 new PosterTag
+                {
+                    Poster = poster105BW,
+                    Tag = tag12
+                },
+                new PosterTag
+                {
+                    Poster = poster105BW,
+                    Tag = tag16
+                }
+            };
+
+            poster105BW.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster105BW,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster105BW,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster105BW,
+                    Size = size06
+                }
+            };
+
+
             Poster poster104BW = ctx.Posters.Add(new Poster()
             {
-                PosterName = "Linie",
+                PosterName = "LINE",
                 PosterSku = "FF104BW",
-                Path = "/assets/denmark-posters/FF104BW.png",
+                Path = "/assets/black-and-white-posters/FF104BW.png",
                 CollectionId = 4,
 
             }).Entity;
@@ -3485,11 +3926,6 @@ namespace InfraStructure.SQLLite.Data
             poster104BW.PosterTags = new List<PosterTag>
             {
                 new PosterTag
-                {
-                    Poster = poster104BW,
-                    Tag = tag11
-                },
-                   new PosterTag
                 {
                     Poster = poster104BW,
                     Tag = tag12
@@ -3517,11 +3953,137 @@ namespace InfraStructure.SQLLite.Data
             };
 
 
+            Poster poster103BW = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "DAYDREAM",
+                PosterSku = "FF103BW",
+                Path = "/assets/black-and-white-posters/FF103BW.png",
+                CollectionId = 4,
+            }).Entity;
+
+            poster103BW.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster103BW,
+                    Tag = tag08
+                },
+                new PosterTag
+                {
+                    Poster = poster103BW,
+                    Tag = tag16
+                }
+            };
+
+            poster103BW.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster103BW,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster103BW,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster103BW,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster102BW = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "CONTRAST",
+                PosterSku = "FF102BW",
+                Path = "/assets/black-and-white-posters/FF102BW.png",
+                CollectionId = 4,
+            }).Entity;
+
+            poster102BW.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster102BW,
+                    Tag = tag08
+                },
+                new PosterTag
+                {
+                    Poster = poster102BW,
+                    Tag = tag16
+                }
+            };
+
+            poster102BW.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster102BW,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster102BW,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster102BW,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster101BW = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "EDGE",
+                PosterSku = "FF101BW",
+                Path = "/assets/black-and-white-posters/FF101BW.png",
+                CollectionId = 4,
+            }).Entity;
+
+            poster101BW.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster101BW,
+                    Tag = tag08
+                },
+                new PosterTag
+                {
+                    Poster = poster101BW,
+                    Tag = tag16
+                }
+            };
+
+            poster101BW.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster101BW,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster101BW,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster101BW,
+                    Size = size06
+                }
+            };
+
+
             Poster poster104SCO = ctx.Posters.Add(new Poster()
             {
-                PosterName = "The Storr",
+                PosterName = "THE STORR",
                 PosterSku = "FF104SCO",
-                Path = "/assets/denmark-posters/FF104SCO.png",
+                Path = "/assets/scotland-posters/FF104SCO.png",
                 CollectionId = 5,
             }).Entity;
 
@@ -3531,17 +4093,11 @@ namespace InfraStructure.SQLLite.Data
                 {
                     Poster = poster104SCO,
                     Tag = tag13
-                },
-                   new PosterTag
-                {
-                    Poster = poster104SCO,
-                    Tag = tag14
                 }
             };
 
             poster104SCO.PosterSizes = new List<PosterSize>
             {
-
                 new PosterSize
                 {
                     Poster = poster104SCO,
@@ -3560,30 +4116,331 @@ namespace InfraStructure.SQLLite.Data
             };
 
 
+            Poster poster110SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "MOUNTAINS",
+                PosterSku = "FF110SCO",
+                Path = "/assets/scotland-posters/FF110SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster110SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster110SCO,
+                    Tag = tag13
+                }
+            };
+
+            poster110SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster110SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster110SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster110SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster109SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "NEIST POINT",
+                PosterSku = "FF109SCO",
+                Path = "/assets/scotland-posters/FF109SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster109SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster109SCO,
+                    Tag = tag08
+                },
+                new PosterTag
+                {
+                    Poster = poster109SCO,
+                    Tag = tag18
+                }
+            };
+
+            poster109SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster109SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster109SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster109SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster102SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "FOREST",
+                PosterSku = "FF102SCO",
+                Path = "/assets/scotland-posters/FF102SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster102SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster102SCO,
+                    Tag = tag02
+                },
+                new PosterTag
+                {
+                    Poster = poster102SCO,
+                    Tag = tag03
+                }
+            };
+
+            poster102SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster102SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster102SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster102SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster101SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "CAMPER",
+                PosterSku = "FF101SCO",
+                Path = "/assets/scotland-posters/FF101SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster101SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster101SCO,
+                    Tag = tag08
+                }
+            };
+
+            poster101SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster101SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster101SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster101SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster103SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "BEN NEVIS",
+                PosterSku = "FF103SCO",
+                Path = "/assets/scotland-posters/FF103SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster103SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster103SCO,
+                    Tag = tag13
+                }
+            };
+
+            poster103SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster103SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster103SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster103SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster105SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "OUTER HEBRIDES",
+                PosterSku = "FF105SCO",
+                Path = "/assets/scotland-posters/FF105SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster105SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster105SCO,
+                    Tag = tag08
+                }
+            };
+
+            poster105SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster105SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster105SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster105SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster106SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "NORWICK BEACH",
+                PosterSku = "FF106SCO",
+                Path = "/assets/scotland-posters/FF106SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster106SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster106SCO,
+                    Tag = tag09
+                },
+                new PosterTag
+                {
+                    Poster = poster106SCO,
+                    Tag = tag08
+                }
+            };
+
+            poster106SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster106SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster106SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster106SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster107SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "YESNABY CASTLE",
+                PosterSku = "FF107SCO",
+                Path = "/assets/scotland-posters/FF107SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster107SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster107SCO,
+                    Tag = tag08
+                }
+            };
+
+            poster107SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster107SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster107SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster107SCO,
+                    Size = size06
+                }
+            };
+
+
             Poster poster108SCO = ctx.Posters.Add(new Poster()
             {
-                PosterName = "Black Cuillin",
+                PosterName = "BLACK CUILLIN",
                 PosterSku = "FF108SCO",
-                Path = "/assets/denmark-posters/FF108SCO.png",
+                Path = "/assets/scotland-posters/FF108SCO.png",
                 CollectionId = 5,
             }).Entity;
 
             poster108SCO.PosterTags = new List<PosterTag>
             {
-                new PosterTag
-                {
-                    Poster = poster108SCO,
-                    Tag = tag13
-                },
-                 new PosterTag
-                {
-                    Poster = poster108SCO,
-                    Tag = tag14
-                },
                    new PosterTag
                 {
                     Poster = poster108SCO,
-                    Tag = tag11
+                    Tag = tag13
                 }
             };
 
@@ -3607,7 +4464,89 @@ namespace InfraStructure.SQLLite.Data
             };
 
 
-//  Create Frames
+            Poster poster111SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "HERMANESS NATIONAL PARK",
+                PosterSku = "FF111SCO",
+                Path = "/assets/scotland-posters/FF111SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster111SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster111SCO,
+                    Tag = tag08
+                }
+            };
+
+            poster111SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster111SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster111SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster111SCO,
+                    Size = size06
+                }
+            };
+
+
+            Poster poster112SCO = ctx.Posters.Add(new Poster()
+            {
+                PosterName = "ISLE OF SCALPAY",
+                PosterSku = "FF112SCO",
+                Path = "/assets/scotland-posters/FF112SCO.png",
+                CollectionId = 5,
+            }).Entity;
+
+            poster112SCO.PosterTags = new List<PosterTag>
+            {
+                new PosterTag
+                {
+                    Poster = poster112SCO,
+                    Tag = tag08
+                },
+                new PosterTag
+                {
+                    Poster = poster112SCO,
+                    Tag = tag18
+                }
+            };
+
+            poster112SCO.PosterSizes = new List<PosterSize>
+            {
+                new PosterSize
+                {
+                    Poster = poster112SCO,
+                    Size = size03
+                },
+                new PosterSize
+                {
+                    Poster = poster112SCO,
+                    Size = size05
+                },
+                new PosterSize
+                {
+                    Poster = poster112SCO,
+                    Size = size06
+                }
+            };
+
+
+
+
+
+            //  Create Frames
 
             Frame NOFRAME = ctx.Frames.Add(new Frame
             {
