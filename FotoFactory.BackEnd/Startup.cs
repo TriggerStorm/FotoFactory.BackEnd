@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using FotoFactory.Core.AppService;
 using FotoFactory.Core.AppService.Service;
+using FotoFactory.Core.AppService.ValidatorInterface;
 using FotoFactory.Core.AppService.Validators;
 using FotoFactory.Core.DomainService;
 using FotoFactory.Core.Helper;
@@ -99,6 +100,10 @@ namespace FotoFactory.BackEnd
             services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
             services.AddScoped<IWorkSpaceService, WorkSpaceService>();
             services.AddScoped<IWorkSpaceValidator, WorkSpaceValidator>();
+
+            services.AddScoped<IWorkSpacePosterRepository, WorkSpacePosterRepository>();
+            services.AddScoped<IWorkSpacePosterService, WorkSpacePosterService>();
+            services.AddScoped<IWorkSpacePosterValidator, WorkSpacePosterValidator>();
 
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
