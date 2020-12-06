@@ -40,7 +40,7 @@ namespace FotoFactory.Core.Test.AppService.Service
 
 
         [Fact]
-        public void CollectionService_TestReadAllCollectionPostersBehaviour()
+        public void CollectionService_FindPostersByCollectionIdBehaviour()
         {
             var validatorMock = new Mock<ICollectionValidator>();
             var repositoryMock = new Mock<ICollectionRepository>();
