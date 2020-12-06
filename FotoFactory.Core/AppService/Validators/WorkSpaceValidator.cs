@@ -32,8 +32,11 @@ namespace FotoFactory.Core.AppService.Validators
         {
             if(id == null || id <= 0)
                 throw new NoNullAllowedException($"id cannot be null");
-            if(String.IsNullOrEmpty(workSpace.Name))// need to write integer here
+            if(String.IsNullOrEmpty(workSpace.Name))
                 throw new NoNullAllowedException("name cannot have numbers or be empty");
+            if (string.IsNullOrEmpty(workSpace.BackGroundColour))
+                throw new NoNullAllowedException($"background colour cannot be null");
+            
         }
 
         public void CheckWorkspaceIdValidity(int workSpaceId , int workSpacePosterId) //Used for adding and removing workspace posters

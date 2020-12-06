@@ -79,12 +79,28 @@ namespace InfraStructure.SQLLite.Data
             //  Create WorkSpace relatons
 
             modelBuilder.Entity<WorkSpace>()
-                .HasMany(ws => ws.WorkSpacePosters);
-                //workspaceposterid is the foreign key.
+                .HasMany<WorkSpacePoster>(ws => ws.WorkSpacePosters);
+
+            //workspaceposterid is the foreign key.
 
             modelBuilder.Entity<WorkSpace>()
-                .HasOne(user => user.User) 
-                .WithMany(u => u.WorkSpaces); 
+                .HasOne<User>(ws => ws.User)
+                .WithMany(u => u.WorkSpaces);
+            
+
+            // Create WorkSpacePoster relations
+
+            modelBuilder.Entity<WorkSpacePoster>()
+                .HasOne<Poster>(wsp => wsp.Poster);
+
+            modelBuilder.Entity<WorkSpacePoster>()
+                .HasOne<Frame>(f => f.Frame);
+
+            modelBuilder.Entity<WorkSpacePoster>()
+                .HasOne<Size>(s => s.Size);
+
+
+
 
 
         }

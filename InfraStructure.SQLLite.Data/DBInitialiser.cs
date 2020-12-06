@@ -1222,7 +1222,7 @@ namespace InfraStructure.SQLLite.Data
 
             ctx.SaveChanges();
 
-        } // closese SeedDB
+        } 
 
     }
 }
