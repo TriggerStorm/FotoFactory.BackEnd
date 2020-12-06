@@ -7,12 +7,14 @@ namespace FotoFactory.Core.AppService.Service
 {
     public class FavouriteService: IFavouriteService
     {
+        readonly IFavouriteValidator _favouriteValidator;
         readonly IFavouriteRepository _favouriteRepo;
 
 
-        public FavouriteService(IFavouriteRepository favouriteRepository)
+        public FavouriteService(IFavouriteValidator favouriteValidator, IFavouriteRepository favouriteRepository)
         {
-            _favouriteRepo = favouriteRepository;
+            _favouriteValidator = favouriteValidator ?? throw new NullReferenceException("Validator cannot be null");
+            _favouriteRepo = favouriteRepository ?? throw new NullReferenceException("Repository cannot be null");
         }
 
 
