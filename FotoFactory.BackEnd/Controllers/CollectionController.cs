@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using FotoFactory.Core.AppService;
 using FotoFactory.CoreEntities;
@@ -31,7 +32,8 @@ namespace FotoFactory.BackEnd.Controllers
                 return BadRequest("Request Failed - Id must be greater than zero");
             }
             IEnumerable<Poster> collectionPosters = _collectionService.FindPostersByCollectionId(id);
-            if (collectionPosters == null)  //|| collectionPosters == [])
+            List<Poster> collectionPosterList = collectionPosters.ToList();
+            if (collectionPosterList.Count == 0)
             {
                 return StatusCode(404, "No posters in collection with id " + id + " were found");
             }

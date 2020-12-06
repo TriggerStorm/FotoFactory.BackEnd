@@ -37,5 +37,36 @@ namespace FotoFactory.Core.Test.AppService.Service
             var repositoryMock = new Mock<ICollectionRepository>();
             new CollectionService(validatorMock.Object, repositoryMock.Object).Should().BeAssignableTo<ICollectionService>();
         }
+
+
+        [Fact]
+        public void CollectionService_TestReadAllCollectionPostersBehaviour()
+        {
+            var validatorMock = new Mock<ICollectionValidator>();
+            var repositoryMock = new Mock<ICollectionRepository>();
+            CollectionService collectionService = new CollectionService(validatorMock.Object, repositoryMock.Object);
+            List<Poster> mockCollection = new List<Poster>()
+            {
+                new Poster
+                {
+                    PosterId = 84,
+                    PosterName = "Rold Skov",
+                    PosterSku = "FF160DK",
+                    Path = ".../Assets/FF160DK.jpg",
+                    CollectionId = 1
+                },
+                new Poster
+                {
+                    PosterId = 85,
+                    PosterName = "Rold",
+                    PosterSku = "FF140DK",
+                    Path = ".../Assets/FF140DK.jpg",
+                    CollectionId = 1
+                }
+            };
+            repositoryMock.Setup(repositoryMock => repositoryMock.ReadAllCollectionPosters(1)); //.Returns(() => List<Poster>);
+            collectionService.FindPostersByCollectionId(1);
+            repositoryMock.Verify(repositoryMock => repositoryMock.ReadAllCollectionPosters(1), Times.Once);
+        }
     }
 }
