@@ -6,7 +6,7 @@ namespace FotoFactory.Core.AppService
 {
     public interface ICollectionService
     {
-        IEnumerable<Poster> FindPostersByCollectionId(int collectionId);
+        List<Poster> FindPostersByCollectionId(int collectionId);
     }
 
 }

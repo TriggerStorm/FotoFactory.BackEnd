@@ -6,6 +6,6 @@ namespace FotoFactory.Core.DomainService
 {
     public interface ICollectionRepository
     {
-        IEnumerable<Poster> ReadAllCollectionPosters(int collectionId);
+        List<Poster> ReadAllCollectionPosters(int collectionId);
     }
 }

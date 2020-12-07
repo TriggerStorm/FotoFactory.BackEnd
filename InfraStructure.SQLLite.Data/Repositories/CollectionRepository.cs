@@ -17,7 +17,7 @@ namespace InfraStructure.SQLLite.Data.Repositories
         }
 
 
-        public IEnumerable<Poster> ReadAllCollectionPosters(int collectionId)
+        public List<Poster> ReadAllCollectionPosters(int collectionId)
         {
             // this works... but no tags
             // return _ctx.Posters.Where(p => p.CollectionId == collectionId).Include(p => p.PosterTags).Include(p => p.PosterSizes);
@@ -46,7 +46,7 @@ namespace InfraStructure.SQLLite.Data.Repositories
                     ps.Size.PosterSizes = null;
                 }
             }
-            return pl;
+            return pl.ToList();
         }
     }
 }
