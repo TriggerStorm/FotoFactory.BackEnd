@@ -20,7 +20,7 @@ namespace FotoFactory.Core.AppService.Service
         {
             _workSpacePosterRepository = workSpacePosterRepository ?? throw new NullReferenceException($"Repo cannot be null");
             _workSpacePosterValidator = workSpacePosterValidator ?? throw new NullReferenceException($"validator cannot be null");
-            _authenticationHelper = authenticationHelper ?? throw new NullReferenceException($"authentication helper cannot be null");
+            _authenticationHelper = authenticationHelper ?? throw new NullReferenceException($"Authentication helper cannot be null");
         }
         public WorkSpacePoster CreateWorkSpacePoster(int xpos, int ypos, int posterId, int frameId, int sizeId)
         {
