@@ -64,9 +64,11 @@ namespace FotoFactory.Core.Test.AppService.Service
                     CollectionId = 1
                 }
             };
-            repositoryMock.Setup(repositoryMock => repositoryMock.ReadAllCollectionPosters(1)); //.Returns(() => List<Poster>);
+            repositoryMock.Setup(repositoryMock => repositoryMock.ReadAllCollectionPosters(1));
             collectionService.FindPostersByCollectionId(1);
             repositoryMock.Verify(repositoryMock => repositoryMock.ReadAllCollectionPosters(1), Times.Once);
         }
+
+
     }
 }

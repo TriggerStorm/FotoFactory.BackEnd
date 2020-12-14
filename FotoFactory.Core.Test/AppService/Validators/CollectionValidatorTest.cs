@@ -16,12 +16,12 @@ namespace FotoFactory.Core.Test
         }
 
 
-     /*   [Fact]
+        [Fact]
         public void DefaultValidation_WithPosterThatsNull_ShouldThrowExeption()
         {
             IPosterValidator posterValidator = new PosterValidator();
             Action action = () => posterValidator.DefaultValidation(null as Poster);
             action.Should().Throw<NullReferenceException>().WithMessage("Poster cannot be null");
-        }  */
+        }
     }
 }
