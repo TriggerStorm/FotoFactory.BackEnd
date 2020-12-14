@@ -13,18 +13,20 @@ namespace FotoFactory.Core.AppService.Validators
         public void DefaultValidation(WorkSpace workSpace)
         {
             if (workSpace.Name == null)
-                throw new NoNullAllowedException($" Name cannot be empty");
-            if (workSpace.Name.Length >= 200 || workSpace.Name.Length <= 5)
-                throw new InvalidDataException($" name cannot be less than 5 or more than 200 characters");
+                throw new NoNullAllowedException($"Name cannot be null");
+            if (workSpace.Name.Length >= 200)
+                throw new InvalidDataException($"name cannot be more than 200 characters");
+            if(workSpace.Name.Length <= 5)
+                throw new InvalidDataException($"name cannot be less than 5 characters");
             if (workSpace.BackGroundColour == null)
-                throw new NullReferenceException($"Workspace needs a colour");
+                throw new NullReferenceException($"BackGroundColour cannot be null");
 
         }
 
         public void DeleteWorkSpace(int id)
         {
             if(id == null || id<=0)
-                throw new ArgumentNullException("provide a valid id to delete");
+                throw new ArgumentNullException("id cannot be null or negative");
             
         }
 
@@ -43,19 +45,8 @@ namespace FotoFactory.Core.AppService.Validators
         // Only checks workspaceID and poster ID because we get objects from database using ID.
         {
             if (workSpaceId <= 0 || workSpacePosterId <= 0)
-                throw new ArgumentNullException("provide a valid id to add");
-            /* if(workSpacePoster.WorkSpaceId == null || workSpacePoster.WorkSpaceId <=0)
-                 throw new NoNullAllowedException();
-             if(workSpacePoster.Frame.FrameType == null )
-                 throw new NoNullAllowedException($"each frame has a type");
-             if(workSpacePoster.Frame.FrameSku == null)
-                 throw new NoNullAllowedException($"every frame has a skuId");
-             if(workSpacePoster.Poster.PosterId == null || workSpacePoster.Poster.PosterId <=0)
-                 throw new NoNullAllowedException($"foreign key constraint as poster Id cannot be null or in negative");
-             if(workSpacePoster.Size.SizeId == null || workSpacePoster.Size.SizeId <=0)
-                 throw new NoNullAllowedException($"foreign key constraint");
-             if(workSpacePoster.XPos <= -1 && workSpacePoster.YPos <= -1)
-                 throw new Exception($" post of x and y cannot be null");*/
+                throw new InvalidDataException("workSpaceId and WorkSpacePosterId cannot be less than 1");
+            
         }
 
         public void AddWorkSpacePoster(int workSpaceId, int workSpacePosterId)

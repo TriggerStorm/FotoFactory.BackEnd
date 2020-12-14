@@ -17,9 +17,9 @@ namespace FotoFactory.Core.AppService.Service
 
         public WorkSpaceService(IWorkSpaceRepository workSpaceRepository , IWorkSpaceValidator workSpaceValidator, IAuthenticationHelper authenticationHelper)
         {
-            _workSpaceRepository = workSpaceRepository;
-            _workSpaceValidator = workSpaceValidator;
-            _authenticationHelper = authenticationHelper;
+            _workSpaceRepository = workSpaceRepository ?? throw new NullReferenceException("Repo cannot be null"); 
+            _workSpaceValidator = workSpaceValidator ?? throw new NullReferenceException("Validator cannot be null"); 
+            _authenticationHelper = authenticationHelper ?? throw new NullReferenceException("AuthenticationHelper cannot be null"); ;
         }
         public WorkSpace AddWorkSpacePoster(int workSpaceId, int workSpacePosterId)// need object.
         {

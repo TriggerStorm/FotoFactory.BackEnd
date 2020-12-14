@@ -7,7 +7,7 @@ namespace FotoFactory.Core.AppService
 {
     public interface IWorkSpaceService
     {
-        WorkSpace CreateWorkSpace(string name, string backgroundColour);//ask neds can we not just pass the object in param
+        WorkSpace CreateWorkSpace(string name , string backgroundColour);//ask neds can we not just pass the object in param
         WorkSpace ReadWorkSpaceByID(int id);
         List<WorkSpace> ReadAllWorkSpace(int userId);
         WorkSpace UpdateWorkSpace(int id, WorkSpace workSpace);

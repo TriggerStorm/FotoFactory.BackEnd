@@ -24,7 +24,7 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
             if (workSpace == null && workSpacePoster == null)
             {
-                throw new NoNullAllowedException("Workspace or poster doesnt exist");
+                throw new NoNullAllowedException("Workspace or poster doesn't exist");
             }
 
             workSpace.WorkSpacePosters.Add(workSpacePoster);
