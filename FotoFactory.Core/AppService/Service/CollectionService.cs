@@ -18,9 +18,9 @@ namespace FotoFactory.Core.AppService.Service
         }
 
 
-        public IEnumerable<Poster> FindPostersByCollectionId(int collectionId)
+        public List<Poster> FindPostersByCollectionId(int collectionId)
         {
-            return _collectionRepo.ReadAllCollectionPosters(collectionId).ToList();
+            return _collectionRepo.ReadAllCollectionPosters(collectionId);
         }
 
     }

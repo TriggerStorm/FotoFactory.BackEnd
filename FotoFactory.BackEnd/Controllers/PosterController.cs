@@ -39,5 +39,27 @@ namespace FotoFactory.BackEnd.Controllers
             return StatusCode(200, poster);
         }
 
+
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Poster poster)
+        {
+            if (id != poster.PosterId)
+            {
+                return BadRequest("Poster IDs must match");
+            }
+
+            try
+            {
+                return StatusCode(503, "Update not inmplemented yet");
+                // Ok(_posterService.Update(poster));
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
     }
 }

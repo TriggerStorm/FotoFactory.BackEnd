@@ -4667,11 +4667,12 @@ namespace InfraStructure.SQLLite.Data
 
             User admin = ctx.Users.Add(new User()
             {
+                //UserId = 1,
                 Username = "admin",
                 PasswordHash = passwordHashAdmin,
                 PasswordSalt = passwordSaltAdmin,
                 IsAdmin = true,
-               
+
             }).Entity;
 
             admin.Favourites = new List<Favourite>

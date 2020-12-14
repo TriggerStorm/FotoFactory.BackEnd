@@ -24,6 +24,10 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
             // v2 Hacky but works
             Poster p = _ctx.Posters.Include(p => p.PosterTags).Include(p => p.PosterSizes).FirstOrDefault(p => p.PosterId == id);
+            if (p == null)
+            {
+                return p;
+            }
             IEnumerable<PosterTag> ptlist = p.PosterTags;
             foreach (PosterTag pt in ptlist)
             {

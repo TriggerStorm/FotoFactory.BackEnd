@@ -38,6 +38,7 @@ namespace FotoFactory.BackEnd.Controllers
             // Authentication successful
             return Ok(new
             {
+                userId = user.UserId,
                 username = user.Username,
                 token = authenticationHelper.GenerateToken(user)
             });

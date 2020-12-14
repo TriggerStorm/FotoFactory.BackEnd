@@ -12,14 +12,19 @@ namespace FotoFactory.Core.AppService.Service
     public class WorkSpaceService : IWorkSpaceService
     {
         private readonly IWorkSpaceRepository _workSpaceRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IWorkSpaceValidator _workSpaceValidator;
         private readonly IAuthenticationHelper _authenticationHelper;
 
-        public WorkSpaceService(IWorkSpaceRepository workSpaceRepository , IWorkSpaceValidator workSpaceValidator, IAuthenticationHelper authenticationHelper)
+        public WorkSpaceService(IWorkSpaceRepository workSpaceRepository , IWorkSpaceValidator workSpaceValidator, IUserRepository userRepository, IAuthenticationHelper authenticationHelper)
         {
+
             _workSpaceRepository = workSpaceRepository ?? throw new NullReferenceException("Repo cannot be null"); 
             _workSpaceValidator = workSpaceValidator ?? throw new NullReferenceException("Validator cannot be null"); 
             _authenticationHelper = authenticationHelper ?? throw new NullReferenceException("AuthenticationHelper cannot be null"); ;
+
+            _userRepository = userRepository;
+
         }
         public WorkSpace AddWorkSpacePoster(int workSpaceId, int workSpacePosterId)// need object.
         {
@@ -27,12 +32,14 @@ namespace FotoFactory.Core.AppService.Service
             return _workSpaceRepository.AddWorkSpacePoster(workSpaceId, workSpacePosterId);
         }
 
-        public WorkSpace CreateWorkSpace(string name, string backgroundColour)
+        public WorkSpace CreateWorkSpace(string name, string backgroundColour, int userID)
         {
             WorkSpace workSpace = new WorkSpace()
             {
                 Name = name,
-                BackGroundColour = backgroundColour
+                BackGroundColour = backgroundColour,
+                User = _userRepository.ReadById(userID)
+
             };
             _workSpaceValidator.DefaultValidation(workSpace);
             return _workSpaceRepository.CreateWorkSpace(workSpace);

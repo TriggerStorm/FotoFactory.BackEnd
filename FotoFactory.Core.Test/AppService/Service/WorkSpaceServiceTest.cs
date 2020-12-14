@@ -36,7 +36,8 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceAuthenticationHelperMock = new Mock<IAuthenticationHelper>();
-            Action action = () => new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            Action action = () => new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, userRepoMock.Object,
                 workSpaceAuthenticationHelperMock.Object).Should().NotBe(null);
             
         }
@@ -47,7 +48,8 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceAuthenticationHelperMock = new Mock<IAuthenticationHelper>();
-            new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 workSpaceAuthenticationHelperMock.Object).Should().BeAssignableTo<IWorkSpaceService>();
         }
 
@@ -57,7 +59,8 @@ namespace FotoFactory.Core.Test.AppService.Service
         {
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceAuthenticationHelperMock = new Mock<IAuthenticationHelper>();
-            Action action = () => new WorkSpaceService(null as IWorkSpaceRepository, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            Action action = () => new WorkSpaceService(null as IWorkSpaceRepository, workSpaceValidatorMock.Object,userRepoMock.Object,
                 workSpaceAuthenticationHelperMock.Object);
             action.Should().Throw<NullReferenceException>().WithMessage("Repo Cannot be null");
         }
@@ -68,7 +71,8 @@ namespace FotoFactory.Core.Test.AppService.Service
         {
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
-            Action action = () => new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            Action action = () => new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 null as IAuthenticationHelper);
             action.Should().Throw<NullReferenceException>().WithMessage("AuthenticationHelper cannot be null");
             
@@ -82,7 +86,9 @@ namespace FotoFactory.Core.Test.AppService.Service
         //    var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
         //    var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
         //    var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-        //    IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, authenticationHelperMock.Object);
+        //    var userRepoMock = new Mock<IUserRepository>();
+        //    IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object
+        //    authenticationHelperMock.Object);
         //    var workSpace = new WorkSpace() { Name = "kitchen", BackGroundColour = "grey" };
         // assign
         //    workSpaceRepositoryMock.Setup(workSpaceRepositoryMock => workSpaceRepositoryMock.CreateWorkSpace(workSpace)).Returns(() => workSpace);
@@ -99,7 +105,8 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
             var readWorkSpace = new WorkSpace(){WorkSpaceId = 50 , Name = "", BackGroundColour = ""};
             //assign
@@ -117,8 +124,9 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object,
-                workSpaceValidatorMock.Object, authenticationHelperMock.Object);
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, userRepoMock.Object,
+                authenticationHelperMock.Object);
             var mockWorkSpace = new WorkSpace(){WorkSpaceId = 0, Name = "", BackGroundColour = ""};// need a userid to read all workspace
             //assign
             workSpaceRepositoryMock.Setup(r => r.ReadAllWorkSpace(0));
@@ -135,7 +143,8 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
             WorkSpace mockWorkSpace = new WorkSpace() { WorkSpaceId = -1, Name = " bedroom", BackGroundColour = "yellow" };
             //assign
@@ -154,7 +163,8 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
             var mockWorkSpace = new WorkSpace() { WorkSpaceId = 10, Name = " kitchen", BackGroundColour = "green" };
            //assign 
@@ -172,7 +182,8 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
             WorkSpace mockWorkSpace = new WorkSpace() {WorkSpaceId = 0,Name = " stairs", BackGroundColour = "green"};
             //assign
@@ -190,7 +201,8 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
             WorkSpace mockWorkSpace = new WorkSpace() { WorkSpaceId = -1, Name = " bedroom", BackGroundColour = "yellow" };
             //assign
@@ -209,7 +221,9 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object,workSpaceValidatorMock.Object,authenticationHelperMock.Object);
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object,workSpaceValidatorMock.Object,userRepoMock.Object,
+                authenticationHelperMock.Object);
             var workSpace = new WorkSpace(){ WorkSpaceId = 11, Name = " Bedroom", BackGroundColour = " blue" };
             //assign
             var workSpaceUpdate = new WorkSpace() { WorkSpaceId = 11, Name = " Bathroom", BackGroundColour = " black" };
@@ -229,7 +243,9 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, authenticationHelperMock.Object);
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, 
+                userRepoMock.Object,authenticationHelperMock.Object);
             //assign
             var deletedWorkSpace = new WorkSpace() {WorkSpaceId = 3, Name = "", BackGroundColour = ""};
             workSpaceRepositoryMock.Setup(r => r.DeleteWorkSpace(3)).Returns(() => deletedWorkSpace);
@@ -247,7 +263,9 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, authenticationHelperMock.Object);
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,
+                userRepoMock.Object,authenticationHelperMock.Object);
             //assign
             workSpaceRepositoryMock.Setup(r => r.AddWorkSpacePoster(2, 0));
             service.AddWorkSpacePoster(2, 0);
@@ -264,7 +282,9 @@ namespace FotoFactory.Core.Test.AppService.Service
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var authenticationHelperMock = new Mock<IAuthenticationHelper>();
-            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, authenticationHelperMock.Object);
+            var userRepoMock = new Mock<IUserRepository>();
+            IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, 
+                userRepoMock.Object,authenticationHelperMock.Object);
           //assign
             var deleteWorkSpacePoster = new WorkSpacePoster() {WorkSpacePosterId = -2};
             workSpaceRepositoryMock.Setup(r => r.RemoveWorkSpacePoster(-2, -2));
