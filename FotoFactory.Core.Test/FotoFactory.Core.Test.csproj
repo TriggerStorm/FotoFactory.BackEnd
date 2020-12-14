@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FotoFactory.BackEnd\FotoFactory.BackEnd.csproj" />
+    <ProjectReference Include="..\FotoFactory.CoreEntities\FotoFactory.CoreEntities.csproj" />
     <ProjectReference Include="..\FotoFactory.Core\FotoFactory.Core.csproj" />
     <ProjectReference Include="..\InfraStructure.SQLLite.Data\InfraStructure.SQLLite.Data.csproj" />
   </ItemGroup>

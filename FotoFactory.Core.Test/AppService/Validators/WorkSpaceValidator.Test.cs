@@ -56,7 +56,7 @@ namespace FotoFactory.Core.Test.AppService.Validators
         public void TestworkSpace_DeafultValidatiion_NameLengthNotMoreThan200_ThrowException()
         {
             IWorkSpaceValidator validator = new WorkSpaceValidator();
-            Action action = () => validator.DefaultValidation(new WorkSpace() {Name = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", BackGroundColour = "lol" });
+            Action action = () => validator.DefaultValidation(new WorkSpace() {Name = ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"), BackGroundColour = "yellow"});
             action.Should().Throw<InvalidDataException>().WithMessage($"name cannot be more than 200 characters");
         }
 

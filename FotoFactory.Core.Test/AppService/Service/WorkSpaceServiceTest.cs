@@ -71,6 +71,7 @@ namespace FotoFactory.Core.Test.AppService.Service
         {
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
+            var autheticationHelperMock = new Mock<IAuthenticationHelper>();
             var userRepoMock = new Mock<IUserRepository>();
             Action action = () => new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 null as IAuthenticationHelper);
