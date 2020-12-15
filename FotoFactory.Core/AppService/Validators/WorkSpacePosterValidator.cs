@@ -13,10 +13,11 @@ namespace FotoFactory.Core.AppService.Validators
 
         public void DefaultValidation(WorkSpacePoster workSpacePoster)
         {
-            if (workSpacePoster.XPos <= -1 && workSpacePoster.YPos <= -1)
-                throw new Exception($" post of x and y cannot be negative");
+            if (workSpacePoster.XPos <= -1 || workSpacePoster.YPos <= -1) 
+                throw new Exception($"position of x and y cannot be negative");
         }
 
+       
         public void DeleteWorkSpacePoster(int id)
         {
             if (id <= 0)
@@ -32,8 +33,9 @@ namespace FotoFactory.Core.AppService.Validators
                 throw new NoNullAllowedException($"id cant be null or negative");
             }
             if (XPos <= -1 && YPos <= -1)
-                throw new Exception($" post of x and y cannot be negative");
+                throw new NoNullAllowedException($"position of x and y cannot be negative");
 
         }
+
     }
 }

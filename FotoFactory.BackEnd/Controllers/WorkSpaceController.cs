@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,8 +23,8 @@ namespace FotoFactory.BackEnd.Controllers
 
         public WorkSpaceController(IWorkSpaceService workSpaceService , IWorkSpaceValidator workSpaceValidator)
         {
-            _workSpaceService = workSpaceService;
-            _workSpaceValidator = workSpaceValidator;
+            _workSpaceService = workSpaceService ?? throw new NullReferenceException("Service cannot be null"); ;
+            _workSpaceValidator = workSpaceValidator ?? throw new NullReferenceException("Validator cannot be null"); ;
         }
         // GET: api/<WorkSpaceController>
         // https://localhost:44387/api/WorkSpace?userID=1&workspaceID=1
@@ -83,8 +83,10 @@ namespace FotoFactory.BackEnd.Controllers
                 {
                     return StatusCode(500, $" User needed");
                 }
-                
-                return Ok(_workSpaceService.CreateWorkSpace(data["name"].ToString(), data["backGroundColour"].ToString(), (int)data["user"]));
+
+
+                return Ok(_workSpaceService.CreateWorkSpace(data["name"].ToString(), data["background"].ToString(), (int)data["user"]));
+
             }
             catch (ArgumentNullException e)
             {
