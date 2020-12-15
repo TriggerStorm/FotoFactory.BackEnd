@@ -24,6 +24,7 @@ namespace FotoFactory.BackEnd.Controllers
         }
 
         // GET api/summary
+        [HttpGet]
         public ActionResult<List<Summary>> Get([FromBody] List<WorkSpace> allWorkSpaces)
         {
             List<Summary> allSummaries = _summaryService.GetSummaryList(allWorkSpaces);
