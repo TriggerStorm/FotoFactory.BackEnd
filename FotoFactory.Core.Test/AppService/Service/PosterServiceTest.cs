@@ -53,7 +53,6 @@ namespace FotoFactory.Core.Test.AppService.Service
                 Path = ".../Assets/FF160DK.jpg",
                 CollectionId = 1
             };
-
             repositoryMock.Setup(repositoryMock => repositoryMock.ReadPosterById(84)).Returns(() => mockPoster);
             posterService.FindPosterById(84);
             repositoryMock.Verify(repositoryMock => repositoryMock.ReadPosterById(84), Times.Once);
