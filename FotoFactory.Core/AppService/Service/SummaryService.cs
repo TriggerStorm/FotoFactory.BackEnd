@@ -59,5 +59,24 @@ namespace FotoFactory.Core.AppService.Service
             allSummaries.Add(totalPriceSummary);
             return allSummaries;
         }
+
+
+        /*
+        public void ExportToCSV (List<Summary> allSummaries)
+        {
+            var csv = new StringBuilder();
+            string filePath = "/Summary";
+            foreach (Summary summary in allSummaries)
+            {
+                var first = reader[0].ToString();
+                var second = image.ToString();
+                //Suggestion made by KyleMit
+                var newLine = string.Format("{0},{1}", first, second);
+                csv.AppendLine(newLine);
+            }
+            //after your loop
+            File.WriteAllText(filePath, csv.ToString());
+        }
+        */
     }
 }
