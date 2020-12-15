@@ -25,10 +25,10 @@ namespace FotoFactory.Core.Test.RestApi.Controllers
             Assert.Equal(list, (result as OkObjectResult).Value);
         }
 
-        [Fact]
-        public void GetAll_WithZeroUserId_ThrowException()
-        {
+        //[Fact]
+        //public void GetAll_WithZeroUserId_ThrowException()
+        //{
 
-        }
+        //}
     }
 }

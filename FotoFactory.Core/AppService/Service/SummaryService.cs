@@ -7,6 +7,7 @@ namespace FotoFactory.Core.AppService.Service
 {
     public class SummaryService : ISummaryService
     {
+
         public List<Summary> GetSummaryList(List<WorkSpace> workSpaces)
         {
             List<Summary>  allSummaries = new List<Summary>();
@@ -26,14 +27,17 @@ namespace FotoFactory.Core.AppService.Service
                     
                    // summaryWorkSpaces.Add(workSpace);
 
-                    foreach (WorkSpacePoster workSpacePoster in wsp)
+
+                    foreach (WorkSpacePoster workSpacePoster in workSpace.WorkSpacePosters)
                     {
+
                         double posterAndFramePrice = 0;
                         if (workSpacePoster.Frame.FrameType == "NOFRAME")
                         {
                             posterAndFramePrice = workSpacePoster.Size.PosterPrice;
                         }
                         else
+
                         {
                             posterAndFramePrice = workSpacePoster.Size.PosterPrice + workSpacePoster.Size.FramePrice;
                         }
@@ -51,6 +55,7 @@ namespace FotoFactory.Core.AppService.Service
                     allSummaries.Add(blank);
                 }
             }
+
             Summary totalPriceSummary = new Summary()
             {
                 Frame = "TOTAL PRICE",
@@ -58,6 +63,7 @@ namespace FotoFactory.Core.AppService.Service
             };
             allSummaries.Add(totalPriceSummary);
             return allSummaries;
+
         }
     }
 }
