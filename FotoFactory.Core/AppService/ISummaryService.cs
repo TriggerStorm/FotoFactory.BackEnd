@@ -7,6 +7,6 @@ namespace FotoFactory.Core.AppService
 {
     public interface ISummaryService
     {
-        Summary GetSummary(List<WorkSpace> workSpaces);
+        List<Summary> GetSummaryList(List<WorkSpace> workSpaces);
     }
 }

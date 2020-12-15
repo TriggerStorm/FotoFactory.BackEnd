@@ -6,8 +6,10 @@ namespace FotoFactory.CoreEntities
 {
    public class Summary
     {
-        public List<WorkSpace> SummaryWorkSpaces { get; set; }
-        public double TotalPrice { get; set; }
-
-    }
+        public string PosterName { get; set; }
+        public string SKUCode { get; set; }
+        public string Size { get; set; }
+        public string Frame { get; set; }
+        public string Price { get; set; }
+   }
 }
