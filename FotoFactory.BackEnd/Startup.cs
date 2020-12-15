@@ -105,6 +105,8 @@ namespace FotoFactory.BackEnd
             services.AddScoped<IWorkSpacePosterService, WorkSpacePosterService>();
             services.AddScoped<IWorkSpacePosterValidator, WorkSpacePosterValidator>();
 
+            services.AddScoped<ISummaryService, SummaryService>();
+
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
             services.AddSingleton<IAuthenticationHelper>(new

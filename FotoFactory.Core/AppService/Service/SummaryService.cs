@@ -23,9 +23,6 @@ namespace FotoFactory.Core.AppService.Service
                     Summary workSpaceName = new Summary() { PosterName = workSpace.Name };
                     allSummaries.Add(workSpaceName);
                     List<WorkSpacePoster> wsp = workSpace.WorkSpacePosters;
-                    
-                   // summaryWorkSpaces.Add(workSpace);
-
                     foreach (WorkSpacePoster workSpacePoster in wsp)
                     {
                         double posterAndFramePrice = 0;

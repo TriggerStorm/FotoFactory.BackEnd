@@ -14,7 +14,7 @@ namespace FotoFactory.BackEnd.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class SummaryController : Controller
+    public class SummaryController : ControllerBase
     {
         private readonly ISummaryService _summaryService;
 
