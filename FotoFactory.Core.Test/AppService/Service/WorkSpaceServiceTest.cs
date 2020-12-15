@@ -109,7 +109,6 @@ namespace FotoFactory.Core.Test.AppService.Service
             var userRepoMock = new Mock<IUserRepository>();
             IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
-            var readWorkSpace = new WorkSpace(){WorkSpaceId = 50 , Name = "", BackGroundColour = ""};
             //assign
             workSpaceRepositoryMock.Setup(r => r.ReadAllWorkSpace(50));
             service.ReadAllWorkSpace(50);

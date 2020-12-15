@@ -24,7 +24,7 @@ namespace FotoFactory.BackEnd.Controllers
         public WorkSpaceController(IWorkSpaceService workSpaceService)
         {
             _workSpaceService = workSpaceService ?? throw new NullReferenceException("Service cannot be null"); ;
-            //_workSpaceValidator = workSpaceValidator ?? throw new NullReferenceException("Validator cannot be null"); ;
+            //_workSpaceValidator = workSpaceValidator ?? throw new NullReferenceException("Validator cannot be null"); 
         }
         // GET: api/<WorkSpaceController>
         // https://localhost:44387/api/WorkSpace?userID=1&workspaceID=1

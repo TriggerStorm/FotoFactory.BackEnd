@@ -69,13 +69,16 @@ namespace FotoFactory.BackEnd.Controllers
                     return StatusCode(500, $" position of y cannot be empty or off the grid");
                 if (data["sizeId"] == null || Int32.Parse(data["sizeId"].ToString()) <= 0)
                     return StatusCode(404, $" sizeId not found");
-                if (data["frameId"] == null || Int32.Parse(data["frameId"].ToString()) <= 0)
-                    return StatusCode(404, $"frameId not found");
+                int frameID = -1;
+                if (data["frameId"] != null)
+                {
+                    frameID = Int32.Parse(data["frameId"].ToString());
+                }
                 if (data["posterId"] == null || Int32.Parse(data["posterId"].ToString()) <= 0)
                     return StatusCode(404, $"posterId not found");
                 return Ok(_workSpacePosterService.CreateWorkSpacePoster(Int32.Parse(data["XPos"].ToString()),
                     Int32.Parse(data["YPos"].ToString()), Int32.Parse(data["posterId"].ToString()),
-                    Int32.Parse(data["frameId"].ToString()), Int32.Parse(data["sizeId"].ToString())));
+                    frameID, Int32.Parse(data["sizeId"].ToString())));
             }
             catch (ArgumentOutOfRangeException e)
             {
