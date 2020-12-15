@@ -74,7 +74,7 @@ namespace FotoFactory.BackEnd.Controllers
         {
             try
             {
-                if ((String.IsNullOrEmpty(data["name"].ToString())) || (String.IsNullOrEmpty(data["background"].ToString())))
+                if ((String.IsNullOrEmpty(data["name"].ToString())) || (String.IsNullOrEmpty(data["backGroundColour"].ToString())))
                 {
                     return StatusCode(500, $" name and background colour need a valid input");
                 }
@@ -83,9 +83,14 @@ namespace FotoFactory.BackEnd.Controllers
                 {
                     return StatusCode(500, $" User needed");
                 }
+<<<<<<< HEAD
 
                 return Ok(_workSpaceService.CreateWorkSpace(data["name"].ToString(), data["background"].ToString(), (int)data["user"]));
 
+=======
+                
+                return Ok(_workSpaceService.CreateWorkSpace(data["name"].ToString(), data["backGroundColour"].ToString(), (int)data["user"]));
+>>>>>>> cd4eb919f486951f25f1f9b358f665eb057dedfe
             }
             catch (ArgumentNullException e)
             {
@@ -115,7 +120,7 @@ namespace FotoFactory.BackEnd.Controllers
         }
 
         // DELETE api/<WorkSpaceController>/5
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
