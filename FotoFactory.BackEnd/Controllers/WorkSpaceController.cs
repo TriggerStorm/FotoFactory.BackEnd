@@ -19,12 +19,12 @@ namespace FotoFactory.BackEnd.Controllers
     public class WorkSpaceController : ControllerBase
     {
         private readonly IWorkSpaceService _workSpaceService;
-        private readonly IWorkSpaceValidator _workSpaceValidator;
+        //private readonly IWorkSpaceValidator _workSpaceValidator;
 
-        public WorkSpaceController(IWorkSpaceService workSpaceService , IWorkSpaceValidator workSpaceValidator)
+        public WorkSpaceController(IWorkSpaceService workSpaceService)
         {
             _workSpaceService = workSpaceService ?? throw new NullReferenceException("Service cannot be null"); ;
-            _workSpaceValidator = workSpaceValidator ?? throw new NullReferenceException("Validator cannot be null"); ;
+            //_workSpaceValidator = workSpaceValidator ?? throw new NullReferenceException("Validator cannot be null"); ;
         }
         // GET: api/<WorkSpaceController>
         // https://localhost:44387/api/WorkSpace?userID=1&workspaceID=1
@@ -38,13 +38,13 @@ namespace FotoFactory.BackEnd.Controllers
                 if (userID > 0)
                 {
                     return Ok(_workSpaceService.ReadAllWorkSpace(userID));
-                }
-
+                } 
+                
                 if (workspaceID > 0)
                 {
                     return Ok(_workSpaceService.ReadWorkSpaceByID(workspaceID));
                 }
-                return Ok(_workSpaceService);
+                return BadRequest();
                 
             }
             catch (Exception e)

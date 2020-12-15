@@ -62,7 +62,7 @@ namespace FotoFactory.Core.Test.AppService.Validators
             var workSpacePosterRepositoryMock = new Mock<IWorkSpacePosterRepository>();
             Action action = () => new WorkSpacePosterService(workSpacePosterRepositoryMock.Object, workSpacePosterValidatorMock.Object,
                 null as IAuthenticationHelper);
-            action.Should().Throw<NullReferenceException>().WithMessage($"authentication helper cannot be null");
+            action.Should().Throw<NullReferenceException>().WithMessage($"AuthenticationHelper cannot be null");
         }
 
         [Fact]
