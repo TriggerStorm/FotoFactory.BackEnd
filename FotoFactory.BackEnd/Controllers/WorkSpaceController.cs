@@ -84,7 +84,7 @@ namespace FotoFactory.BackEnd.Controllers
                     return StatusCode(500, $" User needed");
                 }
                 
-                return Ok(_workSpaceService.CreateWorkSpace(data["name"].ToString(), data["background"].ToString()));
+                return Ok(_workSpaceService.CreateWorkSpace(data["name"].ToString(), data["background"].ToString(), (int)data["user"]));
             }
             catch (ArgumentNullException e)
             {
