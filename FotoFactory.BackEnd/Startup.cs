@@ -105,7 +105,7 @@ namespace FotoFactory.BackEnd
             services.AddScoped<IWorkSpacePosterService, WorkSpacePosterService>();
             services.AddScoped<IWorkSpacePosterValidator, WorkSpacePosterValidator>();
 
-            services.AddScoped<ISummaryService, SummaryService>();
+            services.AddTransient<ISummaryService, SummaryService>();
 
             services.AddTransient<IDBInitialiser, DBInitialiser>();
 
@@ -146,7 +146,7 @@ namespace FotoFactory.BackEnd
             services.AddControllers().AddNewtonsoftJson(options =>
             {    // Use the default property (Pascal) casing
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                   options.SerializerSettings.MaxDepth = 5;  // 100 pet limit per owner
+                   options.SerializerSettings.MaxDepth = 5; 
             });
         }
 
