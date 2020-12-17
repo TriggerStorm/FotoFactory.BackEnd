@@ -170,19 +170,22 @@ namespace FotoFactory.BackEnd
                 var ctx = scope.ServiceProvider.GetRequiredService<FotoFactoryContext>();
                 var dbIntialiser = scope.ServiceProvider.GetRequiredService<IDBInitialiser>();
 
+                /*ctx.Database.ExecuteSqlRaw("DROP TABLE IF EXISTS dbo.Users, dbo.Posters, dbo.Tags, dbo.Collections," +
+                    "dbo.Frames, dbo.Sizes, dbo.PosterTags, dbo.PosterSizes, dbo.Favourites, dbo.WorkSpaces," +
+                    "dbo.WorkSpacePosters");*/
                 ctx.Database.EnsureCreated();
 
-                ctx.Database.ExecuteSqlRaw("DROP TABLE Users");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE Posters");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE Sizes");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE Frames");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpace");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpacePoster");
-                ctx.Database.ExecuteSqlRaw("DROP TABLE Tags");
+                //ctx.Database.ExecuteSqlRaw("DROP TABLE Users");
+                //ctx.Database.ExecuteSqlRaw("DROP TABLE Posters");
+                //ctx.Database.ExecuteSqlRaw("DROP TABLE Sizes");
+                //ctx.Database.ExecuteSqlRaw("DROP TABLE Frames");
+                //ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpace");
+                //ctx.Database.ExecuteSqlRaw("DROP TABLE WorkSpacePoster");
+                //ctx.Database.ExecuteSqlRaw("DROP TABLE Tags");
 
-                ctx.Database.EnsureCreated();
+                // ctx.Database.EnsureCreated();
 
-                dbIntialiser.SeedDB(ctx);
+                // dbIntialiser.SeedDB(ctx);
             }
 
             app.UseCors();

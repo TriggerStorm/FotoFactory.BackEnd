@@ -9,6 +9,7 @@ namespace FotoFactory.CoreEntities
         public string Name { get; set; }
         public string BackGroundColour { get; set; }
         public List<WorkSpacePoster> WorkSpacePosters { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
 
 

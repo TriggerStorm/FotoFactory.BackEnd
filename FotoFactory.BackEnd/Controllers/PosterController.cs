@@ -11,7 +11,7 @@ namespace FotoFactory.BackEnd.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class PosterController : Controller
+    public class PosterController : ControllerBase
     {
         private readonly IPosterService _posterService;
 

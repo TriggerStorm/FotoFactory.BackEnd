@@ -13,6 +13,6 @@ namespace FotoFactory.CoreEntities
         public  IEnumerable<PosterTag> PosterTags { get; set; }
         public IEnumerable<PosterSize> PosterSizes { get; set; }
         public ICollection<Favourite> Favourites { get; set; }
-
+        public IEnumerable<WorkSpacePoster> WorkSpacePosters { get; set; }
     }
 }

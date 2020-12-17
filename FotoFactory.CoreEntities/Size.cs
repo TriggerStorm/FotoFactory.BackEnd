@@ -10,6 +10,7 @@ namespace FotoFactory.CoreEntities
         public double PosterPrice { get; set; }
         public double FramePrice { get; set; }
         public IEnumerable<PosterSize> PosterSizes { get; set; }
+        public IEnumerable<WorkSpacePoster> WorkSpacePosters { get; set; }
     }
 }
 

@@ -7,24 +7,24 @@ namespace InfraStructure.SQLLite.Data
     public class FotoFactoryContext : DbContext
     {
         public FotoFactoryContext(DbContextOptions<FotoFactoryContext> opt) : base(opt) { }
-
-
-
         public DbSet<Poster> Posters { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        
         public DbSet<Collection> Collections { get; set; }
         public DbSet<Frame> Frames { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<User> Users { get; set; }
-
+        // POSTERTAG OK
         public DbSet<PosterTag> PosterTags { get; set; }
+        // POSTERSIZE OK
         public DbSet<PosterSize> PosterSizes { get; set; }
-
-
+        // FAVOURITES OK
         public DbSet<Favourite> Favourites { get; set; }
+        //OK
         public DbSet<WorkSpace> WorkSpaces { get; set; }
+        // WorkSPACEPoser POSTER OK
         public DbSet<WorkSpacePoster> WorkSpacePosters { get; set; }
-
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,6 @@ namespace InfraStructure.SQLLite.Data
                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<PosterSize>()
-
                .HasOne(ps => ps.Size)
                .WithMany(s => s.PosterSizes)
                .HasForeignKey(ps => ps.SizeId)
@@ -71,34 +70,50 @@ namespace InfraStructure.SQLLite.Data
             modelBuilder.Entity<Favourite>()
                 .HasOne(f => f.User)
                 .WithMany(u => u.Favourites)
-                .HasForeignKey(f => f.UserId);
+                .HasForeignKey(f => f.UserId)
+               .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Favourite>()
+               .HasOne(f => f.Poster)
+               .WithMany(u => u.Favourites)
+               .HasForeignKey(f => f.PosterId)
+              .OnDelete(DeleteBehavior.NoAction);
             // OnDelete??
-
-
-            //  Create WorkSpace relatons
-
-            modelBuilder.Entity<WorkSpace>()
-                .HasMany<WorkSpacePoster>(ws => ws.WorkSpacePosters);
-
-            //workspaceposterid is the foreign key.
 
             modelBuilder.Entity<WorkSpace>()
                 .HasOne<User>(ws => ws.User)
-                .WithMany(u => u.WorkSpaces);
+                .WithMany(u => u.WorkSpaces)
+                .HasForeignKey(ws => ws.UserId)
+               .OnDelete(DeleteBehavior.NoAction);
+
+            //  Create WorkSpace relatons
+
             
+
+
+
 
             // Create WorkSpacePoster relations
 
             modelBuilder.Entity<WorkSpacePoster>()
-                .HasOne<Poster>(wsp => wsp.Poster);
+                .HasOne<Poster>(wsp => wsp.Poster)
+                .WithMany(p => p.WorkSpacePosters)
+               .HasForeignKey(wsp => wsp.PosterId)
+              .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<WorkSpacePoster>()
-                .HasOne<Frame>(f => f.Frame);
+                .HasOne<Frame>(wsp => wsp.Frame)
+                .WithMany(p => p.WorkSpacePosters)
+               .HasForeignKey(wsp => wsp.FrameId)
+              .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<WorkSpacePoster>()
-                .HasOne<Size>(s => s.Size);
+                .HasOne(wsp => wsp.Size)
+                .WithMany(p => p.WorkSpacePosters)
+               .HasForeignKey(wsp => wsp.SizeId)
+              .OnDelete(DeleteBehavior.NoAction);
 
-
+            
 
 
 

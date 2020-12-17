@@ -22,10 +22,10 @@ namespace InfraStructure.SQLLite.Data
         public void
             SeedDB(FotoFactoryContext ctx) // Using context. Could use repository but ctx is a cleaner change tracker
         {
-           if (ctx.Users.Any())
-            {
-                return;
-            }
+           //if (ctx.Users.Any())
+           // {
+           //     return;
+           // }
         
 
 
