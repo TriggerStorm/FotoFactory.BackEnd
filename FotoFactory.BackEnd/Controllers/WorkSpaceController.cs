@@ -7,6 +7,7 @@ using FotoFactory.Core.AppService;
 using FotoFactory.CoreEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.IIS.Core;
 using Microsoft.OpenApi.Any;
 using Newtonsoft.Json.Linq;
 
@@ -33,13 +34,12 @@ namespace FotoFactory.BackEnd.Controllers
         {
             try
             {
-
                 //int userId = loggedUser.Id;
-                if (userID > 0)
+                if (userID > 0 )
                 {
                     return Ok(_workSpaceService.ReadAllWorkSpace(userID));
                 } 
-                
+               
                 if (workspaceID > 0)
                 {
                     return Ok(_workSpaceService.ReadWorkSpaceByID(workspaceID));
@@ -120,13 +120,22 @@ namespace FotoFactory.BackEnd.Controllers
         {
             try
             {
+                if (id > 0)
+                {
+                    return Ok(_workSpaceService.DeleteWorkSpace(id));
+                }
+
+                return BadRequest();
+                
                 //_workSpaceService.DeleteWorkSpace(id );
-                return Ok(_workSpaceService.DeleteWorkSpace(id));
+                //return Ok(_workSpaceService.DeleteWorkSpace(id));
+                
             }
             catch (Exception e)
             {
                 return NotFound(e.Message);
             }
+
         }
     }
 }

@@ -196,7 +196,7 @@ namespace FotoFactory.Core.Test.AppService.Service
         }
 
         [Fact]
-        public void ReadWorkSpaceId_WithNegativeInputAsId_ShouldThrowException()
+        public void ReadWorkSpaceId_WithNegativeInputAsId_ShouldCallRepoOnce()
         {//arrange
             var workSpaceRepositoryMock = new Mock<IWorkSpaceRepository>();
             var workSpaceValidatorMock = new Mock<IWorkSpaceValidator>();
@@ -204,9 +204,9 @@ namespace FotoFactory.Core.Test.AppService.Service
             var userRepoMock = new Mock<IUserRepository>();
             IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
-            WorkSpace mockWorkSpace = new WorkSpace() { WorkSpaceId = -1, Name = " bedroom", BackGroundColour = "yellow" };
+            //WorkSpace testWorkSpace = new WorkSpace() { WorkSpaceId = -1, Name = " bedroom", BackGroundColour = "yellow" };
             //assign
-            workSpaceRepositoryMock.Setup(rm => rm.ReadWorkSpaceByID(-1));
+            //workSpaceRepositoryMock.Setup(rm => rm.ReadWorkSpaceByID(-1));//defines a behaviour depending on input
             service.ReadWorkSpaceByID(-1);
             //assert
             workSpaceRepositoryMock.Verify(rm => rm.ReadWorkSpaceByID(-1), Times.Once);
@@ -225,7 +225,7 @@ namespace FotoFactory.Core.Test.AppService.Service
             IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object,workSpaceValidatorMock.Object,userRepoMock.Object,
                 authenticationHelperMock.Object);
             var workSpace = new WorkSpace(){ WorkSpaceId = 11, Name = " Bedroom", BackGroundColour = " blue" };
-            //assign
+            //act
             var workSpaceUpdate = new WorkSpace() { WorkSpaceId = 11, Name = " Bathroom", BackGroundColour = " black" };
             var workSpaceUpdated = new WorkSpace(){ WorkSpaceId = 11, Name = " stairs", BackGroundColour = " grey" };
             workSpaceRepositoryMock.Setup(r => r.ReadWorkSpaceByID(11)).Returns(() => workSpaceUpdated);
@@ -246,7 +246,7 @@ namespace FotoFactory.Core.Test.AppService.Service
             var userRepoMock = new Mock<IUserRepository>();
             IWorkSpaceService service = new WorkSpaceService(workSpaceRepositoryMock.Object, workSpaceValidatorMock.Object, 
                 userRepoMock.Object,authenticationHelperMock.Object);
-            //assign
+            //act
             var deletedWorkSpace = new WorkSpace() {WorkSpaceId = 3, Name = "", BackGroundColour = ""};
             workSpaceRepositoryMock.Setup(r => r.DeleteWorkSpace(3)).Returns(() => deletedWorkSpace);
             service.DeleteWorkSpace(3);

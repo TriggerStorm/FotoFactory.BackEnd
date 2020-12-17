@@ -39,7 +39,7 @@ namespace FotoFactory.Core.AppService.Service
             return _workSpacePosterRepository.DeleteWorkSpacePoster(id);
         }
 
-        public ICollection<WorkSpacePoster> ReadAllWorkSpacePoster()
+        public List<WorkSpacePoster> ReadAllWorkSpacePoster()
         {
            return _workSpacePosterRepository.ReadAllWorkSpacePoster().ToList();
         }

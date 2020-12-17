@@ -27,7 +27,7 @@ namespace FotoFactory.BackEnd.Controllers
         }
         // GET: api/<WorkSpacePosterController>
         [HttpGet]
-        public ActionResult<IEnumerable> Get()
+        public ActionResult Get()
         {
             try
             {

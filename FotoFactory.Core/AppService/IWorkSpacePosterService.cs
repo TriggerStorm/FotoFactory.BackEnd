@@ -9,7 +9,7 @@ namespace FotoFactory.Core.AppService
     {
         WorkSpacePoster CreateWorkSpacePoster(int xpos, int ypos, int posterId,int frameId, int sizeId);
 
-        ICollection<WorkSpacePoster> ReadAllWorkSpacePoster();
+        List<WorkSpacePoster> ReadAllWorkSpacePoster();
         WorkSpacePoster ReadWorkSpacePosterById(int id);
         WorkSpacePoster UpdateWorkSpacePoster(int id, int xPos, int yPos);
         WorkSpacePoster DeleteWorkSpacePoster(int id);
