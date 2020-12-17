@@ -26,7 +26,6 @@ namespace InfraStructure.SQLLite.Data
         public DbSet<WorkSpacePoster> WorkSpacePosters { get; set; }
 
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FotoFactory.Core.DomainService;
 using FotoFactory.CoreEntities;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfraStructure.SQLLite.Data.Repositories
 {

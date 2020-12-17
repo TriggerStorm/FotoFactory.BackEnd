@@ -24,11 +24,9 @@ namespace FotoFactory.Core.AppService.Service
                     Summary workSpaceName = new Summary() { PosterName = workSpace.Name };
                     allSummaries.Add(workSpaceName);
                     List<WorkSpacePoster> wsp = workSpace.WorkSpacePosters;
-                    
-                   // summaryWorkSpaces.Add(workSpace);
 
+                    foreach (WorkSpacePoster workSpacePoster in wsp)
 
-                    foreach (WorkSpacePoster workSpacePoster in workSpace.WorkSpacePosters)
                     {
 
                         double posterAndFramePrice = 0;
@@ -65,5 +63,24 @@ namespace FotoFactory.Core.AppService.Service
             return allSummaries;
 
         }
+
+
+        /*
+        public void ExportToCSV (List<Summary> allSummaries)
+        {
+            var csv = new StringBuilder();
+            string filePath = "/Summary";
+            foreach (Summary summary in allSummaries)
+            {
+                var first = reader[0].ToString();
+                var second = image.ToString();
+                //Suggestion made by KyleMit
+                var newLine = string.Format("{0},{1}", first, second);
+                csv.AppendLine(newLine);
+            }
+            //after your loop
+            File.WriteAllText(filePath, csv.ToString());
+        }
+        */
     }
 }
