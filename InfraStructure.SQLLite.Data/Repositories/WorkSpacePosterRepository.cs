@@ -48,7 +48,7 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
         public IEnumerable<WorkSpacePoster> ReadAllWorkSpacePoster()
         {
-            return _ctx.WorkSpacePosters.Include(p => p.Poster).Include(f => f.Frame).Include(s => s.Size);
+            return _ctx.WorkSpacePosters.Include(p => p.Poster).Include(f => f.Frame).Include(s => s.Size).ToList();
         }
 
         public WorkSpacePoster ReadWorkSpacePosterById(int id)

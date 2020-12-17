@@ -27,7 +27,6 @@ namespace FotoFactory.Core.AppService.Validators
         {
             if(id == null || id<=0)
                 throw new ArgumentNullException("id cannot be null or negative");
-            
         }
 
         public void UpdateWorkSpace(int id, WorkSpace workSpace)
