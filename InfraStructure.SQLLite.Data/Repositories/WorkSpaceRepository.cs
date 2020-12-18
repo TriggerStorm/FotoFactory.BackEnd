@@ -57,8 +57,16 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
         public IEnumerable<WorkSpace> ReadAllWorkSpace(int userID)
         {
-             var workspaceList = _ctx.WorkSpaces.Where(u => u.User.UserId == userID).Include(wsp => wsp.WorkSpacePosters).Include(wsp => wsp.User);
-             
+             var workspaceList = _ctx.WorkSpaces
+                .Where(u => u.User.UserId == userID)
+                .Include(ws => ws.WorkSpacePosters)
+                .ThenInclude(wsp => wsp.Poster)
+                .Include(ws => ws.WorkSpacePosters)
+                .ThenInclude(wsp => wsp.Size)
+                .Include(ws => ws.WorkSpacePosters)
+                .ThenInclude(wsp => wsp.Frame)
+                .Include(wsp => wsp.User);
+             /*
              foreach (WorkSpace incompleteWorkSpace in workspaceList)
              {
                  var newWorkspace = new List<WorkSpacePoster> { };
@@ -72,7 +80,7 @@ namespace InfraStructure.SQLLite.Data.Repositories
                  incompleteWorkSpace.WorkSpacePosters.Clear();
 
                  incompleteWorkSpace.WorkSpacePosters = newWorkspace;
-             }
+             }*/
 
              return workspaceList;
         }

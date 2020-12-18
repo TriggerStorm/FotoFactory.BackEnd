@@ -20,10 +20,13 @@ namespace InfraStructure.SQLLite.Data.Repositories
         public List<Poster> ReadAllCollectionPosters(int collectionId)
         {
             // this works... but no tags
-            // return _ctx.Posters.Where(p => p.CollectionId == collectionId).Include(p => p.PosterTags).Include(p => p.PosterSizes);
-
+            List<Poster> list = _ctx.Posters.Where(p => p.CollectionId == collectionId)
+                .Include(p => p.PosterTags)
+                .Include(p => p.PosterSizes)
+                .ToList();
+            return list;
             // v2 Hacky but works
-            IEnumerable<Poster> pl = _ctx.Posters.Where(p => p.CollectionId == collectionId).Include(p => p.PosterTags).Include(p => p.PosterSizes);
+            /*IEnumerable<Poster> pl = _ctx.Posters.Where(p => p.CollectionId == collectionId).Include(p => p.PosterTags).Include(p => p.PosterSizes);
             foreach (Poster p in pl)
             {
                 IEnumerable<PosterTag> ptlist = p.PosterTags;
@@ -46,7 +49,7 @@ namespace InfraStructure.SQLLite.Data.Repositories
                     ps.Size.PosterSizes = null;
                 }
             }
-            return pl.ToList();
+            return pl.ToList();*/
         }
     }
 }

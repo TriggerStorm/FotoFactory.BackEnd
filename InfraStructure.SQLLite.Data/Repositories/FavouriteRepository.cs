@@ -38,7 +38,16 @@ namespace InfraStructure.SQLLite.Data.Repositories
 
         public IEnumerable<Poster> ReadLoggedInUsersFavouritedPosters()
         {
-            List<Poster> ufp = new List<Poster>();
+            //Users FAvourite Posters
+
+            var user = _ctx.Users.Where(u => u.UserId == loggedInUserId)
+                .Include(u => u.Favourites)
+                .ThenInclude(f => f.Poster)
+                .FirstOrDefault();
+
+            return GetPosters(user);
+
+            /*List<Poster> ufp = new List<Poster>();
 
             IEnumerable<Favourite> uf = _ctx.Favourites.Where(u => u.UserId == loggedInUserId);
             foreach (Favourite f in uf)
@@ -64,9 +73,19 @@ namespace InfraStructure.SQLLite.Data.Repositories
                 }
                 ufp.Add(p);
             }
-            return ufp;
+            return ufp;*/
         }
 
+        private IEnumerable<Poster> GetPosters(User u)
+        {
+            List<Poster> list = new List<Poster>();
+            foreach (var favourite in u.Favourites)
+            {
+                list.Add(favourite.Poster);
+            }
+            return list;
+            
+        }
 
         public Favourite DeleteALoggedInUsersFavouritedPoster(int posterID)
         {
